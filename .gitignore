@@ -1,0 +1,8 @@
+/.env
+/.idea
+/vendor
+.DS_Store
+/web/cpresources
+/web/uploads
+/node_modules
+/db/*.sql

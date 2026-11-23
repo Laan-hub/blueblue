@@ -1,0 +1,8 @@
+baseUrl: $PRIMARY_SITE_URL
+handle: default
+hasUrls: true
+language: de
+name: blueblue
+primary: true
+siteGroup: 4e4802f8-2b09-4822-9a9c-620e4b9baf3e # blueblue
+sortOrder: 1

@@ -1,0 +1,16 @@
+name: blueblue
+type: craftcms
+docroot: web
+php_version: "8.3"
+webserver_type: nginx-fpm
+xdebug_enabled: false
+database:
+  type: mysql
+  version: "8.0"
+nodejs_version: "22"
+composer_version: "2"
+timezone: Europe/Berlin
+use_dns_when_possible: true
+hooks:
+  post-start:
+    - exec: "test -f .env || cp .env.example.dev .env"
