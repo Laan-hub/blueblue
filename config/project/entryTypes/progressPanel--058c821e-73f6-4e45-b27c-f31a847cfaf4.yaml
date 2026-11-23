@@ -1,0 +1,111 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  eadd4077-e34d-41b4-ac1e-b99afa8b4de3:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 96fbaecf-f315-4bec-81d7-7be3fe87173e # Dachzeile
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 900310c3-ba4a-46a1-a469-9b40ee5c7808
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 77eb6627-030c-42d8-80e7-7d3058fad66f # Überschrift
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 869919e7-f834-4e0d-a201-52e3f8348dfb
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8a82a4ee-4fac-4e75-aa40-3e58db37fee6 # Einleitung
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e3d31fe1-8d30-4e6e-b8aa-0cc7fe47fb2e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: aa0070c5-2be2-44fe-bd6d-9fd9a9c0b41e # Fortschrittsbalken
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c374153c-0f4e-4ad7-b215-19661a9ef80a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9d278424-01b5-4111-a096-e6d92d659543 # Hinweis / Fußnote
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: adf59ddd-fed6-4361-8d63-505c480b1dfc
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: d9e9915b-8514-4bed-a3e0-efea29fc5c4c
+        userCondition: null
+    thumbFieldKey: null
+handle: progressPanel
+hasTitleField: false
+icon: bars-progress
+name: Fortschritt
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{headline}'

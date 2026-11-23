@@ -1,0 +1,69 @@
+columnSuffix: null
+handle: audienceItems
+instructions: 'URL relativ (z. B. /kontakt) oder absolut. Externe Links bekommen automatisch einen Pfeil ↗.'
+name: Zielgruppen
+searchable: false
+settings:
+  addRowLabel: 'Add a row'
+  columns:
+    __assoc__:
+      -
+        - col1
+        -
+          __assoc__:
+            -
+              - heading
+              - Titel
+            -
+              - handle
+              - title
+            -
+              - type
+              - singleline
+      -
+        - col2
+        -
+          __assoc__:
+            -
+              - heading
+              - Text
+            -
+              - handle
+              - text
+            -
+              - type
+              - singleline
+      -
+        - col3
+        -
+          __assoc__:
+            -
+              - heading
+              - Link-Text
+            -
+              - handle
+              - linkLabel
+            -
+              - type
+              - singleline
+      -
+        - col4
+        -
+          __assoc__:
+            -
+              - heading
+              - URL
+            -
+              - handle
+              - url
+            -
+              - type
+              - singleline
+  maxRows: null
+  minRows: null
+  staticRows: false
+tip: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Table
+warning: null

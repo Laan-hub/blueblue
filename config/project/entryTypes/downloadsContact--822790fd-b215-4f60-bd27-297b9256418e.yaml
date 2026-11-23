@@ -1,0 +1,179 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  a865c78c-3eb5-4664-aa99-3cc0aa2e0f14:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 96fbaecf-f315-4bec-81d7-7be3fe87173e # Dachzeile
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 964231b3-9d3f-401c-a8a5-1bf4a8a403e3
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 77eb6627-030c-42d8-80e7-7d3058fad66f # Überschrift
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e1379aa0-69bf-4d46-89a4-bb1e25f483dc
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 1af382e5-b395-4286-883b-0686202f672d # Downloads
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b5e017c8-70e2-47a6-b519-f1f4e10448aa
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8e099e4b-d150-4b11-9de5-b6b5eaf6ab5f # Meta-Label
+            handle: null
+            instructions: null
+            label: 'Kontakt: Dachzeile'
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d4507a68-c4b8-4195-b977-85ed2b12aca2
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: edb110cb-9ae5-40c8-a642-d3f899448ee8 # Überschrift (zweite Spalte)
+            handle: null
+            instructions: null
+            label: 'Kontakt: Überschrift'
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8385cfad-939e-4818-ba45-aece42c67e23
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8a82a4ee-4fac-4e75-aa40-3e58db37fee6 # Einleitung
+            handle: null
+            instructions: null
+            label: 'Kontakt: Text'
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f5c4564f-bd47-4f8c-93b1-03e272ebac46
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9fd4b8a5-6161-49db-8244-bad92da9dd09 # Link
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 43199c0c-26c8-40ba-b98b-cb09d09eee92
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9d278424-01b5-4111-a096-e6d92d659543 # Hinweis / Fußnote
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2e017040-c164-4a4b-ae49-39eb90dee571
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 536b625b-36e6-42ed-bf52-98cc7ea5c02c # Sprungmarke
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9f24978e-b646-4089-9cca-7e130dca64fa
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: 924063dc-2cee-4f78-b6aa-1e3cd113a37c
+        userCondition: null
+    thumbFieldKey: null
+handle: downloadsContact
+hasTitleField: false
+icon: download
+name: 'Downloads & Kontakt'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{headline ?? eyebrow ?? ""}'

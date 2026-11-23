@@ -1,0 +1,68 @@
+columnSuffix: null
+handle: background
+instructions: null
+name: Hintergrund
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Weiß
+        -
+          - value
+          - white
+        -
+          - default
+          - true
+    -
+      __assoc__:
+        -
+          - label
+          - Hellgrau
+        -
+          - value
+          - subtle
+        -
+          - default
+          - false
+    -
+      __assoc__:
+        -
+          - label
+          - Hellblau
+        -
+          - value
+          - tinted
+        -
+          - default
+          - false
+    -
+      __assoc__:
+        -
+          - label
+          - Dunkelblau
+        -
+          - value
+          - dark
+        -
+          - default
+          - false
+    -
+      __assoc__:
+        -
+          - label
+          - Markenblau
+        -
+          - value
+          - blue
+        -
+          - default
+          - false
+tip: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown
+warning: null

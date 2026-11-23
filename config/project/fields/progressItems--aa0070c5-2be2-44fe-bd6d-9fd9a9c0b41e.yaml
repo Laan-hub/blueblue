@@ -1,0 +1,69 @@
+columnSuffix: null
+handle: progressItems
+instructions: null
+name: Fortschrittsbalken
+searchable: false
+settings:
+  addRowLabel: 'Add a row'
+  columns:
+    __assoc__:
+      -
+        - col1
+        -
+          __assoc__:
+            -
+              - heading
+              - Bezeichnung
+            -
+              - handle
+              - label
+            -
+              - type
+              - singleline
+      -
+        - col2
+        -
+          __assoc__:
+            -
+              - heading
+              - Wert
+            -
+              - handle
+              - value
+            -
+              - type
+              - number
+      -
+        - col3
+        -
+          __assoc__:
+            -
+              - heading
+              - Maximum
+            -
+              - handle
+              - max
+            -
+              - type
+              - number
+      -
+        - col4
+        -
+          __assoc__:
+            -
+              - heading
+              - 'Stil (actual/target)'
+            -
+              - handle
+              - style
+            -
+              - type
+              - singleline
+  maxRows: null
+  minRows: null
+  staticRows: false
+tip: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Table
+warning: null

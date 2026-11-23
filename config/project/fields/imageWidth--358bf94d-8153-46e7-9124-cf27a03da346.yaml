@@ -1,0 +1,46 @@
+columnSuffix: null
+handle: imageWidth
+instructions: null
+name: Bildbreite
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Breit (Inhaltsbreite)'
+        -
+          - value
+          - wide
+        -
+          - default
+          - true
+    -
+      __assoc__:
+        -
+          - label
+          - 'Volle Breite'
+        -
+          - value
+          - full
+        -
+          - default
+          - false
+    -
+      __assoc__:
+        -
+          - label
+          - Textspalte
+        -
+          - value
+          - content
+        -
+          - default
+          - false
+tip: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown
+warning: null

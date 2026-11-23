@@ -1,0 +1,34 @@
+columnSuffix: null
+handle: teaserEntries
+instructions: 'Teaser werden automatisch aus Bild, Dachzeile, Titel und Kurzbeschreibung des Eintrags gebaut. Eigene Teaser legst du im Bereich „Teaser“ an und kannst sie überall wiederverwenden.'
+name: 'Verknüpfte Einträge'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  defaultPlacement: end
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: null
+  showSearchInput: true
+  showSiteMenu: false
+  showUnpermittedEntries: false
+  showUnpermittedSections: false
+  sources:
+    - 'section:bf356bc9-7158-4994-a102-79bc0c5d417e' # Projekte
+    - 'section:2d602a72-b6e6-49e2-96d8-15f502a7a402' # Akzente (Magazin)
+    - 'section:91335602-7ab0-4bf0-9438-bb5f9048cc15' # News
+    - 'section:0ff3237d-6f8a-4cd6-87b0-0db5070ca1d2' # Leistungen
+    - 'section:6faefc70-3606-4661-84aa-d6d5ea2812d9' # Weltweit
+    - 'section:67a228dd-5e06-471b-a2d7-389b2d4d3edb' # Seiten
+    - 'section:fcba8f19-a5e9-410e-8351-27d64d487075' # Teaser
+    - 'section:529506eb-9386-4aa5-98c7-381eade6f43c' # Ausschreibungen
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: cards
+tip: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Entries
+warning: null

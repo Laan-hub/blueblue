@@ -1,0 +1,94 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  7464b7df-85da-4f3b-b361-0ebad1c528bd:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 96fbaecf-f315-4bec-81d7-7be3fe87173e # Dachzeile
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1fd4f1b6-d60b-4c63-b324-a8f33185c3ce
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 77eb6627-030c-42d8-80e7-7d3058fad66f # Überschrift
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: eada14eb-d157-4416-8d60-e52ab48923c4
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 345dc895-7ad9-4d2c-a424-78d503ba4ffd # Verteilung
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4f7f62a5-dfe8-4045-bbd9-24703269ffac
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9d278424-01b5-4111-a096-e6d92d659543 # Hinweis / Fußnote
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 39179012-4bef-461d-8b31-b2598e115a82
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: dbc3bc38-943c-452e-8511-0eb3a1a70468
+        userCondition: null
+    thumbFieldKey: null
+handle: allocationPanel
+hasTitleField: false
+icon: chart-pie
+name: Verteilung
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{headline}'

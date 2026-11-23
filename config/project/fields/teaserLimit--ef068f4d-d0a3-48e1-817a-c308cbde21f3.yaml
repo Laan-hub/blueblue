@@ -1,0 +1,21 @@
+columnSuffix: null
+handle: teaserLimit
+instructions: 'Wie viele Einträge automatisch gezeigt werden (0 = alle).'
+name: Anzahl
+searchable: false
+settings:
+  decimals: 0
+  defaultValue: null
+  max: null
+  min: 0
+  prefix: null
+  previewCurrency: null
+  previewFormat: decimal
+  size: null
+  step: null
+  suffix: null
+tip: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number
+warning: null

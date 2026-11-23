@@ -1,0 +1,128 @@
+allowLineBreaksInTitles: false
+color: null
+description: 'Zeigt automatisch offene Ausschreibungen.'
+fieldLayouts:
+  6239fb20-6b3b-4959-b8c4-4244dd244d0d:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 96fbaecf-f315-4bec-81d7-7be3fe87173e # Dachzeile
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ac5d1215-aa2b-4f02-8425-af4ff06d140b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 77eb6627-030c-42d8-80e7-7d3058fad66f # Überschrift
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3a72250c-5f4c-4601-ab37-671e43abc66d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8a82a4ee-4fac-4e75-aa40-3e58db37fee6 # Einleitung
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f1fcdfbf-6d03-4954-9c1b-a555ce5f0b18
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9fd4b8a5-6161-49db-8244-bad92da9dd09 # Link
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 48e69b0f-d662-4950-99a0-2cf38c726e68
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: ef068f4d-d0a3-48e1-817a-c308cbde21f3 # Anzahl
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 37754f3b-a835-435e-ae38-6e55b052cb57
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9d278424-01b5-4111-a096-e6d92d659543 # Hinweis / Fußnote
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7b979464-7dba-4e96-bafe-dbcc2333c313
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: a7755306-d921-4695-806b-306f0f57e833
+        userCondition: null
+    thumbFieldKey: null
+handle: tenderList
+hasTitleField: false
+icon: file-contract
+name: Ausschreibungen
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{headline ?? eyebrow ?? ""}'

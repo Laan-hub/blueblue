@@ -1,0 +1,43 @@
+columnSuffix: null
+handle: faqItems
+instructions: 'Wird als FAQPage in JSON-LD ausgegeben.'
+name: 'Fragen & Antworten'
+searchable: false
+settings:
+  addRowLabel: 'Add a row'
+  columns:
+    __assoc__:
+      -
+        - col1
+        -
+          __assoc__:
+            -
+              - heading
+              - Frage
+            -
+              - handle
+              - question
+            -
+              - type
+              - singleline
+      -
+        - col2
+        -
+          __assoc__:
+            -
+              - heading
+              - Antwort
+            -
+              - handle
+              - answer
+            -
+              - type
+              - multiline
+  maxRows: null
+  minRows: null
+  staticRows: false
+tip: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Table
+warning: null

@@ -1,0 +1,128 @@
+allowLineBreaksInTitles: false
+color: null
+description: 'Listet automatisch alle Regionen aus „Weltweit“.'
+fieldLayouts:
+  6937f474-802a-4912-87ed-983dc6064c29:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 96fbaecf-f315-4bec-81d7-7be3fe87173e # Dachzeile
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: dce55eb9-43c8-434a-928b-cd6cdd7adf83
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 77eb6627-030c-42d8-80e7-7d3058fad66f # Überschrift
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 630b04ae-21e4-4796-a846-3837b26f5c77
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8a82a4ee-4fac-4e75-aa40-3e58db37fee6 # Einleitung
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5db05d3e-15d4-46c8-945c-d042af2635d0
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9fd4b8a5-6161-49db-8244-bad92da9dd09 # Link
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: de48b6dd-e6d7-499b-8020-08a08f984dc2
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8e099e4b-d150-4b11-9de5-b6b5eaf6ab5f # Meta-Label
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8168f600-3e84-46f1-ada8-86fc16a20e41
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9d278424-01b5-4111-a096-e6d92d659543 # Hinweis / Fußnote
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7a3ea0e2-83ba-4cac-91a9-8d5519118964
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: 9d7c56e9-4238-4d2f-97c3-71f9798fef54
+        userCondition: null
+    thumbFieldKey: null
+handle: regionExplorer
+hasTitleField: false
+icon: earth-europe
+name: Regionen-Übersicht
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{headline ?? eyebrow ?? ""}'

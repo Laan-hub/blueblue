@@ -1,0 +1,24 @@
+columnSuffix: null
+handle: topics
+instructions: null
+name: Schlagworte
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  defaultPlacement: end
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: null
+  showSearchInput: true
+  showSiteMenu: false
+  source: 'taggroup:21f427c2-0a57-4e30-adc3-d801466de0ce' # Themen
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+tip: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Tags
+warning: null

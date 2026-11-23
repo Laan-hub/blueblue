@@ -1,0 +1,26 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 96ab3656-472d-4d7b-8f6f-55f91ea7bfc3 # Projekt
+handle: projects
+maxAuthors: 1
+minAuthors: 1
+name: Projekte
+previewTargets:
+  -
+    label: 'Primary entry page'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  3865a016-c449-4002-9471-6c327aa9c872: # English
+    enabledByDefault: true
+    hasUrls: true
+    template: projects/_entry
+    uriFormat: 'projects/{slug}'
+  a5a2462c-e1bf-4bc5-add7-850faaa1e7e7: # Deutsch
+    enabledByDefault: true
+    hasUrls: true
+    template: projects/_entry
+    uriFormat: 'projekte/{slug}'
+type: channel

@@ -1,0 +1,35 @@
+columnSuffix: null
+handle: noticeStyle
+instructions: null
+name: Stil
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Kleine Zeile mit Markierung'
+        -
+          - value
+          - inline
+        -
+          - default
+          - true
+    -
+      __assoc__:
+        -
+          - label
+          - 'Hervorgehobener Kasten'
+        -
+          - value
+          - box
+        -
+          - default
+          - false
+tip: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown
+warning: null

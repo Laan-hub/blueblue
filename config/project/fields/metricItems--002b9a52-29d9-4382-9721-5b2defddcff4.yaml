@@ -1,0 +1,56 @@
+columnSuffix: null
+handle: metricItems
+instructions: null
+name: Kennzahlen
+searchable: false
+settings:
+  addRowLabel: 'Add a row'
+  columns:
+    __assoc__:
+      -
+        - col1
+        -
+          __assoc__:
+            -
+              - heading
+              - Wert
+            -
+              - handle
+              - value
+            -
+              - type
+              - singleline
+      -
+        - col2
+        -
+          __assoc__:
+            -
+              - heading
+              - Bezeichnung
+            -
+              - handle
+              - label
+            -
+              - type
+              - singleline
+      -
+        - col3
+        -
+          __assoc__:
+            -
+              - heading
+              - Erläuterung
+            -
+              - handle
+              - note
+            -
+              - type
+              - singleline
+  maxRows: null
+  minRows: null
+  staticRows: false
+tip: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Table
+warning: null

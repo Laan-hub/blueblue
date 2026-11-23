@@ -1,0 +1,29 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: c1c50146-0c54-441f-b80e-61f906654567 # Seite
+handle: pages
+maxAuthors: 1
+minAuthors: 1
+name: Seiten
+previewTargets:
+  -
+    label: 'Primary entry page'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  3865a016-c449-4002-9471-6c327aa9c872: # English
+    enabledByDefault: true
+    hasUrls: true
+    template: pages/_entry
+    uriFormat: '{parent.uri ?? null}{parent ? "/" : ""}{slug}'
+  a5a2462c-e1bf-4bc5-add7-850faaa1e7e7: # Deutsch
+    enabledByDefault: true
+    hasUrls: true
+    template: pages/_entry
+    uriFormat: '{parent.uri ?? null}{parent ? "/" : ""}{slug}'
+structure:
+  maxLevels: 3
+  uid: 90fe55b9-3a94-4d3c-a5b1-694c0fecef93
+type: structure

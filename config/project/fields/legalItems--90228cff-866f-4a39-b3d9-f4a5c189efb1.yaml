@@ -1,0 +1,43 @@
+columnSuffix: null
+handle: legalItems
+instructions: null
+name: Angaben
+searchable: false
+settings:
+  addRowLabel: 'Add a row'
+  columns:
+    __assoc__:
+      -
+        - col1
+        -
+          __assoc__:
+            -
+              - heading
+              - Bezeichnung
+            -
+              - handle
+              - label
+            -
+              - type
+              - singleline
+      -
+        - col2
+        -
+          __assoc__:
+            -
+              - heading
+              - Inhalt
+            -
+              - handle
+              - value
+            -
+              - type
+              - multiline
+  maxRows: null
+  minRows: null
+  staticRows: false
+tip: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Table
+warning: null

@@ -1,0 +1,111 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  1963d9de-3a94-4e0c-b7fc-5f19253e19fe:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: null
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: e5e8625f-9228-4a94-8c7e-ccbef592d82a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: fa19378f-0340-4642-b307-6740641ecd83 # Seiteninhalte
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 37d46c4b-d6d3-408f-9ef6-a9e6af899221
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: 7e8e481e-c6e7-4b89-8c39-cc9d99a2e41c
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: a46d8ff4-99e8-41ed-94d2-2c7727e1e637 # Kurzbeschreibung
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 232f4078-45ff-4d8c-b395-1ea3fc333c96
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 801bbaad-21bb-40ec-8968-a378e9b83850 # Bild
+            handle: null
+            instructions: null
+            label: 'Teaser- & Social-Bild'
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 45d588d6-1036-402f-852d-20f5025e6fb3
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Teaser & SEO'
+        uid: 8012691f-399b-4db7-a421-235bda2bac81
+        userCondition: null
+    thumbFieldKey: null
+handle: home
+hasTitleField: true
+icon: house
+name: Startseite
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

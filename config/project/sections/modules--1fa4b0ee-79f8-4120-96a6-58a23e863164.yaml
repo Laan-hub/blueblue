@@ -1,0 +1,26 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 615b15d0-87f8-4cfa-ba78-3ef2f969a4a9 # Modul
+handle: modules
+maxAuthors: 1
+minAuthors: 1
+name: 'Wiederverwendbare Module'
+previewTargets:
+  -
+    label: 'Primary entry page'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  3865a016-c449-4002-9471-6c327aa9c872: # English
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+  a5a2462c-e1bf-4bc5-add7-850faaa1e7e7: # Deutsch
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+type: channel

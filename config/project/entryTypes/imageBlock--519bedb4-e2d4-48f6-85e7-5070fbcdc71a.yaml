@@ -1,0 +1,60 @@
+allowLineBreaksInTitles: false
+color: null
+description: 'Ein Bild oder zwei Bilder nebeneinander, mit Bildunterschrift.'
+fieldLayouts:
+  d53f6e45-17dc-4cf6-896e-1ec9bdc541a3:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8f5e4d50-037f-4688-a776-d66fc2d25861 # Bilder
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 35f64f65-b98a-40e5-b7c0-8204dfbef9a8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 358bf94d-8153-46e7-9124-cf27a03da346 # Bildbreite
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fa5a120b-a02b-477e-a8ee-cd9db4d68b56
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: b5098893-1f53-476d-9e65-508136eea996
+        userCondition: null
+    thumbFieldKey: null
+handle: imageBlock
+hasTitleField: false
+icon: image
+name: Bild(er)
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{headline ?? eyebrow ?? ""}'

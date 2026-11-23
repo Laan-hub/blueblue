@@ -1,0 +1,43 @@
+allowLineBreaksInTitles: false
+color: null
+description: 'Bindet ein zentral gepflegtes Modul ein.'
+fieldLayouts:
+  7881f86d-61ec-41b8-be48-fe7e308b5f24:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7d82dbf9-061f-40ea-902a-2d5b789eacd0 # Modul
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cf74fb73-aab9-494f-981f-6ffe999f770b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: 52c2d1d5-3ac0-44f7-afb4-e08ad297f019
+        userCondition: null
+    thumbFieldKey: null
+handle: reusableModule
+hasTitleField: false
+icon: recycle
+name: 'Wiederverwendbares Modul'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{moduleEntry.one().title ?? "Modul"}'

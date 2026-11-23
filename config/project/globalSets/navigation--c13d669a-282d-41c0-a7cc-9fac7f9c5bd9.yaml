@@ -1,0 +1,88 @@
+fieldLayouts:
+  96f8eeaa-0719-4097-bd06-0b0b4dd4fd8c:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: d91abbd3-a4f4-4eb8-90e9-88fb6d7c3258 # Servicenavigation (oben)
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 210befef-c83d-4c0d-94dc-3ace436e985a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 0a19cde0-70b5-44e0-a39c-9e642a750312 # Hauptnavigation
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c89f0ffc-5845-43dc-b217-b3d134d03c96
+            userCondition: null
+            warning: null
+            width: 100
+        name: Header
+        uid: a427eddd-8577-4fb6-b324-b5580f26f35a
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7440798f-63b4-43c2-aaa1-e31294751f10 # Footer-Spalten
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a5832c9a-4761-4b84-b36a-c63c052f271a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 10049971-508f-4cbd-8cb0-807111fd5481 # Rechtliche Links (Footer unten)
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4cb8e42f-5e6c-462f-a48a-e8de8d372a34
+            userCondition: null
+            warning: null
+            width: 100
+        name: Footer
+        uid: 646e9c2c-ef62-4040-b038-d1044c14db47
+        userCondition: null
+    thumbFieldKey: null
+handle: navigation
+name: Navigation
+sortOrder: 2

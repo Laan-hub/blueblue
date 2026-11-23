@@ -1,0 +1,29 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: e7b6244d-0e8e-4e82-97e6-5239a0297946 # Leistung
+handle: services
+maxAuthors: 1
+minAuthors: 1
+name: Leistungen
+previewTargets:
+  -
+    label: 'Primary entry page'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  3865a016-c449-4002-9471-6c327aa9c872: # English
+    enabledByDefault: true
+    hasUrls: true
+    template: services/_entry
+    uriFormat: 'services/{slug}'
+  a5a2462c-e1bf-4bc5-add7-850faaa1e7e7: # Deutsch
+    enabledByDefault: true
+    hasUrls: true
+    template: services/_entry
+    uriFormat: 'leistungen/{slug}'
+structure:
+  maxLevels: 2
+  uid: 4e5c605c-77d3-4a4a-bb60-f38797879fb5
+type: structure

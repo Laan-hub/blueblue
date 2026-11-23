@@ -1,0 +1,60 @@
+allowLineBreaksInTitles: false
+color: null
+description: 'Fortschrittsbalken und Budgetverteilung.'
+fieldLayouts:
+  e16b3163-bf87-435b-bc27-bdeebb4e6189:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 71b60293-d026-448e-8185-07785afdd643 # Panels
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e0a1f4c2-3b35-4089-bcc1-a2d0fdc6c557
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9d278424-01b5-4111-a096-e6d92d659543 # Hinweis / Fußnote
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0249391a-cafa-46f2-868a-07c35232a7b8
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: 285b2cf8-30f9-49f9-98bb-c095844ac29f
+        userCondition: null
+    thumbFieldKey: null
+handle: dataPanels
+hasTitleField: false
+icon: chart-column
+name: Daten-Panels
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{headline ?? eyebrow ?? ""}'

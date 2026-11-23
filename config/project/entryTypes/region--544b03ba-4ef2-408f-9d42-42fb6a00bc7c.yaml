@@ -1,0 +1,111 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  dd14e2db-1717-44f4-839c-433a08d87e84:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: null
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 96b8562b-e16f-4f72-9169-adf500469dcb
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: a46d8ff4-99e8-41ed-94d2-2c7727e1e637 # Kurzbeschreibung
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5cdef835-1c11-42a5-8c99-2ba8f964343e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 801bbaad-21bb-40ec-8968-a378e9b83850 # Bild
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1016c3c1-6a09-415f-b6ca-421bc7d9c091
+            userCondition: null
+            warning: null
+            width: 100
+        name: Kopf
+        uid: d56c23c2-4f56-4f39-871b-b322b898c7b5
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: fa19378f-0340-4642-b307-6740641ecd83 # Seiteninhalte
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c73b9631-7ffb-438a-be25-371dd8a88a8e
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: 56b46d6f-ca06-4fa7-8513-a2afb70b256a
+        userCondition: null
+    thumbFieldKey: null
+handle: region
+hasTitleField: true
+icon: earth-africa
+name: Region
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

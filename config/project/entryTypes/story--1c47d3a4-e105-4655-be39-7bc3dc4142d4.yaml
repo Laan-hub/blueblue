@@ -1,0 +1,293 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  1103622e-6f83-452d-917b-86ed5ccdfdc0:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: null
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: d248236e-1dd9-4e18-9d46-5226b0698e65
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 96fbaecf-f315-4bec-81d7-7be3fe87173e # Dachzeile
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bcb043be-14c5-484b-8a3d-513784cd6f9b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: a46d8ff4-99e8-41ed-94d2-2c7727e1e637 # Kurzbeschreibung
+            handle: null
+            instructions: null
+            label: Vorspann
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9f02fa38-6024-4d02-b25d-6aaa2a61d003
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: ca8dc4af-b046-439a-88e1-216b8102b0d5 # Autor:in
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b5e61d97-0b83-4892-9a52-bb8f0ecd2591
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 205aad97-a317-44c5-b5ae-ccfa3b68f800 # Lesezeit (Minuten)
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e1e4aeed-32b2-4c5a-b260-b5ac3f7112d5
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 801bbaad-21bb-40ec-8968-a378e9b83850 # Bild
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e034fbbb-0d0c-4dda-88e4-028ec0ad151e
+            userCondition: null
+            warning: null
+            width: 100
+        name: Kopf
+        uid: d74cfa43-4f0a-43b0-a3f4-bfe0c29c3630
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8e099e4b-d150-4b11-9de5-b6b5eaf6ab5f # Meta-Label
+            handle: null
+            instructions: null
+            label: 'Panel: Dachzeile'
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: dc41c559-8653-45e2-8e07-faba3403c60e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 473560f9-44e8-4e0c-be69-c84d49748884 # Zitat
+            handle: null
+            instructions: null
+            label: 'Panel: Text'
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b4beee32-144e-47a9-a8cb-1fe02870fdac
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9d278424-01b5-4111-a096-e6d92d659543 # Hinweis / Fußnote
+            handle: null
+            instructions: null
+            label: 'Panel: Untertext'
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6582af40-5f01-49ee-bfb9-4c7f60aa7c1b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 3d84d050-f54b-4fe4-a57c-a1976cb4ee50 # Bildunterschrift
+            handle: null
+            instructions: null
+            label: 'Bildunterschrift (überschreibt die des Bildes)'
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 804e0ac2-5274-4790-8370-b2682d6a567f
+            userCondition: null
+            warning: null
+            width: 100
+        name: Titelbild-Panel
+        uid: c5eb2267-f973-4cbf-b869-f931e2d2b875
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: fa19378f-0340-4642-b307-6740641ecd83 # Seiteninhalte
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 25654cc3-7a99-495f-92f7-9082a6411eb7
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: e169457c-8a51-4d3a-b408-043bf7010d6b
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 30d7a1d9-2d97-4a23-8f5f-ece6b39e1869 # Länder / Regionen
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 87d7baaf-462a-47df-89ec-98ab331d6361
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: b80d0975-21f7-40e3-8e6a-6723a6d2b495 # Themenfelder
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9d783553-b0e7-47a5-a339-9ad3614c53fa
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: c0899fb5-8845-4288-9170-028c7f50474b # Schlagworte
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d3128d52-21ee-496c-becf-949dba0b4884
+            userCondition: null
+            warning: null
+            width: 100
+        name: Einordnung
+        uid: c006cdf9-e4d5-4147-b242-be0c6d81a8ad
+        userCondition: null
+    thumbFieldKey: null
+handle: story
+hasTitleField: true
+icon: book-open
+name: Geschichte
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

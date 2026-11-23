@@ -1,0 +1,46 @@
+columnSuffix: null
+handle: tenderType
+instructions: null
+name: 'Art der Ausschreibung'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Dienstleistungen
+        -
+          - value
+          - services
+        -
+          - default
+          - true
+    -
+      __assoc__:
+        -
+          - label
+          - Lieferungen
+        -
+          - value
+          - supplies
+        -
+          - default
+          - false
+    -
+      __assoc__:
+        -
+          - label
+          - Bauleistungen
+        -
+          - value
+          - works
+        -
+          - default
+          - false
+tip: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown
+warning: null

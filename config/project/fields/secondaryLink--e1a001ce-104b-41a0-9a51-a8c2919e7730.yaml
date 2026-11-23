@@ -1,0 +1,19 @@
+columnSuffix: null
+handle: secondaryLink
+instructions: null
+name: 'Zweiter Link'
+searchable: false
+settings:
+  fullGraphqlData: true
+  maxLength: 255
+  showLabelField: true
+  types:
+    - entry
+    - url
+    - email
+    - asset
+tip: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Link
+warning: null

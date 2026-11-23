@@ -1,0 +1,60 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  531d0be4-aeaf-4dc9-a4ea-fc37a91f1184:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 77eb6627-030c-42d8-80e7-7d3058fad66f # Überschrift
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cde7bb6d-1110-47e3-b60a-3b8778fc4a48
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 337ac036-c7d4-4a6c-9482-03bbed112db3 # Links
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a774b127-6e51-40d0-a9d6-867bc5f3682b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: 9db8494b-1c4c-442a-b40b-7309cf8a98a7
+        userCondition: null
+    thumbFieldKey: null
+handle: footerColumn
+hasTitleField: false
+icon: table-columns
+name: Footer-Spalte
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{headline}'

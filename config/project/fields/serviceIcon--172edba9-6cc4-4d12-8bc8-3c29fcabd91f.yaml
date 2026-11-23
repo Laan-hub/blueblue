@@ -1,0 +1,79 @@
+columnSuffix: null
+handle: serviceIcon
+instructions: null
+name: Icon
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Pflanze / Klima'
+        -
+          - value
+          - leaf
+        -
+          - default
+          - true
+    -
+      __assoc__:
+        -
+          - label
+          - 'Handschlag / Wirtschaft'
+        -
+          - value
+          - handshake
+        -
+          - default
+          - false
+    -
+      __assoc__:
+        -
+          - label
+          - 'Institution / Governance'
+        -
+          - value
+          - institution
+        -
+          - default
+          - false
+    -
+      __assoc__:
+        -
+          - label
+          - 'Netzwerk / Digital'
+        -
+          - value
+          - network
+        -
+          - default
+          - false
+    -
+      __assoc__:
+        -
+          - label
+          - Globus
+        -
+          - value
+          - globe
+        -
+          - default
+          - false
+    -
+      __assoc__:
+        -
+          - label
+          - Diagramm
+        -
+          - value
+          - chart
+        -
+          - default
+          - false
+tip: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown
+warning: null

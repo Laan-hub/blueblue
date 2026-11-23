@@ -1,0 +1,79 @@
+columnSuffix: null
+handle: teaserSource
+instructions: null
+name: 'Quelle der Einträge'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Manuell ausgewählt'
+        -
+          - value
+          - manual
+        -
+          - default
+          - true
+    -
+      __assoc__:
+        -
+          - label
+          - 'Neueste Projekte'
+        -
+          - value
+          - projects
+        -
+          - default
+          - false
+    -
+      __assoc__:
+        -
+          - label
+          - 'Neueste News'
+        -
+          - value
+          - news
+        -
+          - default
+          - false
+    -
+      __assoc__:
+        -
+          - label
+          - 'Neueste Akzente-Geschichten'
+        -
+          - value
+          - akzente
+        -
+          - default
+          - false
+    -
+      __assoc__:
+        -
+          - label
+          - 'Alle Leistungen'
+        -
+          - value
+          - services
+        -
+          - default
+          - false
+    -
+      __assoc__:
+        -
+          - label
+          - 'Ähnliche Einträge (gleiches Land/Thema)'
+        -
+          - value
+          - related
+        -
+          - default
+          - false
+tip: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown
+warning: null

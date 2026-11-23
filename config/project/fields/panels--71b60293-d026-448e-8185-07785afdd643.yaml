@@ -1,0 +1,33 @@
+columnSuffix: null
+handle: panels
+instructions: null
+name: Panels
+searchable: false
+settings:
+  createButtonLabel: 'Panel hinzufügen'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 058c821e-73f6-4e45-b27c-f31a847cfaf4 # Fortschritt
+    -
+      __assoc__:
+        -
+          - uid
+          - 253996c2-8e33-48e0-b104-4076ca0ae40b # Verteilung
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+tip: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix
+warning: null

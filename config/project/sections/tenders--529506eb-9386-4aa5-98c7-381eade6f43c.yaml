@@ -1,0 +1,26 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: c0f5c5e4-2678-44e4-8b46-106d54a476f5 # Ausschreibung
+handle: tenders
+maxAuthors: 1
+minAuthors: 1
+name: Ausschreibungen
+previewTargets:
+  -
+    label: 'Primary entry page'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  3865a016-c449-4002-9471-6c327aa9c872: # English
+    enabledByDefault: true
+    hasUrls: true
+    template: tenders/_entry
+    uriFormat: 'tenders/{slug}'
+  a5a2462c-e1bf-4bc5-add7-850faaa1e7e7: # Deutsch
+    enabledByDefault: true
+    hasUrls: true
+    template: tenders/_entry
+    uriFormat: 'ausschreibungen/{slug}'
+type: channel

@@ -1,0 +1,31 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 544b03ba-4ef2-408f-9d42-42fb6a00bc7c # Region
+  -
+    uid: 5d058fc1-f941-4144-be04-2599a6ad8d15 # Land
+handle: worldwide
+maxAuthors: 1
+minAuthors: 1
+name: Weltweit
+previewTargets:
+  -
+    label: 'Primary entry page'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  3865a016-c449-4002-9471-6c327aa9c872: # English
+    enabledByDefault: true
+    hasUrls: true
+    template: worldwide/_entry
+    uriFormat: '{parent.uri ?? "worldwide"}/{slug}'
+  a5a2462c-e1bf-4bc5-add7-850faaa1e7e7: # Deutsch
+    enabledByDefault: true
+    hasUrls: true
+    template: worldwide/_entry
+    uriFormat: '{parent.uri ?? "weltweit"}/{slug}'
+structure:
+  maxLevels: 2
+  uid: f674d4da-cfbf-412a-9ef4-90bd040e9945
+type: structure

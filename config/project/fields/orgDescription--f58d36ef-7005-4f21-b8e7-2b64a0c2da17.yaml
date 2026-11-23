@@ -1,0 +1,18 @@
+columnSuffix: null
+handle: orgDescription
+instructions: 'Ein bis drei Sätze: Wer ist die Organisation, was tut sie? Wird von Suchmaschinen und KI-Systemen gelesen.'
+name: Beschreibung
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  initialRows: 3
+  multiline: true
+  placeholder: null
+  uiMode: normal
+tip: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText
+warning: null

@@ -1,0 +1,338 @@
+fieldLayouts:
+  018bec7a-6b95-42a2-83bd-2b65e9a492f9:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: d7b9bcd0-6ba9-44a3-882f-2a71d2ef08e6 # Name
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f0122039-d923-4a4d-8a3b-440a3c942c4b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 3b26c9c6-098e-4024-81a8-183b5db35fb1 # Rechtlicher Name
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: be33858a-0313-4608-b554-6c31b461a674
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: a229ad48-c7e7-4bce-8890-d20dec8e99fe # Alternativer Name
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9e445752-842e-444b-9394-974241c2ccb0
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: f58d36ef-7005-4f21-b8e7-2b64a0c2da17 # Beschreibung
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 09f4d9f8-c005-4256-8d60-1134c6c4286a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 801bbaad-21bb-40ec-8968-a378e9b83850 # Bild
+            handle: null
+            instructions: null
+            label: Logo
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 05f01b3c-9913-4fb1-8142-6b3c487ca1ee
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: d588860b-0e90-4de3-a6bb-f31a7fab37fa # Gründungsjahr
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b97dac67-a707-4495-bd21-b1fe43ce757a
+            userCondition: null
+            warning: null
+            width: 100
+        name: Organisation
+        uid: 75f85ec7-6fee-4683-98d1-ac59d2a8f411
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 2481108e-760f-4546-b0bc-d5329360417a # Straße & Hausnummer
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9115a647-7674-48a3-b17a-7860bf42b905
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 6b9f9c2c-6ce6-4256-aab5-1ef2265bc2e1 # PLZ
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6dcbe665-ae34-4fa5-9870-72aae1fd83cb
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 67d4ad1b-a282-4e30-9e3e-967f9bad1417 # Ort
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b41beddf-a2f0-4b77-a05b-d292717bfad3
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 6cbe00f5-f084-40ff-af6a-d0a985796f68 # Land (ISO-Code)
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 59102b03-884a-4e67-a860-328ac2986513
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: f53a82e7-ea58-4d75-8976-3e10d7012a37 # E-Mail
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cc73db09-6f63-49bf-afff-424d104ad430
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 4722b305-9b8f-46ea-a127-e800cdc90568 # Telefon
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e59e5852-88e3-4879-accb-a4382b8b4a4a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 6852f957-5b53-49d0-9a88-2af362ddb5df # Ansprechpunkte
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 86ed8882-7145-4f78-92f7-1112f8ef8d55
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Kontakt & Adresse'
+        uid: a0c6ca7d-0cf0-477a-8f08-42805a17dc8a
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: d96c095b-e6de-40e0-915a-f48b97aa4329 # USt-IdNr.
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f88a4fc9-2fdb-4345-9945-c1e83a2755c4
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 2ccbfd2f-a06b-4f38-a826-d3cac0e1c558 # Handelsregister
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fde491cf-b663-4b25-aaa8-dc7096245691
+            userCondition: null
+            warning: null
+            width: 100
+        name: Rechtliches
+        uid: e0cbbe01-0e97-4ddd-b0f2-fc5e4f2e3466
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 1ba92d74-6e0e-4af4-9b15-35b8ec56e414 # Profile (sameAs)
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6d7f409b-2d2c-49e8-84b7-4faf19ba74aa
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5ac2c066-3e1c-4c8e-b7bb-f85c444c3093 # Fachgebiete (knowsAbout)
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9fed067e-9a9d-4db0-9bc4-730849f07461
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8109f857-8c74-4cff-80a8-2516759b293d # Tätigkeitsgebiete (areaServed)
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 74021b1a-66e4-4670-9d1f-cafc23c935f8
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Profile & Themen'
+        uid: 674acc37-16b4-40e7-855f-3d9862ced4a7
+        userCondition: null
+    thumbFieldKey: null
+handle: organization
+name: 'Organisation (JSON-LD)'
+sortOrder: 3

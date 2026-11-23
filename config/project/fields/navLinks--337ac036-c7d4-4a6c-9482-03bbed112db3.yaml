@@ -1,0 +1,28 @@
+columnSuffix: null
+handle: navLinks
+instructions: null
+name: Links
+searchable: false
+settings:
+  createButtonLabel: 'Link hinzufügen'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 49d0eb50-6da0-4c58-a7ad-79ede3c56bb1 # Link
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+tip: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix
+warning: null

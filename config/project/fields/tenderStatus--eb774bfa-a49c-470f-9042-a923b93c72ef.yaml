@@ -1,0 +1,46 @@
+columnSuffix: null
+handle: tenderStatus
+instructions: null
+name: Status
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Offen
+        -
+          - value
+          - open
+        -
+          - default
+          - true
+    -
+      __assoc__:
+        -
+          - label
+          - Geschlossen
+        -
+          - value
+          - closed
+        -
+          - default
+          - false
+    -
+      __assoc__:
+        -
+          - label
+          - Vergeben
+        -
+          - value
+          - awarded
+        -
+          - default
+          - false
+tip: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown
+warning: null

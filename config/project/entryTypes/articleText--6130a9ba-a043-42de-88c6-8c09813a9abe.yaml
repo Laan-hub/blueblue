@@ -1,0 +1,111 @@
+allowLineBreaksInTitles: false
+color: null
+description: 'Text in der schmalen Lesespalte.'
+fieldLayouts:
+  d901ae5f-4e45-45c1-b465-458bcb4a908a:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 96fbaecf-f315-4bec-81d7-7be3fe87173e # Dachzeile
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 65c27a16-7bb1-4ae7-a07d-638e39938bc8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 77eb6627-030c-42d8-80e7-7d3058fad66f # Überschrift
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b27fbde8-b7dd-49b7-b882-81b9c6216a8a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: c6debc75-a752-4b8e-9751-3e7fd0b6b2ae # Text
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a9aef6ff-e915-4b78-b5e7-af059291cbe0
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8e099e4b-d150-4b11-9de5-b6b5eaf6ab5f # Meta-Label
+            handle: null
+            instructions: null
+            label: 'Randnotiz: Titel'
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a55d3bbb-2ff5-4128-a80c-3e047416dc8e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9d278424-01b5-4111-a096-e6d92d659543 # Hinweis / Fußnote
+            handle: null
+            instructions: null
+            label: 'Randnotiz: Text'
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 313fe349-09b3-471f-8d03-07d752536b89
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: 3237ed67-c04f-4160-a92a-35b47cf061ff
+        userCondition: null
+    thumbFieldKey: null
+handle: articleText
+hasTitleField: false
+icon: paragraph
+name: 'Fließtext (Artikel)'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{headline ?? eyebrow ?? ""}'

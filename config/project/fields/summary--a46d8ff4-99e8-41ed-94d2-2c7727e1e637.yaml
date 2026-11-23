@@ -1,0 +1,18 @@
+columnSuffix: null
+handle: summary
+instructions: 'Wird für Teaser, Suchergebnisse, SEO-Beschreibung und JSON-LD verwendet.'
+name: Kurzbeschreibung
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  initialRows: 3
+  multiline: true
+  placeholder: null
+  uiMode: normal
+tip: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText
+warning: null

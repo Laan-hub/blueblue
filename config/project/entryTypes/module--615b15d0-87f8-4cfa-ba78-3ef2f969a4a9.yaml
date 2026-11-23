@@ -1,0 +1,71 @@
+allowLineBreaksInTitles: false
+color: null
+description: 'Ein zentral gepflegter Inhaltsbaustein.'
+fieldLayouts:
+  ae1145ea-8762-4045-9249-bb4e7126fdae:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: null
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 9cda7198-c01f-4574-82b8-e0e9e5219d09
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: fa19378f-0340-4642-b307-6740641ecd83 # Seiteninhalte
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 039d8ffc-3b8e-4c8f-a39a-44e31ef10bf0
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: 47945a09-6c5a-4912-b6b1-57c2c9aed598
+        userCondition: null
+    thumbFieldKey: null
+handle: module
+hasTitleField: true
+icon: recycle
+name: Modul
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

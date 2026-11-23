@@ -1,0 +1,28 @@
+columnSuffix: null
+handle: footerColumns
+instructions: null
+name: Footer-Spalten
+searchable: false
+settings:
+  createButtonLabel: 'Spalte hinzufügen'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 20179742-de81-4b67-8b92-430e8870d52c # Footer-Spalte
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+tip: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix
+warning: null

@@ -1,12 +1,173 @@
-dateModified: 1795443268
+dateModified: 1795447335
 email:
   fromEmail: admin@example.com
   fromName: blueblue
   transportType: craft\mail\transportadapters\Sendmail
+fs:
+  documents:
+    hasUrls: true
+    name: Dokumente
+    settings:
+      path: '@webroot/uploads/documents'
+    type: craft\fs\Local
+    url: '@web/uploads/documents'
+  images:
+    hasUrls: true
+    name: Bilder
+    settings:
+      path: '@webroot/uploads/images'
+    type: craft\fs\Local
+    url: '@web/uploads/images'
+graphql:
+  publicToken:
+    enabled: false
+    expiryDate: null
 meta:
   __names__:
+    0a19cde0-70b5-44e0-a39c-9e642a750312: Hauptnavigation # Hauptnavigation
+    0cc629b6-336f-4b22-838c-8bc42ebfbd0f: Stil # Stil
+    0da0275c-d390-4e15-980b-7183e770cea5: Hinweis # Hinweis
+    0ff3237d-6f8a-4cd6-87b0-0db5070ca1d2: Leistungen # Leistungen
+    1af382e5-b395-4286-883b-0686202f672d: Downloads # Downloads
+    1ba92d74-6e0e-4af4-9b15-35b8ec56e414: 'Profile (sameAs)' # Profile (sameAs)
+    1c47d3a4-e105-4655-be39-7bc3dc4142d4: Geschichte # Geschichte
+    1fa4b0ee-79f8-4120-96a6-58a23e863164: 'Wiederverwendbare Module' # Wiederverwendbare Module
+    1fcc3db5-2ecf-4635-8c8d-cc35c8d7af2c: 'Autor:in' # Autor:in
+    2a12568a-4810-449b-a8b1-f1bd55a789f0: 'Claim im Footer' # Claim im Footer
+    2addb291-ce2e-4601-9ca1-7b5e8f599cd9: 'Verknüpfte Einträge' # Verknüpfte Einträge
+    002b9a52-29d9-4382-9721-5b2defddcff4: Kennzahlen # Kennzahlen
+    2ccbfd2f-a06b-4f38-a826-d3cac0e1c558: Handelsregister # Handelsregister
+    2d3e18c5-6122-4ac2-ab04-eff4d7c2319e: Daten-Panels # Daten-Panels
+    2d602a72-b6e6-49e2-96d8-15f502a7a402: 'Akzente (Magazin)' # Akzente (Magazin)
+    2ece7366-9d52-46c9-ae1e-ff6dfb71f76b: 'Grounding (Fakten für KI)' # Grounding (Fakten für KI)
+    3b26c9c6-098e-4024-81a8-183b5db35fb1: 'Rechtlicher Name' # Rechtlicher Name
+    3c0fd664-97fe-477e-9019-fa9fd8ae768c: Kontakt-E-Mail # Kontakt-E-Mail
+    3d84d050-f54b-4fe4-a57c-a1976cb4ee50: Bildunterschrift # Bildunterschrift
     4e4802f8-2b09-4822-9a9c-620e4b9baf3e: blueblue # blueblue
-    a5a2462c-e1bf-4bc5-add7-850faaa1e7e7: blueblue # blueblue
+    4f52ec7d-0146-440f-b274-1c630a8891a2: 'Call to Action mit Zielgruppen' # Call to Action mit Zielgruppen
+    4fa254f9-beac-4247-94e2-390c1547d526: Ausschreibungen # Ausschreibungen
+    5ac2c066-3e1c-4c8e-b7bb-f85c444c3093: 'Fachgebiete (knowsAbout)' # Fachgebiete (knowsAbout)
+    5d058fc1-f941-4144-be04-2599a6ad8d15: Land # Land
+    5d398823-77e6-4170-87e5-509d5099fa07: Slide # Slide
+    5f70cc17-7b6f-41b1-92dd-dcdaee970026: Zitat # Zitat
+    6b9f9c2c-6ce6-4256-aab5-1ef2265bc2e1: PLZ # PLZ
+    6cbe00f5-f084-40ff-af6a-d0a985796f68: 'Land (ISO-Code)' # Land (ISO-Code)
+    6d029857-6d7a-4fc8-95d7-c05339fe8962: Projektstatus # Projektstatus
+    6d49c384-fec4-4fff-8f04-c033491828ed: Menüpunkt # Menüpunkt
+    6faefc70-3606-4661-84aa-d6d5ea2812d9: Weltweit # Weltweit
+    7b8f8f6d-bec6-4687-9ef9-35f5b49f51b8: 'Bild & Text (geteilt)' # Bild & Text (geteilt)
+    7d82dbf9-061f-40ea-902a-2d5b789eacd0: Modul # Modul
+    7ed0a535-ccbf-474d-826e-a5d105253b85: Fakten # Fakten
+    8a82a4ee-4fac-4e75-aa40-3e58db37fee6: Einleitung # Einleitung
+    8c2250fa-fc7d-4c62-a9a1-4b7cae22c80e: Startseite # Startseite
+    8e099e4b-d150-4b11-9de5-b6b5eaf6ab5f: Meta-Label # Meta-Label
+    8f5e4d50-037f-4688-a776-d66fc2d25861: Bilder # Bilder
+    9abcfa8e-dc53-443a-a802-5a39dd0afe25: Kontaktformular # Kontaktformular
+    9d278424-01b5-4111-a096-e6d92d659543: 'Hinweis / Fußnote' # Hinweis / Fußnote
+    9f69c261-b8a0-4990-a03c-216a922fab30: Social-Media-Links # Social-Media-Links
+    9fd4b8a5-6161-49db-8244-bad92da9dd09: Link # Link
+    17b9ba8c-4054-49de-abe3-537e0b63fb87: Seiteneinstieg # Seiteneinstieg
+    21f427c2-0a57-4e30-adc3-d801466de0ce: Themen # Themen
+    30d7a1d9-2d97-4a23-8f5f-ece6b39e1869: 'Länder / Regionen' # Länder / Regionen
+    49d0eb50-6da0-4c58-a7ad-79ede3c56bb1: Link # Link
+    56c1ba4b-af8e-4d44-a67d-0ef2c76bccd1: Website # Website
+    058c821e-73f6-4e45-b27c-f31a847cfaf4: Fortschritt # Fortschritt
+    67a1b43f-079c-4b95-8d85-01c1193f2465: 'Fragen & Antworten' # Fragen & Antworten
+    67a228dd-5e06-471b-a2d7-389b2d4d3edb: Seiten # Seiten
+    67d4ad1b-a282-4e30-9e3e-967f9bad1417: Ort # Ort
+    71b60293-d026-448e-8185-07785afdd643: Panels # Panels
+    073ea21c-d9bc-496a-9a1b-ce51a5bafa7b: Darstellung # Darstellung
+    77c45132-6ca0-4786-aba9-9ad80c363cae: Dokumente # Dokumente
+    77eb6627-030c-42d8-80e7-7d3058fad66f: Überschrift # Überschrift
+    78cea939-de99-4520-800c-db04405d7236: Bildergalerie # Bildergalerie
+    88f7dd50-40d9-4ab2-8698-5690b9baede8: 'Bühne (Hero-Slider)' # Bühne (Hero-Slider)
+    91c7f6f4-27d7-4b2e-8415-84a2b08fa2f1: Slides # Slides
+    92a5cec2-d704-4d39-937d-589b52b477e5: Hintergrund # Hintergrund
+    96ab3656-472d-4d7b-8f6f-55f91ea7bfc3: Projekt # Projekt
+    96fbaecf-f315-4bec-81d7-7be3fe87173e: Dachzeile # Dachzeile
+    172edba9-6cc4-4d12-8bc8-3c29fcabd91f: Icon # Icon
+    205aad97-a317-44c5-b5ae-ccfa3b68f800: 'Lesezeit (Minuten)' # Lesezeit (Minuten)
+    244cad76-bd35-4e26-ac8c-18c816140b65: Bildposition # Bildposition
+    337ac036-c7d4-4a6c-9482-03bbed112db3: Links # Links
+    345dc895-7ad9-4d2c-a424-78d503ba4ffd: Verteilung # Verteilung
+    358bf94d-8153-46e7-9124-cf27a03da346: Bildbreite # Bildbreite
+    362b748e-4fd9-4c57-ae23-0889545022a3: 'Organisation (JSON-LD)' # Organisation (JSON-LD)
+    378fedf0-0167-4ff0-b5a4-69c1a2f2196d: Zeitraum # Zeitraum
+    519bedb4-e2d4-48f6-85e7-5070fbcdc71a: Bild(er) # Bild(er)
+    536b625b-36e6-42ed-bf52-98cc7ea5c02c: Sprungmarke # Sprungmarke
+    544b03ba-4ef2-408f-9d42-42fb6a00bc7c: Region # Region
+    615b15d0-87f8-4cfa-ba78-3ef2f969a4a9: Modul # Modul
+    801bbaad-21bb-40ec-8968-a378e9b83850: Bild # Bild
+    836b9f94-43f4-47c5-8f38-97c42c3a1e7a: 'Quelle der Einträge' # Quelle der Einträge
+    3865a016-c449-4002-9471-6c327aa9c872: English # English
+    4722b305-9b8f-46ea-a127-e800cdc90568: Telefon # Telefon
+    6130a9ba-a043-42de-88c6-8c09813a9abe: 'Fließtext (Artikel)' # Fließtext (Artikel)
+    6424d8b4-5b18-4093-962c-a509608265c0: Abgabefrist # Abgabefrist
+    6852f957-5b53-49d0-9a88-2af362ddb5df: Ansprechpunkte # Ansprechpunkte
+    8109f857-8c74-4cff-80a8-2516759b293d: 'Tätigkeitsgebiete (areaServed)' # Tätigkeitsgebiete (areaServed)
+    8301ae83-95e6-4276-90ed-31aeef948fa5: Grounding # Grounding
+    24411d54-8fed-47d1-b553-0d468bcae29f: 'Akzente-Logo zeigen' # Akzente-Logo zeigen
+    25842cce-60d2-4876-9212-8bfab4ff7681: Kennzahlen # Kennzahlen
+    90228cff-866f-4a39-b3d9-f4a5c189efb1: Angaben # Angaben
+    139417a2-2aff-4a19-852e-804981814b80: 'Beliebte Suchbegriffe' # Beliebte Suchbegriffe
+    253996c2-8e33-48e0-b104-4076ca0ae40b: Verteilung # Verteilung
+    473560f9-44e8-4e0c-be69-c84d49748884: Zitat # Zitat
+    529506eb-9386-4aa5-98c7-381eade6f43c: Ausschreibungen # Ausschreibungen
+    822790fd-b215-4f60-bd27-297b9256418e: 'Downloads & Kontakt' # Downloads & Kontakt
+    2481108e-760f-4546-b0bc-d5329360417a: 'Straße & Hausnummer' # Straße & Hausnummer
+    7440798f-63b4-43c2-aaa1-e31294751f10: Footer-Spalten # Footer-Spalten
+    10049971-508f-4cbd-8cb0-807111fd5481: 'Rechtliche Links (Footer unten)' # Rechtliche Links (Footer unten)
+    20179742-de81-4b67-8b92-430e8870d52c: Footer-Spalte # Footer-Spalte
+    53694200-5503-4851-9ba5-5da7598f214e: Leistungen # Leistungen
+    91335602-7ab0-4bf0-9438-bb5f9048cc15: News # News
+    a3c2338d-9972-47d3-9e11-a2027691474d: Startseite # Startseite
+    a5a2462c-e1bf-4bc5-add7-850faaa1e7e7: Deutsch # Deutsch
+    a46d8ff4-99e8-41ed-94d2-2c7727e1e637: Kurzbeschreibung # Kurzbeschreibung
+    a229ad48-c7e7-4bce-8890-d20dec8e99fe: 'Alternativer Name' # Alternativer Name
+    aa0070c5-2be2-44fe-bd6d-9fd9a9c0b41e: Fortschrittsbalken # Fortschrittsbalken
+    ac1a848a-0400-4f39-9411-d543bfe7ab8a: Bilder # Bilder
+    ae2ec338-bf30-462c-9868-1f6b7c4c3e6d: Nummeriert # Nummeriert
+    afbd81d6-1798-4cd0-a9a9-0165a7fed8ea: 'Wiederverwendbares Modul' # Wiederverwendbares Modul
+    b0fdf54f-8e0b-4a77-9014-3e39e08b79e6: Projektfakten # Projektfakten
+    b3e176a0-9fe7-4e09-b5f0-90b2b26e0abe: Teaser-Liste # Teaser-Liste
+    b62b7c5c-cbfa-4988-961e-ff3cb8f5bf30: Zielgruppen # Zielgruppen
+    b80d0975-21f7-40e3-8e6a-6723a6d2b495: Themenfelder # Themenfelder
+    bf356bc9-7158-4994-a102-79bc0c5d417e: Projekte # Projekte
+    c0f5c5e4-2678-44e4-8b46-106d54a476f5: Ausschreibung # Ausschreibung
+    c0899fb5-8845-4288-9170-028c7f50474b: Schlagworte # Schlagworte
+    c1c50146-0c54-441f-b80e-61f906654567: Seite # Seite
+    c6debc75-a752-4b8e-9751-3e7fd0b6b2ae: Text # Text
+    c13d669a-282d-41c0-a7cc-9fac7f9c5bd9: Navigation # Navigation
+    ca8dc4af-b046-439a-88e1-216b8102b0d5: 'Autor:in' # Autor:in
+    cd1bd909-2b86-481d-a701-8fb2c5e5ec0e: Regionen-Übersicht # Regionen-Übersicht
+    cf9ec157-7f47-42aa-b416-65cd39230232: Meldung # Meldung
+    d4a9c761-74fe-4d31-b04d-4af46ba88907: 'Karten / Prinzipien / Schritte' # Karten / Prinzipien / Schritte
+    d7b9bcd0-6ba9-44a3-882f-2a71d2ef08e6: Name # Name
+    d8d77268-99aa-4d51-a4bb-3dde437c5d15: Newsletter # Newsletter
+    d91abbd3-a4f4-4eb8-90e9-88fb6d7c3258: 'Servicenavigation (oben)' # Servicenavigation (oben)
+    d96c095b-e6de-40e0-915a-f48b97aa4329: USt-IdNr. # USt-IdNr.
+    d588860b-0e90-4de3-a6bb-f31a7fab37fa: Gründungsjahr # Gründungsjahr
+    d7249949-d344-42ef-a794-28f84a1fda51: 'Rechtliche Angaben' # Rechtliche Angaben
+    db676cbc-3e86-488c-ad9d-64a7c4597149: Teaser # Teaser
+    e1a001ce-104b-41a0-9a51-a8c2919e7730: 'Zweiter Link' # Zweiter Link
+    e7b6244d-0e8e-4e82-97e6-5239a0297946: Leistung # Leistung
+    e79bfb44-5d3c-4e44-a9a1-18403506b3c3: 'Art der Ausschreibung' # Art der Ausschreibung
+    e935fe14-0106-4be5-8456-ee0e53dfd94a: Karten # Karten
+    e4674131-3126-426f-b215-a241320ebf7f: Suche # Suche
+    eb774bfa-a49c-470f-9042-a923b93c72ef: Status # Status
+    edb110cb-9ae5-40c8-a642-d3f899448ee8: 'Überschrift (zweite Spalte)' # Überschrift (zweite Spalte)
+    ef068f4d-d0a3-48e1-817a-c308cbde21f3: Anzahl # Anzahl
+    f53a82e7-ea58-4d75-8976-3e10d7012a37: E-Mail # E-Mail
+    f58d36ef-7005-4f21-b8e7-2b64a0c2da17: Beschreibung # Beschreibung
+    f796dee0-2915-4383-a72a-56e4df03094a: 'Text (zweispaltig)' # Text (zweispaltig)
+    fa19378f-0340-4642-b307-6740641ecd83: Seiteninhalte # Seiteninhalte
+    fcba8f19-a5e9-410e-8351-27d64d487075: Teaser # Teaser
+    ff77c781-339f-47c1-8840-2125f63d3fd7: 'Text in der oberen Leiste' # Text in der oberen Leiste
+plugins:
+  ckeditor:
+    edition: standard
+    enabled: true
+    schemaVersion: 5.6.0.0
 system:
   edition: solo
   live: true

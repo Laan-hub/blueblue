@@ -1,0 +1,60 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  3d86bc71-ca6e-46b2-bf00-f9953b5d3cdd:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9fd4b8a5-6161-49db-8244-bad92da9dd09 # Link
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b2c36419-cdc5-445a-84cd-da7190447965
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 337ac036-c7d4-4a6c-9482-03bbed112db3 # Links
+            handle: null
+            instructions: null
+            label: Untermenü
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1c029e85-aab1-4bf6-81e6-286e139758c3
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: e871c5ba-d650-4b97-82e1-e6da83877944
+        userCondition: null
+    thumbFieldKey: null
+handle: navItem
+hasTitleField: false
+icon: bars
+name: Menüpunkt
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{linkField.label ?? ""}'

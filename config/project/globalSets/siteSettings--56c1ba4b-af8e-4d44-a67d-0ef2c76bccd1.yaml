@@ -1,0 +1,82 @@
+fieldLayouts:
+  6a62f10a-2576-48b5-9fd4-9f8d7a2a7ac0:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: ff77c781-339f-47c1-8840-2125f63d3fd7 # Text in der oberen Leiste
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3ffa713b-8167-4c87-a8de-8392bc735a24
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 2a12568a-4810-449b-a8b1-f1bd55a789f0 # Claim im Footer
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d75accd3-2d53-4132-a00d-c9ff12c15629
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 3c0fd664-97fe-477e-9019-fa9fd8ae768c # Kontakt-E-Mail
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 93c51833-7f46-4b8e-b287-0589ad0c8951
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9f69c261-b8a0-4990-a03c-216a922fab30 # Social-Media-Links
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0c779a8c-8bb7-4846-862c-471e90e264f5
+            userCondition: null
+            warning: null
+            width: 100
+        name: Allgemein
+        uid: 57ed4967-e6ec-4e6d-afc2-c2ef3cd0dc11
+        userCondition: null
+    thumbFieldKey: null
+handle: siteSettings
+name: Website
+sortOrder: 1

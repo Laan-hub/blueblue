@@ -1,0 +1,27 @@
+columnSuffix: null
+handle: moduleEntry
+instructions: 'Ein Modul aus „Wiederverwendbare Module“. Änderungen am Modul wirken überall, wo es eingebunden ist.'
+name: Modul
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  defaultPlacement: end
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  selectionLabel: null
+  showSearchInput: true
+  showSiteMenu: false
+  showUnpermittedEntries: false
+  showUnpermittedSections: false
+  sources:
+    - 'section:1fa4b0ee-79f8-4120-96a6-58a23e863164' # Wiederverwendbare Module
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: cards
+tip: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Entries
+warning: null

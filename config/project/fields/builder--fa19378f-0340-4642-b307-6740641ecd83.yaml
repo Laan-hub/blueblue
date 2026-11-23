@@ -1,0 +1,138 @@
+columnSuffix: null
+handle: builder
+instructions: 'Baue die Seite aus Modulen zusammen.'
+name: Seiteninhalte
+searchable: false
+settings:
+  createButtonLabel: 'Modul hinzufügen'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 88f7dd50-40d9-4ab2-8698-5690b9baede8 # Bühne (Hero-Slider)
+    -
+      __assoc__:
+        -
+          - uid
+          - 17b9ba8c-4054-49de-abe3-537e0b63fb87 # Seiteneinstieg
+    -
+      __assoc__:
+        -
+          - uid
+          - e4674131-3126-426f-b215-a241320ebf7f # Suche
+    -
+      __assoc__:
+        -
+          - uid
+          - 25842cce-60d2-4876-9212-8bfab4ff7681 # Kennzahlen
+    -
+      __assoc__:
+        -
+          - uid
+          - b3e176a0-9fe7-4e09-b5f0-90b2b26e0abe # Teaser-Liste
+    -
+      __assoc__:
+        -
+          - uid
+          - cd1bd909-2b86-481d-a701-8fb2c5e5ec0e # Regionen-Übersicht
+    -
+      __assoc__:
+        -
+          - uid
+          - 53694200-5503-4851-9ba5-5da7598f214e # Leistungen
+    -
+      __assoc__:
+        -
+          - uid
+          - 7b8f8f6d-bec6-4687-9ef9-35f5b49f51b8 # Bild & Text (geteilt)
+    -
+      __assoc__:
+        -
+          - uid
+          - 4fa254f9-beac-4247-94e2-390c1547d526 # Ausschreibungen
+    -
+      __assoc__:
+        -
+          - uid
+          - 4f52ec7d-0146-440f-b274-1c630a8891a2 # Call to Action mit Zielgruppen
+    -
+      __assoc__:
+        -
+          - uid
+          - f796dee0-2915-4383-a72a-56e4df03094a # Text (zweispaltig)
+    -
+      __assoc__:
+        -
+          - uid
+          - d4a9c761-74fe-4d31-b04d-4af46ba88907 # Karten / Prinzipien / Schritte
+    -
+      __assoc__:
+        -
+          - uid
+          - 6130a9ba-a043-42de-88c6-8c09813a9abe # Fließtext (Artikel)
+    -
+      __assoc__:
+        -
+          - uid
+          - 5f70cc17-7b6f-41b1-92dd-dcdaee970026 # Zitat
+    -
+      __assoc__:
+        -
+          - uid
+          - 519bedb4-e2d4-48f6-85e7-5070fbcdc71a # Bild(er)
+    -
+      __assoc__:
+        -
+          - uid
+          - 78cea939-de99-4520-800c-db04405d7236 # Bildergalerie
+    -
+      __assoc__:
+        -
+          - uid
+          - 2d3e18c5-6122-4ac2-ab04-eff4d7c2319e # Daten-Panels
+    -
+      __assoc__:
+        -
+          - uid
+          - 822790fd-b215-4f60-bd27-297b9256418e # Downloads & Kontakt
+    -
+      __assoc__:
+        -
+          - uid
+          - 9abcfa8e-dc53-443a-a802-5a39dd0afe25 # Kontaktformular
+    -
+      __assoc__:
+        -
+          - uid
+          - d8d77268-99aa-4d51-a4bb-3dde437c5d15 # Newsletter
+    -
+      __assoc__:
+        -
+          - uid
+          - d7249949-d344-42ef-a794-28f84a1fda51 # Rechtliche Angaben
+    -
+      __assoc__:
+        -
+          - uid
+          - 0da0275c-d390-4e15-980b-7183e770cea5 # Hinweis
+    -
+      __assoc__:
+        -
+          - uid
+          - afbd81d6-1798-4cd0-a9a9-0165a7fed8ea # Wiederverwendbares Modul
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+tip: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix
+warning: null

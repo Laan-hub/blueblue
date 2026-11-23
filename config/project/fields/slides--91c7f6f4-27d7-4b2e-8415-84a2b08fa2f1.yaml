@@ -1,0 +1,28 @@
+columnSuffix: null
+handle: slides
+instructions: null
+name: Slides
+searchable: false
+settings:
+  createButtonLabel: 'Slide hinzufügen'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 5d398823-77e6-4170-87e5-509d5099fa07 # Slide
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+tip: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix
+warning: null
