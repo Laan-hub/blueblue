@@ -40,4 +40,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
-uiLabelFormat: '{moduleEntry.one().title ?? "Modul"}'
+uiLabelFormat: '{% set m = object.moduleEntry.one() %}{{ m ? m.title : "Modul" }}'

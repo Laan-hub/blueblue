@@ -142,4 +142,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
-uiLabelFormat: '{headline ?? eyebrow ?? ""}'
+uiLabelFormat: '{{ object.headline ?: object.eyebrow }}'

@@ -388,10 +388,10 @@ out('Relationsfelder ok');
 // ---------------------------------------------------------------------------
 // Navigation-Bausteine
 // ---------------------------------------------------------------------------
-$etNavLink = entryType('navLink', 'Link', ['Inhalt' => ['linkField']], ['hasTitleField' => false, 'uiLabelFormat' => '{linkField.label ?? linkField.text ?? ""}', 'icon' => 'link']);
+$etNavLink = entryType('navLink', 'Link', ['Inhalt' => ['linkField']], ['hasTitleField' => false, 'uiLabelFormat' => '{{ object.linkField ? (object.linkField.label ?: object.linkField.url) : "" }}', 'icon' => 'link']);
 $mat = fn(string $h, string $n, array $types, array $cfg = []) => field(Matrix::class, $h, $n, $N + ['entryTypes' => $types, 'viewMode' => 'blocks', 'propagationMethod' => \craft\enums\PropagationMethod::All] + $cfg);
 $mat('navLinks', 'Links', [$etNavLink], ['createButtonLabel' => 'Link hinzufügen']);
-$etNavItem = entryType('navItem', 'Menüpunkt', ['Inhalt' => ['linkField', ['navLinks', ['label' => 'Untermenü']]]], ['hasTitleField' => false, 'uiLabelFormat' => '{linkField.label ?? ""}', 'icon' => 'bars']);
+$etNavItem = entryType('navItem', 'Menüpunkt', ['Inhalt' => ['linkField', ['navLinks', ['label' => 'Untermenü']]]], ['hasTitleField' => false, 'uiLabelFormat' => '{{ object.linkField ? object.linkField.label : "" }}', 'icon' => 'bars']);
 $etFooterCol = entryType('footerColumn', 'Footer-Spalte', ['Inhalt' => ['headline', 'navLinks']], ['hasTitleField' => false, 'uiLabelFormat' => '{headline}', 'icon' => 'table-columns']);
 $mat('mainNav', 'Hauptnavigation', [$etNavItem], ['createButtonLabel' => 'Menüpunkt hinzufügen']);
 $mat('utilityNav', 'Servicenavigation (oben)', [$etNavLink], ['createButtonLabel' => 'Link hinzufügen']);
@@ -410,7 +410,7 @@ $b['allocationPanel'] = entryType('allocationPanel', 'Verteilung', ['Inhalt' => 
 $mat('panels', 'Panels', [$b['progressPanel'], $b['allocationPanel']], ['createButtonLabel' => 'Panel hinzufügen']);
 
 $mod = fn(string $h, string $n, array $fields, string $icon, string $desc = '') =>
-    entryType($h, $n, ['Inhalt' => $fields], $noTitle + ['uiLabelFormat' => '{headline ?? eyebrow ?? ""}', 'icon' => $icon, 'description' => $desc]);
+    entryType($h, $n, ['Inhalt' => $fields], $noTitle + ['uiLabelFormat' => '{{ object.headline ?: object.eyebrow }}', 'icon' => $icon, 'description' => $desc]);
 
 $b['heroStage'] = $mod('heroStage', 'Bühne (Hero-Slider)', ['slides'], 'images', 'Große Bühne mit einem oder mehreren Slides.');
 $b['pageIntro'] = $mod('pageIntro', 'Seiteneinstieg', ['showAkzenteLogo', 'eyebrow', 'headline', 'lead', 'linkField', 'image'], 'heading', 'Große Überschrift mit Einleitung und optionalem Bild.');
@@ -434,7 +434,9 @@ $b['contactForm'] = $mod('contactForm', 'Kontaktformular', ['eyebrow', 'headline
 $b['newsletterCta'] = $mod('newsletterCta', 'Newsletter', ['showAkzenteLogo', 'headline', 'lead', 'linkField', 'note'], 'newspaper');
 $b['legalDetails'] = $mod('legalDetails', 'Rechtliche Angaben', ['eyebrow', 'lead', 'legalItems', ['teaserEntries', ['label' => 'Auch auf dieser Website']], 'note'], 'scale-balanced');
 $b['notice'] = $mod('notice', 'Hinweis', ['note', 'noticeStyle', 'headline'], 'circle-info');
-$b['reusableModule'] = entryType('reusableModule', 'Wiederverwendbares Modul', ['Inhalt' => ['moduleEntry']], $noTitle + ['uiLabelFormat' => '{moduleEntry.one().title ?? "Modul"}', 'icon' => 'recycle', 'description' => 'Bindet ein zentral gepflegtes Modul ein.']);
+$b['notice']->uiLabelFormat = '{{ object.headline ?: (object.note|slice(0, 70)) }}';
+Craft::$app->getEntries()->saveEntryType($b['notice']);
+$b['reusableModule'] = entryType('reusableModule', 'Wiederverwendbares Modul', ['Inhalt' => ['moduleEntry']], $noTitle + ['uiLabelFormat' => '{% set m = object.moduleEntry.one() %}{{ m ? m.title : "Modul" }}', 'icon' => 'recycle', 'description' => 'Bindet ein zentral gepflegtes Modul ein.']);
 
 $builderTypes = array_values(array_diff_key($b, array_flip(['heroSlide', 'progressPanel', 'allocationPanel'])));
 $mat('builder', 'Seiteninhalte', $builderTypes, ['createButtonLabel' => 'Modul hinzufügen', 'instructions' => 'Baue die Seite aus Modulen zusammen.']);

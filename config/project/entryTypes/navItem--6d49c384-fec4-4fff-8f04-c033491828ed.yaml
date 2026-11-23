@@ -57,4 +57,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
-uiLabelFormat: '{linkField.label ?? ""}'
+uiLabelFormat: '{{ object.linkField ? object.linkField.label : "" }}'
