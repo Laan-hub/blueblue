@@ -1,0 +1,66 @@
+{% import '_macros/ui.twig' as ui %}
+{% set id = 'f' ~ block.id %}
+<section class="block bg-tinted block-contact" id="{{ 'contact'|t|kebab }}">
+  <div class="container split">
+    <div class="split__aside">
+      {{ ui.eyebrow(block.eyebrow) }}
+      <{{ htag }} class="h-section">{{ ui.lines(block.headline) }}</{{ htag }}>
+      {% if block.lead %}<p class="lead-sm">{{ block.lead }}</p>{% endif %}
+      <div class="contact-aside">
+        {% if block.contactEmail %}
+          <p class="contact-aside__label">{{ 'Prefer email?'|t }}</p>
+          <p><a class="contact-aside__mail" href="mailto:{{ block.contactEmail }}">{{ block.contactEmail }}</a></p>
+          <p class="meta">{{ 'Illustrative address only · Not a monitored inbox.'|t }}</p>
+        {% endif %}
+        {% if block.linkField %}<p>{{ ui.link(block.linkField) }}</p><p class="meta">{{ 'For interviews, background and media resources.'|t }}</p>{% endif %}
+        {% if block.secondaryLink %}<p>{{ ui.link(block.secondaryLink) }}</p><p class="meta">{{ 'For roles and applications, please use Careers rather than this form.'|t }}</p>{% endif %}
+      </div>
+    </div>
+    <div class="split__main">
+      <div class="form-head">
+        <h3 class="h-small">{{ 'Your enquiry'|t }}</h3>
+        <p class="meta">* {{ 'Required fields'|t }}</p>
+      </div>
+      <form class="form" data-static-form novalidate>
+        <div class="form__row form__row--2">
+          <div class="field">
+            <label for="{{ id }}-name">{{ 'Name'|t }} *</label>
+            <input id="{{ id }}-name" name="name" type="text" autocomplete="name" required placeholder="{{ 'Your full name'|t }}">
+          </div>
+          <div class="field">
+            <label for="{{ id }}-email">{{ 'Email'|t }} *</label>
+            <input id="{{ id }}-email" name="email" type="email" autocomplete="email" required placeholder="you@organisation.org">
+          </div>
+        </div>
+        <div class="field">
+          <label for="{{ id }}-org">{{ 'Organisation (optional)'|t }}</label>
+          <input id="{{ id }}-org" name="organisation" type="text" autocomplete="organization" placeholder="{{ 'Your organisation'|t }}">
+        </div>
+        <div class="field select-wrap">
+          <label for="{{ id }}-topic">{{ 'Enquiry topic'|t }} *</label>
+          <select id="{{ id }}-topic" name="topic" required>
+            <option value="">{{ 'Select a topic'|t }}</option>
+            <option>{{ 'Cooperation & partnerships'|t }}</option>
+            <option>{{ 'Projects & expertise'|t }}</option>
+            <option>{{ 'Tenders & procurement'|t }}</option>
+            <option>{{ 'Other'|t }}</option>
+          </select>
+          {{ ui.icon('chevron', 18) }}
+        </div>
+        <div class="field">
+          <label for="{{ id }}-msg">{{ 'Message'|t }} *</label>
+          <textarea id="{{ id }}-msg" name="message" required placeholder="{{ 'How can we help? Please do not include sensitive personal information.'|t }}"></textarea>
+        </div>
+        <p class="form__privacy">{{ 'Your details would be used to respond to your enquiry, not for marketing.'|t }}
+          {% set privacy = craft.entries.section('pages').slug(currentSite.handle == 'de' ? 'datenschutz' : 'privacy').one() %}
+          {% if privacy %}{{ 'Read the {link} for information about the proposed handling of personal data.'|t({ link: '<a href="' ~ privacy.url ~ '">' ~ 'Privacy notice'|t ~ '</a>' })|raw }}{% endif %}
+        </p>
+        <div class="form__submit">
+          <button type="submit" class="btn btn--primary"><span>{{ 'Send enquiry'|t }}</span>{{ ui.icon('arrow') }}</button>
+          {% if block.note %}<p class="meta">{{ block.note }}</p>{% endif %}
+        </div>
+        <p class="form__status" role="status" aria-live="polite" hidden>{{ 'Thank you! This is a static concept form – no data was sent.'|t }}</p>
+      </form>
+    </div>
+  </div>
+</section>

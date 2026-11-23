@@ -1,6 +1,6 @@
 columnSuffix: null
 handle: footerClaim
-instructions: null
+instructions: ''
 name: 'Claim im Footer'
 searchable: false
 settings:

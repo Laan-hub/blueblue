@@ -1,0 +1,18 @@
+{% header "Content-Type: application/xml; charset=utf-8" %}
+{%- set entries = craft.entries.section(['homepage', 'pages', 'projects', 'akzente', 'news', 'services', 'worldwide', 'tenders', 'grounding']).site('*').unique().all() -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{%- for e in entries %}
+  {%- for site in craft.app.sites.allSites %}
+    {%- set loc = craft.entries.id(e.id).siteId(site.id).one() %}
+    {%- if loc and loc.url %}
+  <url>
+    <loc>{{ loc.url }}</loc>
+    <lastmod>{{ loc.dateUpdated|atom }}</lastmod>
+    {%- for s2 in craft.app.sites.allSites %}{% set alt = craft.entries.id(e.id).siteId(s2.id).one() %}{% if alt and alt.url %}
+    <xhtml:link rel="alternate" hreflang="{{ s2.language }}" href="{{ alt.url }}"/>{% endif %}{% endfor %}
+  </url>
+    {%- endif %}
+  {%- endfor %}
+{%- endfor %}
+</urlset>

@@ -1,0 +1,9 @@
+{% header "Content-Type: text/plain; charset=utf-8" %}
+{% if craft.app.config.general.devMode or getenv('CRAFT_DISALLOW_ROBOTS') == 'true' -%}
+User-agent: *
+Disallow: /
+{% else -%}
+User-agent: *
+Allow: /
+{% endif %}
+Sitemap: {{ url('sitemap.xml') }}

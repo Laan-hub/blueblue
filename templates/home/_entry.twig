@@ -1,0 +1,5 @@
+{% extends '_layouts/base' %}
+{% set bodyClass = 'page-home' %}
+{% block content %}
+  {% include '_blocks/_builder' with { blocks: entry.builder.with(['slides', 'image']).all() } %}
+{% endblock %}

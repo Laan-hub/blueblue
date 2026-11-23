@@ -1,0 +1,73 @@
+{#
+  Grounding-Seite: eine schlichte, gut maschinenlesbare Faktenseite über die Organisation.
+  Ergänzt durch /llms.txt und JSON-LD (Organization + FAQPage).
+#}
+{% extends '_layouts/base' %}
+{% import '_macros/ui.twig' as ui %}
+{% set crumbs = [{ title: craft.entries.section('homepage').one().title, url: siteUrl }, { title: entry.title, url: entry.url }] %}
+{% set o = organization %}
+{% block content %}
+  <article class="grounding">
+    <header class="entry-head container">
+      <div class="entry-head__top">{% include '_partials/breadcrumb' %}</div>
+      <p class="eyebrow">{{ 'Facts & reference'|t }}</p>
+      <h1 class="h-page h-page--sm">{{ entry.title }}</h1>
+      {% if entry.lead %}<p class="lead grounding__lead">{{ entry.lead }}</p>{% endif %}
+      <p class="meta">{{ 'Last updated'|t }}: <time datetime="{{ entry.dateUpdated|atom }}">{{ entry.dateUpdated|date('d F Y') }}</time></p>
+    </header>
+
+    <section class="block" aria-labelledby="facts">
+      <div class="container block-legal__grid">
+        <div><h2 id="facts" class="h-sub">{{ 'Key facts'|t }}</h2></div>
+        <dl class="legal-list">
+          {% for f in entry.groundingFacts %}
+            <div class="legal-list__row"><dt>{{ f.label }}</dt><dd>{{ f.value|e|nl2br }}</dd></div>
+          {% endfor %}
+        </dl>
+      </div>
+    </section>
+
+    <section class="block bg-subtle" aria-labelledby="org">
+      <div class="container block-legal__grid">
+        <div><h2 id="org" class="h-sub">{{ 'Organisation'|t }}</h2></div>
+        <dl class="legal-list">
+          <div class="legal-list__row"><dt>{{ 'Name'|t }}</dt><dd>{{ o.orgLegalName }}{% if o.orgName %} ({{ o.orgName }}){% endif %}</dd></div>
+          {% if o.orgDescription %}<div class="legal-list__row"><dt>{{ 'Description'|t }}</dt><dd>{{ o.orgDescription }}</dd></div>{% endif %}
+          {% if o.orgStreet %}<div class="legal-list__row"><dt>{{ 'Address'|t }}</dt><dd>{{ o.orgStreet }}<br>{{ o.orgPostalCode }} {{ o.orgLocality }}, {{ o.orgCountry }}</dd></div>{% endif %}
+          {% if o.orgEmail %}<div class="legal-list__row"><dt>{{ 'Email'|t }}</dt><dd><a href="mailto:{{ o.orgEmail }}">{{ o.orgEmail }}</a></dd></div>{% endif %}
+          {% if o.orgKnowsAbout|length %}<div class="legal-list__row"><dt>{{ 'Expertise'|t }}</dt><dd>{{ o.orgKnowsAbout|map(r => r.topic)|join(' · ') }}</dd></div>{% endif %}
+          {% if o.orgAreaServed|length %}<div class="legal-list__row"><dt>{{ 'Regions'|t }}</dt><dd>{{ o.orgAreaServed|map(r => r.area)|join(' · ') }}</dd></div>{% endif %}
+          {% if o.orgSameAs|length %}<div class="legal-list__row"><dt>{{ 'Official profiles'|t }}</dt><dd>{% for s in o.orgSameAs %}<a href="{{ s.url }}">{{ s.url }}</a>{% if not loop.last %}<br>{% endif %}{% endfor %}</dd></div>{% endif %}
+        </dl>
+      </div>
+    </section>
+
+    {% if entry.faqItems|length %}
+      <section class="block" aria-labelledby="faq">
+        <div class="container block-legal__grid">
+          <div><h2 id="faq" class="h-sub">{{ 'Frequently asked questions'|t }}</h2></div>
+          <div class="faq">
+            {% for q in entry.faqItems %}
+              <details{% if loop.first %} open{% endif %}><summary>{{ q.question }}</summary><p>{{ q.answer }}</p></details>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+    {% endif %}
+
+    <section class="block bg-subtle">
+      <div class="container block-legal__grid">
+        <div><h2 class="h-sub">{{ 'Sections of this website'|t }}</h2></div>
+        <div>
+          <ul class="link-list">
+            {% for p in craft.entries.section('pages').level(1).all() %}
+              <li><a href="{{ p.url }}">{{ p.title }}</a>{% if p.summary %} – {{ p.summary }}{% endif %}</li>
+            {% endfor %}
+          </ul>
+          {% if entry.text %}<div class="prose">{{ entry.text }}</div>{% endif %}
+          <p class="meta">{{ 'Machine-readable summary'|t }}: <a href="{{ url('llms.txt') }}">llms.txt</a> · <a href="{{ url('sitemap.xml') }}">sitemap.xml</a></p>
+        </div>
+      </div>
+    </section>
+  </article>
+{% endblock %}

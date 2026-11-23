@@ -1,6 +1,6 @@
 columnSuffix: null
 handle: orgAreaServed
-instructions: null
+instructions: ''
 name: 'Tätigkeitsgebiete (areaServed)'
 searchable: false
 settings:

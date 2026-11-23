@@ -32,7 +32,7 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: e5e8625f-9228-4a94-8c7e-ccbef592d82a
+            uid: b06edd3d-252b-4892-81e0-fda3925b4600
             userCondition: null
             warning: null
             width: 100
@@ -49,12 +49,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 37d46c4b-d6d3-408f-9ef6-a9e6af899221
+            uid: c63fba3f-dfd6-4a73-b55a-d0fb8c554e6f
             userCondition: null
             warning: null
             width: 100
         name: Inhalt
-        uid: 7e8e481e-c6e7-4b89-8c39-cc9d99a2e41c
+        uid: 22ea319e-fa55-4dd6-9acb-a0ce82408c41
         userCondition: null
       -
         elementCondition: null
@@ -72,7 +72,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 232f4078-45ff-4d8c-b395-1ea3fc333c96
+            uid: 5a27ba16-f488-406f-8d16-0e23960444f7
             userCondition: null
             warning: null
             width: 100
@@ -89,12 +89,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 45d588d6-1036-402f-852d-20f5025e6fb3
+            uid: 35a7aac1-0327-4ca1-a7de-7d8b6a1fb2b9
             userCondition: null
             warning: null
             width: 100
         name: 'Teaser & SEO'
-        uid: 8012691f-399b-4db7-a421-235bda2bac81
+        uid: d04d4bac-6bbc-4d48-bff5-8bcf589b9056
         userCondition: null
     thumbFieldKey: null
 handle: home

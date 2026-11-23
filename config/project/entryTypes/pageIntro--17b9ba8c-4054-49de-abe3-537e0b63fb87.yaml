@@ -13,6 +13,23 @@ fieldLayouts:
             editCondition: null
             elementCondition: null
             elementEditCondition: null
+            fieldUid: 24411d54-8fed-47d1-b553-0d468bcae29f # Akzente-Logo zeigen
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 52407c9c-63a5-45f0-beda-8ca4ac4ad05b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
             fieldUid: 96fbaecf-f315-4bec-81d7-7be3fe87173e # Dachzeile
             handle: null
             instructions: null
@@ -21,7 +38,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 01ff44eb-0d76-4270-8ca8-ad9ed6d040e3
+            uid: e24b3a4f-9cb1-46f1-85fb-c0672d1cc9ad
             userCondition: null
             warning: null
             width: 100
@@ -38,7 +55,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 15c3bf8e-abaa-4ef5-ae7d-c3b2bf30311e
+            uid: 1bd9d836-0962-4567-bb78-a3b6f0baabe3
             userCondition: null
             warning: null
             width: 100
@@ -55,7 +72,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: e2a6ff5b-e441-4cb2-a910-b00f58912681
+            uid: bb193121-7ac8-4999-977f-37269f656cf8
             userCondition: null
             warning: null
             width: 100
@@ -72,7 +89,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: b7ec4923-ae3d-408c-8ae5-e03757b21684
+            uid: 2d455b3a-1f77-4342-816d-020b965a693e
             userCondition: null
             warning: null
             width: 100
@@ -89,12 +106,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: a726dea6-8c3b-4923-bc18-faf45f5b9cde
+            uid: 923b202d-174b-49ca-8464-3f4b9db2afa0
             userCondition: null
             warning: null
             width: 100
         name: Inhalt
-        uid: 6ef0ae51-0836-4510-9629-d9b6ca86d520
+        uid: 2473de2c-932f-4520-9a9e-c2fb9820a075
         userCondition: null
     thumbFieldKey: null
 handle: pageIntro

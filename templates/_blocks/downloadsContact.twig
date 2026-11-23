@@ -1,0 +1,29 @@
+{% import '_macros/ui.twig' as ui %}
+<section class="block bg-tinted block-downloads"{% if block.anchorLabel %} id="{{ block.anchorLabel|kebab }}"{% endif %}>
+  <div class="container block-downloads__grid">
+    <div>
+      {{ ui.eyebrow(block.eyebrow) }}
+      <{{ htag }} class="h-section">{{ ui.lines(block.headline) }}</{{ htag }}>
+      <ul class="downloads">
+        {% for d in block.downloads.all() %}
+          <li class="download">
+            <div>
+              <h3 class="h-list"><a href="{{ d.url }}" download>{{ d.title }}</a></h3>
+              <p class="meta">{{ d.extension|upper }} · {{ d.size|filesize }}{% if d.dateModified %} · {{ d.dateModified|date('Y') }}{% endif %}</p>
+            </div>
+            <span class="action" aria-hidden="true"><span>{{ 'Download'|t }}</span>{{ ui.icon('download') }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% if block.headline2 or block.lead %}
+      <div>
+        {{ ui.eyebrow(block.metaLabel) }}
+        {% if block.headline2 %}<h2 class="h-section">{{ ui.lines(block.headline2) }}</h2>{% endif %}
+        {% if block.lead %}<p class="lead-sm">{{ block.lead }}</p>{% endif %}
+        {{ ui.link(block.linkField, 'button', null, { icon: 'mail' }) }}
+        {% if block.note %}<p class="small-note">{{ block.note }}</p>{% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>

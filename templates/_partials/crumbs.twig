@@ -1,0 +1,23 @@
+{# Hilfsfunktion: Breadcrumb-Pfad für einen Eintrag als Liste {title, url} #}
+{% macro forEntry(entry) %}
+  {%- set home = craft.entries.section('homepage').one() -%}
+  {%- set list = [{ title: home.title ?? 'Home', url: siteUrl }] -%}
+  {%- set overview = {
+    projects: ['projekte', 'projects'], akzente: ['akzente', 'akzente'], news: ['medien', 'media'],
+    services: ['leistungen', 'services'], worldwide: ['weltweit', 'worldwide'], tenders: ['ausschreibungen', 'tenders'],
+  }[entry.section.handle] ?? null -%}
+  {%- if overview -%}
+    {%- set page = craft.entries.section('pages').slug(overview).one() -%}
+    {%- if page %}{% set list = list|merge([{ title: page.title, url: page.url }]) %}{% endif -%}
+  {%- endif -%}
+  {%- if entry.section.handle == 'projects' -%}
+    {%- set country = entry.countries.one() -%}
+    {%- if country -%}
+      {%- for a in country.ancestors.all() %}{% set list = list|merge([{ title: a.title, url: a.url }]) %}{% endfor -%}
+      {%- set list = list|merge([{ title: country.title, url: country.url }]) -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- for a in (entry.ancestors ?? null ? entry.ancestors.all() : []) %}{% set list = list|merge([{ title: a.title, url: a.url }]) %}{% endfor -%}
+  {%- set list = list|merge([{ title: entry.title, url: entry.url }]) -%}
+  {{- list|json_encode|raw -}}
+{% endmacro %}

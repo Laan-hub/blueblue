@@ -1,6 +1,6 @@
 columnSuffix: null
 handle: authorName
-instructions: null
+instructions: ''
 name: 'Autor:in'
 searchable: false
 settings:

@@ -1,0 +1,44 @@
+{% import '_macros/ui.twig' as ui %}
+{% set regions = craft.entries.section('worldwide').level(1).with(['children']).all() %}
+<section class="block-regions">
+  <div class="block-regions__intro">
+    <div class="block-regions__intro-inner">
+      {{ ui.eyebrow(block.eyebrow, 'eyebrow--light') }}
+      <{{ htag }} class="h-display">{{ ui.lines(block.headline) }}</{{ htag }}>
+      <span class="rule-accent" aria-hidden="true"></span>
+      {% if block.lead %}<p class="lead lead--light">{{ block.lead }}</p>{% endif %}
+      {{ ui.link(block.linkField, 'inline', null, { class: 'action--light' }) }}
+    </div>
+  </div>
+  <div class="block-regions__list">
+    <div class="block-regions__list-inner">
+      <div class="block-regions__head">
+        <p class="eyebrow">{{ block.metaLabel ?: 'Explore by region'|t }}</p>
+        {% if block.note %}<p class="meta">{{ block.note }}</p>{% endif %}
+      </div>
+      <ul class="region-list">
+        {% for region in regions %}
+          <li>
+            <a href="{{ region.url }}">
+              <span class="region-list__name">{{ region.title }}</span>
+              <span class="region-list__countries">{{ region.children|map(c => c.title)|join(' · ') }}</span>
+              {{ ui.icon('arrow') }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="select-wrap">
+        <label for="country-{{ block.id }}" class="visually-hidden">{{ 'Or choose a country'|t }}</label>
+        <select id="country-{{ block.id }}" data-nav-select>
+          <option value="">{{ 'Or choose a country'|t }}</option>
+          {% for region in regions %}
+            <optgroup label="{{ region.title }}">
+              {% for c in region.children %}<option value="{{ c.url }}">{{ c.title }}</option>{% endfor %}
+            </optgroup>
+          {% endfor %}
+        </select>
+        {{ ui.icon('chevron', 18) }}
+      </div>
+    </div>
+  </div>
+</section>

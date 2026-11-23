@@ -32,7 +32,7 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: a0c40190-a43b-40b2-85be-e8c761c13b1e
+            uid: e6291860-3c28-41f9-ac99-8ec636978b95
             userCondition: null
             warning: null
             width: 100
@@ -49,7 +49,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 794903e5-81db-4b6e-bdda-99ca900d89a9
+            uid: f2051437-c05d-45ed-bd4f-fcd4a36b9893
             userCondition: null
             warning: null
             width: 100
@@ -66,7 +66,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: ea95ca74-3cb4-4b2d-8f41-e6b5eba7b38a
+            uid: 4a910c93-c741-4fbd-a21f-6601cd9b5908
             userCondition: null
             warning: null
             width: 100
@@ -83,7 +83,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 9b128d57-6025-4ce2-99b1-917d73eb5de2
+            uid: 2271aaf0-1f1c-4829-94b7-072e9a5dd645
             userCondition: null
             warning: null
             width: 100
@@ -100,12 +100,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 19e088b2-49ac-41be-9f15-e16c5e0391a5
+            uid: 3d425bc2-8c57-4d8b-8f2b-8c064d1ee542
             userCondition: null
             warning: null
             width: 100
         name: Kopf
-        uid: 1d800dcc-f306-4282-aef6-66b4d76a176b
+        uid: 663bd8a0-992a-4dc6-af1a-267159bd99a0
         userCondition: null
       -
         elementCondition: null
@@ -123,12 +123,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 8bdca1e6-1e75-4265-9d82-682d04b8dd80
+            uid: 7c36cb87-6b6d-437b-a946-c80834d611b5
             userCondition: null
             warning: null
             width: 100
         name: Inhalt
-        uid: 6ef9434a-6a7b-4882-bd4d-25c543a0bd45
+        uid: d4b24835-caad-4e08-b798-2db88e19f10d
         userCondition: null
     thumbFieldKey: null
 handle: service

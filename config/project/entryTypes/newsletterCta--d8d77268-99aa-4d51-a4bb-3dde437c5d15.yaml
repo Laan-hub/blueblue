@@ -21,7 +21,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 4f6a97b3-3d2e-4b80-b0eb-74a66a0d5a3a
+            uid: c09d0d7f-4f7a-4981-860c-5c5fbbceffb3
             userCondition: null
             warning: null
             width: 100
@@ -38,7 +38,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 3e67a2df-ed5a-4e3f-9098-fdfd765b5673
+            uid: 1b0ff7a3-cade-41b2-9420-991340cfe8e0
             userCondition: null
             warning: null
             width: 100
@@ -55,7 +55,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: e1d3d93a-5c4a-400d-bad1-3effe72c81b6
+            uid: 8fc674d5-e7ba-4b22-959c-c0a8c1356f64
             userCondition: null
             warning: null
             width: 100
@@ -72,7 +72,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 3ff16f2e-ef3b-4c63-861d-87f95c9469ae
+            uid: a4fe7b13-48b2-4aa7-8198-c757c87320cd
             userCondition: null
             warning: null
             width: 100
@@ -89,12 +89,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 83cb9ee9-fae0-4642-9a40-47ba1a393e59
+            uid: 2b253ad6-7850-4448-abc0-d457cae2d04c
             userCondition: null
             warning: null
             width: 100
         name: Inhalt
-        uid: 6300286e-22c0-45b9-a7f8-52d12226a77f
+        uid: 2b9fdbd4-8d4a-467e-886a-d03b05cda5bb
         userCondition: null
     thumbFieldKey: null
 handle: newsletterCta

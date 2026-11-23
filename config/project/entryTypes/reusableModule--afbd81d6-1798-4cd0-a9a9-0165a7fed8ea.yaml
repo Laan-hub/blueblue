@@ -21,12 +21,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: cf74fb73-aab9-494f-981f-6ffe999f770b
+            uid: cb510b8e-75a8-4b8b-8d83-0d4f8216cf24
             userCondition: null
             warning: null
             width: 100
         name: Inhalt
-        uid: 52c2d1d5-3ac0-44f7-afb4-e08ad297f019
+        uid: 2cae16f3-1e79-4e19-a576-02ac52ec0c33
         userCondition: null
     thumbFieldKey: null
 handle: reusableModule

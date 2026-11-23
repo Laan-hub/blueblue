@@ -1,6 +1,6 @@
 columnSuffix: null
 handle: orgRegister
-instructions: null
+instructions: ''
 name: Handelsregister
 searchable: false
 settings:

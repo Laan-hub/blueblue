@@ -1,0 +1,30 @@
+{% import '_macros/ui.twig' as ui %}
+{% set cards = block.cardItems %}
+<section class="block bg-{{ block.background.value ?? 'white' }} block-cards"{% if block.anchorLabel %} id="{{ block.anchorLabel|kebab }}"{% endif %}>
+  <div class="container">
+    {% if block.lead or block.text %}
+      <div class="split">
+        <div class="split__aside">
+          {{ ui.eyebrow(block.eyebrow) }}
+          <{{ htag }} class="h-section">{{ ui.lines(block.headline) }}</{{ htag }}>
+        </div>
+        <div class="split__main">
+          {% if block.lead %}<p class="lead-sm">{{ block.lead }}</p>{% endif %}
+          {% if block.text %}<div class="prose prose--lead-sm">{{ block.text }}</div>{% endif %}
+        </div>
+      </div>
+    {% else %}
+      {{ ui.sectionHead(block, { tag: htag, size: 'h-section', aside: block.metaLabel }) }}
+    {% endif %}
+    <ol class="cards cards--{{ cards|length }}{{ block.numbered ? ' cards--numbered' : '' }}">
+      {% for c in cards %}
+        <li class="card">
+          {% if block.numbered %}<p class="card__num" aria-hidden="true"><span>{{ '%02d'|format(loop.index) }}</span>{{ ui.icon('arrow') }}</p>{% endif %}
+          <h3 class="h-card">{{ c.title }}</h3>
+          <p class="card__text">{{ c.text }}</p>
+        </li>
+      {% endfor %}
+    </ol>
+    {% if block.note %}<p class="small-note">{{ block.note }}</p>{% endif %}
+  </div>
+</section>

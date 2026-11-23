@@ -1,0 +1,52 @@
+{% extends '_layouts/base' %}
+{% import '_macros/ui.twig' as ui %}
+{% import '_partials/crumbs' as c %}
+{% set crumbs = c.forEntry(entry)|json_decode %}
+{% set img = entry.image.one() %}
+{% set overview = craft.entries.section('pages').slug('akzente').one() %}
+{% set bodyClass = 'page-akzente' %}
+{% block content %}
+  <div class="masthead">
+    <div class="container masthead__inner">
+      <a href="{{ overview.url ?? siteUrl }}" class="masthead__brand">{{ ui.akzenteLogo() }}</a>
+      <p class="masthead__claim">{{ 'The GfT magazine'|t }}<br>{{ 'People. Ideas. Perspectives.'|t }}</p>
+      {% if overview %}<a class="action masthead__all" href="{{ overview.url }}"><span>{{ 'All stories'|t }}</span>{{ ui.icon('arrowLeft') }}</a>{% endif %}
+    </div>
+  </div>
+
+  <header class="article-head container">
+    {{ ui.eyebrow(entry.eyebrow) }}
+    <h1 class="h-article">{{ entry.title }}</h1>
+    {% if entry.summary %}<p class="deck">{{ entry.summary }}</p>{% endif %}
+    <div class="byline">
+      <div>
+        {% if entry.authorName %}<p class="byline__author">{{ 'By {name}'|t({ name: entry.authorName }) }}</p>{% endif %}
+        <p class="meta"><time datetime="{{ entry.postDate|atom }}">{{ entry.postDate|date('d F Y') }}</time>{% if entry.readTime %} · {{ '{n} min read'|t({ n: entry.readTime }) }}{% endif %}</p>
+      </div>
+      <div class="byline__actions">
+        <button type="button" class="action" data-share data-title="{{ entry.title }}" data-url="{{ entry.url }}"><span>{{ 'Share'|t }}</span>{{ ui.icon('share') }}</button>
+        <button type="button" class="action" data-save><span>{{ 'Save'|t }}</span>{{ ui.icon('bookmark') }}</button>
+      </div>
+    </div>
+  </header>
+
+  {% if img %}
+    <figure class="cover">
+      <div class="cover__grid">
+        <div class="cover__media">{{ ui.img(img, { ratio: 1000/640, sizes: '(min-width: 1024px) 70vw, 100vw', eager: true }) }}</div>
+        {% if entry.quote %}
+          <div class="cover__panel">
+            {{ ui.eyebrow(entry.metaLabel, 'eyebrow--light') }}
+            <p class="cover__quote">{{ entry.quote }}</p>
+            <span class="rule-accent" aria-hidden="true"></span>
+            {% if entry.note %}<p class="cover__note">{{ entry.note }}</p>{% endif %}
+            <p class="eyebrow eyebrow--light cover__foot">{{ 'Illustrative story & photography'|t }}</p>
+          </div>
+        {% endif %}
+      </div>
+      <div class="container">{{ ui.caption(img, entry.caption) }}</div>
+    </figure>
+  {% endif %}
+
+  {% include '_blocks/_builder' with { blocks: entry.builder.all(), hasPageH1: true } %}
+{% endblock %}

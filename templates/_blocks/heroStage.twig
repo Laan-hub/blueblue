@@ -1,0 +1,35 @@
+{% import '_macros/ui.twig' as ui %}
+{% set slides = block.slides.all() %}
+<section class="hero" data-hero aria-roledescription="carousel" aria-label="{{ 'Highlights'|t }}">
+  {% for slide in slides %}
+    {% set img = slide.image.one() %}
+    <div class="hero__slide{{ loop.first ? ' is-active' : '' }}" data-slide id="hero-slide-{{ loop.index }}" role="group" aria-roledescription="slide" aria-label="{{ loop.index }} / {{ slides|length }}"{% if not loop.first %} hidden{% endif %}>
+      {% if img %}<div class="hero__media">{{ ui.img(img, { sizes: '100vw', eager: loop.first, alt: img.alt, widths: [768, 1200, 1600, 2000] }) }}</div>{% endif %}
+      <div class="hero__inner container">
+        <div class="hero__content">
+          {{ ui.eyebrow(slide.eyebrow, 'eyebrow--light') }}
+          {% set tag = loop.first and isFirst ? 'h1' : 'h2' %}
+          <{{ tag }} class="h-hero">{{ ui.lines(slide.headline) }}</{{ tag }}>
+          {% if slide.lead %}<p class="hero__lead">{{ slide.lead }}</p>{% endif %}
+          {% if slide.linkField %}<div class="hero__cta">{{ ui.link(slide.linkField, 'button-light') }}</div>{% endif %}
+        </div>
+        {% if slide.secondaryLink %}
+          <div class="hero__focus">
+            {% if slide.metaLabel %}<p class="eyebrow eyebrow--light">{{ slide.metaLabel }}</p>{% endif %}
+            <a href="{{ slide.secondaryLink.url }}" class="hero__focus-link"><span>{{ slide.secondaryLink.label }}</span>{{ ui.icon('arrow') }}</a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+  {% if slides|length > 1 %}
+    <div class="hero__controls container">
+      <div class="hero__dots" role="tablist" aria-label="{{ 'Choose slide'|t }}">
+        {% for slide in slides %}
+          <button type="button" class="hero__dot{{ loop.first ? ' is-active' : '' }}" data-dot="{{ loop.index0 }}" aria-controls="hero-slide-{{ loop.index }}" aria-label="{{ 'Slide'|t }} {{ loop.index }}"{% if loop.first %} aria-current="true"{% endif %}></button>
+        {% endfor %}
+      </div>
+      <span class="hero__count" data-count>01 / {{ '%02d'|format(slides|length) }}</span>
+    </div>
+  {% endif %}
+</section>

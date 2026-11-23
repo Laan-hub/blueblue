@@ -1,0 +1,17 @@
+{% import '_macros/ui.twig' as ui %}
+<section class="block-article{{ block.metaLabel ? ' block-article--intro' : '' }}">
+  <div class="container article-grid">
+    {% if block.metaLabel or block.note %}
+      <aside class="article-aside">
+        <span class="rule-blue" aria-hidden="true"></span>
+        {{ ui.eyebrow(block.metaLabel) }}
+        {% if block.note %}<p>{{ block.note }}</p>{% endif %}
+      </aside>
+    {% endif %}
+    <div class="prose-col">
+      {{ ui.eyebrow(block.eyebrow) }}
+      {% if block.headline %}<{{ htag }} class="h-sub">{{ ui.lines(block.headline) }}</{{ htag }}>{% endif %}
+      <div class="prose prose--article">{{ block.text }}</div>
+    </div>
+  </div>
+</section>

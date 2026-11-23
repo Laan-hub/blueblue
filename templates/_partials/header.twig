@@ -1,0 +1,90 @@
+{% import '_macros/ui.twig' as ui %}
+{% set currentUrl = entry.url ?? craft.app.request.absoluteUrl %}
+<header class="site-header" data-header>
+  <div class="site-header__top container">
+    <p class="site-header__claim">{{ siteSettings.topbarText }}</p>
+    <nav class="utility-nav" aria-label="{{ 'Service navigation'|t }}">
+      <ul>
+        {% for item in navigation.utilityNav.all() %}
+          {% set l = item.linkField %}
+          {% if l %}
+            {% set ext = ui.isExternal(l.url)|trim == '1' %}
+            <li><a href="{{ l.url }}"{% if l.url == currentUrl or (currentUrl starts with l.url ~ '/') %} aria-current="page"{% endif %}{% if ext %} target="_blank" rel="noopener"{% endif %}>{{ l.label }}{% if ext %}{{ ui.icon('external', 12) }}{% endif %}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <ul class="lang-switch" aria-label="{{ 'Language'|t }}">
+        {% for alt in alternates %}
+          <li>
+            {% if alt.site.id == currentSite.id %}
+              <span aria-current="true" lang="{{ alt.site.language }}"><abbr title="{{ alt.site.name }}">{{ alt.site.language|upper }}</abbr></span>
+            {% else %}
+              <a href="{{ alt.url }}" hreflang="{{ alt.site.language }}" lang="{{ alt.site.language }}"><abbr title="{{ alt.site.name }}">{{ alt.site.language|upper }}</abbr></a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+
+  <div class="site-header__main container">
+    <a class="logo" href="{{ siteUrl }}" aria-label="{{ organization.orgName ?: 'GfT' }} – {{ 'Home'|t }}">
+      <span class="logo__mark">GfT</span>
+      <span class="logo__name">{{ organization.orgLegalName|replace({' für ': ' <br>für '})|raw }}</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-nav-toggle>
+      <span class="nav-toggle__open">{{ ui.icon('menu', 26) }}</span>
+      <span class="nav-toggle__close">{{ ui.icon('close', 26) }}</span>
+      <span class="visually-hidden">{{ 'Menu'|t }}</span>
+    </button>
+
+    <nav class="main-nav" id="main-nav" aria-label="{{ 'Main navigation'|t }}" data-nav>
+      <ul class="main-nav__list">
+        {% for item in navigation.mainNav.all() %}
+          {% set l = item.linkField %}
+          {% set children = item.navLinks.all() %}
+          {% set active = l and (currentUrl == l.url or currentUrl starts with l.url ~ '/') %}
+          {% for c in children %}{% if c.linkField and currentUrl == c.linkField.url %}{% set active = true %}{% endif %}{% endfor %}
+          {# Projekte/Geschichten/Regionen gehören zum passenden Menüpunkt #}
+          {% if entry and l and l.element %}
+            {% set sectionMap = { projects: 'projekte|projects', akzente: 'akzente', worldwide: 'weltweit|worldwide', services: 'leistungen|services', tenders: 'ausschreibungen|tenders' } %}
+            {% if entry.section.handle in sectionMap|keys and l.element.slug in sectionMap[entry.section.handle]|split('|') %}{% set active = true %}{% endif %}
+          {% endif %}
+          <li class="main-nav__item{{ children ? ' has-children' : '' }}">
+            {% if children %}
+              <button type="button" class="main-nav__link" aria-expanded="false" aria-controls="sub-{{ loop.index }}" data-sub-toggle{% if active %} data-active{% endif %}>
+                {{ l.label ?? '' }} {{ ui.icon('chevron', 14) }}
+              </button>
+              <div class="subnav" id="sub-{{ loop.index }}">
+                <ul class="container">
+                  {% for c in children %}
+                    {% set cl = c.linkField %}
+                    {% if cl %}
+                      {% set ext = ui.isExternal(cl.url)|trim == '1' %}
+                      <li><a href="{{ cl.url }}"{% if cl.url == currentUrl %} aria-current="page"{% endif %}{% if ext %} target="_blank" rel="noopener"{% endif %}>{{ cl.label }}{{ ui.icon(ext ? 'external' : 'arrow', 16) }}</a></li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+            {% elseif l %}
+              <a class="main-nav__link" href="{{ l.url }}"{% if active %} aria-current="page"{% endif %}>{{ l.label }}</a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+
+      {# Mobile: Servicenavigation & Sprache im Menü #}
+      <ul class="main-nav__utility">
+        {% for item in navigation.utilityNav.all() %}
+          {% if item.linkField %}<li><a href="{{ item.linkField.url }}">{{ item.linkField.label }}</a></li>{% endif %}
+        {% endfor %}
+        {% for alt in alternates|filter(a => a.site.id != currentSite.id) %}
+          <li><a href="{{ alt.url }}" hreflang="{{ alt.site.language }}" lang="{{ alt.site.language }}">{{ alt.site.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <a class="search-toggle" href="{{ url('search') }}" aria-label="{{ 'Search'|t }}">{{ ui.icon('search', 24) }}</a>
+  </div>
+</header>

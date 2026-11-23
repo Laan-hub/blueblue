@@ -1,0 +1,26 @@
+{% import '_macros/ui.twig' as ui %}
+<section class="block bg-{{ block.background.value ?? 'tinted' }} block-cta">
+  <div class="container">
+    <div class="block-cta__head">
+      <div>
+        {{ ui.eyebrow(block.eyebrow) }}
+        <{{ htag }} class="h-display">{{ ui.lines(block.headline) }}</{{ htag }}>
+      </div>
+      <div>
+        {% if block.lead %}<p class="lead">{{ block.lead }}</p>{% endif %}
+        {{ ui.link(block.linkField, 'button') }}
+      </div>
+    </div>
+    {% if block.audienceItems|length %}
+      <ul class="audiences">
+        {% for a in block.audienceItems %}
+          <li>
+            <h3 class="audiences__title">{{ a.title }}</h3>
+            <p class="audiences__text">{{ a.text }}</p>
+            {% if a.url %}{{ ui.link({ url: a.url, label: a.linkLabel }) }}{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</section>

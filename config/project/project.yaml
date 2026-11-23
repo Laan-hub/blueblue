@@ -1,4 +1,4 @@
-dateModified: 1795447335
+dateModified: 1795448593
 email:
   fromEmail: admin@example.com
   fromName: blueblue
@@ -18,10 +18,6 @@ fs:
       path: '@webroot/uploads/images'
     type: craft\fs\Local
     url: '@web/uploads/images'
-graphql:
-  publicToken:
-    enabled: false
-    expiryDate: null
 meta:
   __names__:
     0a19cde0-70b5-44e0-a39c-9e642a750312: Hauptnavigation # Hauptnavigation

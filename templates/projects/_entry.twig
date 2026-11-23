@@ -1,0 +1,52 @@
+{% extends '_layouts/base' %}
+{% import '_macros/ui.twig' as ui %}
+{% import '_partials/crumbs' as c %}
+{% set crumbs = c.forEntry(entry)|json_decode %}
+{% set img = entry.image.one() %}
+{% set blocks = entry.builder.all() %}
+{% set overview = craft.entries.section('pages').slug(['projekte', 'projects']).one() %}
+{% block content %}
+  <header class="entry-head container">
+    <div class="entry-head__top">
+      {% if overview %}<a class="action action--back" href="{{ overview.url }}">{{ ui.icon('arrowLeft') }}<span>{{ 'All projects'|t }}</span></a>{% endif %}
+      {% include '_partials/breadcrumb' with { crumbs: crumbs|slice(1) } %}
+    </div>
+    <p class="concept-note">{{ 'CONCEPT DRAFT · ILLUSTRATIVE CONTENT — GfT is fictional. Project details, figures and voices are examples.'|t }}</p>
+    {{ ui.eyebrow(entry.eyebrow) }}
+    <div class="entry-head__grid">
+      <h1 class="h-page">{{ entry.title }}</h1>
+      <div class="entry-head__aside">
+        {% if entry.summary %}<p class="lead">{{ entry.summary }}</p>{% endif %}
+        {% set tags = entry.topics.all() %}
+        {% if tags|length %}<ul class="tags">{% for t in tags %}<li>{{ t.title }}</li>{% endfor %}</ul>{% endif %}
+      </div>
+    </div>
+  </header>
+
+  {% if img %}
+    <figure class="entry-hero">
+      {{ ui.img(img, { ratio: 1440/500, sizes: '100vw', eager: true, widths: [768, 1200, 1600, 2000] }) }}
+      {{ ui.caption(img) }}
+    </figure>
+  {% endif %}
+
+  {% set anchors = blocks|filter(b => b.anchorLabel ?? null) %}
+  <nav class="page-nav" aria-label="{{ 'On this page'|t }}" data-page-nav>
+    <div class="container page-nav__inner">
+      <ul>{% for b in anchors %}<li><a href="#{{ b.anchorLabel|kebab }}">{{ b.anchorLabel }}</a></li>{% endfor %}</ul>
+      {% if entry.projectStatus.value %}<p class="page-nav__status"><span class="status-dot status-dot--{{ entry.projectStatus.value }}"></span>{{ entry.projectStatus.label|t }}{% if entry.period %} · {{ entry.period }}{% endif %}</p>{% endif %}
+    </div>
+  </nav>
+
+  {% if entry.factItems|length %}
+    <section class="facts bg-subtle" aria-label="{{ 'Project facts'|t }}">
+      <dl class="container facts__grid facts__grid--{{ entry.factItems|length }}">
+        {% for f in entry.factItems %}
+          <div><dt class="eyebrow">{{ f.label }}</dt><dd><strong>{{ f.value }}</strong>{% if f.note %}<span>{{ f.note }}</span>{% endif %}</dd></div>
+        {% endfor %}
+      </dl>
+    </section>
+  {% endif %}
+
+  {% include '_blocks/_builder' with { blocks: blocks, hasPageH1: true } %}
+{% endblock %}

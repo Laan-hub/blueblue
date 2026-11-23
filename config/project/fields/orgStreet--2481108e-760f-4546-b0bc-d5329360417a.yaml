@@ -1,6 +1,6 @@
 columnSuffix: null
 handle: orgStreet
-instructions: null
+instructions: ''
 name: 'Straße & Hausnummer'
 searchable: false
 settings:

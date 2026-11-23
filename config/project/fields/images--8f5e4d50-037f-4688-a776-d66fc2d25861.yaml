@@ -31,7 +31,7 @@ settings:
     - 'volume:ac1a848a-0400-4f39-9411-d543bfe7ab8a' # Bilder
   targetSiteId: null
   validateRelatedElements: false
-  viewMode: thumbs
+  viewMode: large
 tip: null
 translationKeyFormat: null
 translationMethod: none

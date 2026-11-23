@@ -1,5 +1,5 @@
 fieldLayouts:
-  058b2e86-07a8-48bf-9f7d-602aef383203:
+  b5a7a27d-3e85-4f86-9ef9-26db57c1aba7:
     cardThumbAlignment: end
     tabs:
       -
@@ -29,12 +29,12 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\TitleField
-            uid: 94b9ab6f-8736-4be7-b311-a9c7a845cee6
+            uid: bf5cadfc-4a22-4568-88ac-4ce34f27b971
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: 9d897fad-238e-4e2e-93a0-19853e87e3ae
+        uid: 97afce99-bcac-4b2e-81b8-085352103cb0
         userCondition: null
     thumbFieldKey: null
 handle: topics

@@ -32,7 +32,7 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: 9cda7198-c01f-4574-82b8-e0e9e5219d09
+            uid: c89b5d20-c25c-41f9-9a48-056d9837cbb6
             userCondition: null
             warning: null
             width: 100
@@ -49,12 +49,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 039d8ffc-3b8e-4c8f-a39a-44e31ef10bf0
+            uid: 9bf097e8-15f0-48a5-84ca-61f4a2752f52
             userCondition: null
             warning: null
             width: 100
         name: Inhalt
-        uid: 47945a09-6c5a-4912-b6b1-57c2c9aed598
+        uid: 958f03ca-19d9-4440-a943-c0297a2bde38
         userCondition: null
     thumbFieldKey: null
 handle: module

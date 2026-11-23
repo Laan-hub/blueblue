@@ -1,0 +1,30 @@
+{% import '_macros/ui.twig' as ui %}
+{% set items = block.metricItems %}
+<section class="block bg-{{ block.background.value ?? 'white' }} block-metrics"{% if block.anchorLabel %} id="{{ block.anchorLabel|kebab }}"{% endif %}>
+  <div class="container">
+    {% if block.lead or block.text %}
+      <div class="split">
+        <div class="split__aside">
+          {{ ui.eyebrow(block.eyebrow) }}
+          <{{ htag }} class="h-section">{{ ui.lines(block.headline) }}</{{ htag }}>
+        </div>
+        <div class="split__main">
+          {% if block.lead %}<p class="lead">{{ block.lead }}</p>{% endif %}
+          {% if block.text %}<div class="prose">{{ block.text }}</div>{% endif %}
+          {{ ui.link(block.linkField) }}
+        </div>
+      </div>
+    {% else %}
+      {{ ui.sectionHead(block, { tag: htag, size: 'h-display' }) }}
+    {% endif %}
+    <dl class="metrics metrics--{{ items|length }}">
+      {% for m in items %}
+        <div class="metric">
+          <dt class="metric__value">{{ m.value }}</dt>
+          <dd><span class="metric__label">{{ m.label }}</span>{% if m.note %}<span class="metric__note">{{ m.note }}</span>{% endif %}</dd>
+        </div>
+      {% endfor %}
+    </dl>
+    {% if block.note %}<p class="small-note">{{ block.note }}</p>{% endif %}
+  </div>
+</section>

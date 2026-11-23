@@ -1,0 +1,83 @@
+{#
+  Teaser – baut aus JEDEM Eintrag (Projekt, Geschichte, News, Leistung, Region, Seite, freier Teaser)
+  einen einheitlichen Teaser. Variablen: entry, variant ('cards'|'text'|'media'|'list'), headingLevel
+#}
+{% import '_macros/ui.twig' as ui %}
+{% set variant = variant ?? 'cards' %}
+{% set h = headingLevel ?? 'h3' %}
+{% set section = entry.section.handle ?? null %}
+
+{# --- Daten normalisieren ------------------------------------------------ #}
+{% set url = entry.url %}
+{% set linkLabel = {
+  projects: 'Explore the project'|t,
+  akzente: 'Read the story'|t,
+  news: 'Read the update'|t,
+  services: 'Learn more'|t,
+  worldwide: 'Explore'|t,
+  tenders: 'View tender'|t,
+}[section] ?? 'Learn more'|t %}
+{% if section == 'teasers' and entry.linkField %}
+  {% set url = entry.linkField.url %}
+  {% set linkLabel = entry.linkField.label ?: linkLabel %}
+{% endif %}
+{% set image = entry.image.one() ?? null %}
+{% set summary = entry.summary ?? null %}
+{% set eyebrow = entry.eyebrow ?? null %}
+{% if section == 'news' %}
+  {% set eyebrow = entry.postDate|date('d M Y')|upper ~ (entry.eyebrow ? ' / ' ~ entry.eyebrow|upper : '') %}
+{% endif %}
+{% set status = section == 'projects' ? (entry.projectStatus.value ?? null) : null %}
+{% set ext = ui.isExternal(url ?? '')|trim == '1' %}
+
+{% if variant == 'cards' %}
+  <article class="teaser teaser--card">
+    {% if image %}
+      <a href="{{ url }}" class="teaser__media" tabindex="-1" aria-hidden="true">
+        {{ ui.img(image, { ratio: 416/250, widths: [416, 640, 832], sizes: '(min-width: 1024px) 416px, (min-width: 640px) 50vw, 100vw', alt: '' }) }}
+      </a>
+    {% endif %}
+    {% if eyebrow %}
+      <p class="teaser__meta eyebrow">
+        <span>{{ eyebrow }}</span>
+        {% if status %}<span class="status-dot status-dot--{{ status }}" title="{{ entry.projectStatus.label|t }}"></span>{% endif %}
+      </p>
+    {% endif %}
+    <{{ h }} class="teaser__title h-card"><a href="{{ url }}">{{ entry.title }}</a></{{ h }}>
+    {% if summary %}<p class="teaser__text">{{ summary }}</p>{% endif %}
+    <span class="action teaser__action" aria-hidden="true"><span>{{ linkLabel }}</span>{{ ui.icon(ext ? 'external' : 'arrow') }}</span>
+  </article>
+
+{% elseif variant == 'text' %}
+  <article class="teaser teaser--text">
+    {% if eyebrow %}<p class="teaser__meta eyebrow">{{ eyebrow }}</p>{% endif %}
+    <{{ h }} class="teaser__title h-card"><a href="{{ url }}">{{ entry.title }}</a></{{ h }}>
+    {% if summary %}<p class="teaser__text">{{ summary }}</p>{% endif %}
+    <span class="action teaser__action" aria-hidden="true"><span>{{ linkLabel }}</span>{{ ui.icon('arrow') }}</span>
+  </article>
+
+{% elseif variant == 'media' %}
+  <article class="teaser teaser--media{{ image ? '' : ' teaser--noimage' }}{{ section == 'akzente' ? ' teaser--editorial' : '' }}">
+    {% if image %}
+      <a href="{{ url }}" class="teaser__media" tabindex="-1" aria-hidden="true">
+        {{ ui.img(image, { ratio: section == 'akzente' ? 200/220 : 230/248, widths: [240, 480], sizes: '230px', alt: '' }) }}
+      </a>
+    {% endif %}
+    <div class="teaser__body">
+      {% if eyebrow %}<p class="teaser__meta eyebrow">{{ eyebrow }}</p>{% endif %}
+      <{{ h }} class="teaser__title {{ section == 'akzente' ? 'h-editorial' : 'h-card' }}"><a href="{{ url }}">{{ entry.title }}</a></{{ h }}>
+      {% if summary %}<p class="teaser__text">{{ summary }}</p>{% endif %}
+      <span class="action teaser__action" aria-hidden="true"><span>{{ linkLabel }}</span>{{ ui.icon(ext ? 'external' : 'arrow') }}</span>
+    </div>
+  </article>
+
+{% else %}
+  <article class="teaser teaser--list">
+    <div>
+      {% if eyebrow %}<p class="teaser__meta eyebrow">{{ eyebrow }}</p>{% endif %}
+      <{{ h }} class="teaser__title h-list"><a href="{{ url }}">{{ entry.title }}</a></{{ h }}>
+      {% if summary %}<p class="teaser__text">{{ summary }}</p>{% endif %}
+    </div>
+    {{ ui.icon(ext ? 'external' : 'arrow') }}
+  </article>
+{% endif %}

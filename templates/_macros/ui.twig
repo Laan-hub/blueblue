@@ -1,0 +1,104 @@
+{# =========================================================================
+   UI-Bausteine (Atoms): Icons, Links, Buttons, Überschriften, Bilder
+   ========================================================================= #}
+
+{% macro icon(name, size = 20) %}
+  {%- set paths = {
+    arrow: '<path d="M4 12h15M13 6l6 6-6 6"/>',
+    arrowLeft: '<path d="M20 12H5M11 6l-6 6 6 6"/>',
+    external: '<path d="M7 17 17 7M8 7h9v9"/>',
+    chevron: '<path d="m6 9 6 6 6-6"/>',
+    search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
+    download: '<path d="M12 4v11M7 10l5 5 5-5M5 19h14"/>',
+    mail: '<rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/>',
+    share: '<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.4M8.2 13.2l7.6 4.4"/>',
+    bookmark: '<path d="M6 3h12v18l-6-4-6 4z"/>',
+    menu: '<path d="M3 6h18M3 12h18M3 18h18"/>',
+    close: '<path d="M5 5l14 14M19 5 5 19"/>',
+    quote: '<path d="M10 6C6 7 4 10 4 14v4h6v-6H7c0-3 1.5-4.5 3.5-5zM20 6c-4 1-6 4-6 8v4h6v-6h-3c0-3 1.5-4.5 3.5-5z" fill="currentColor" stroke="none"/>',
+    leaf: '<path d="M12 21v-8M12 13c0-5 3-8 8-8 0 5-3 8-8 8zM12 15c0-4-2.5-6.5-7-6.5 0 4 2.5 6.5 7 6.5z"/>',
+    handshake: '<path d="m2 11 4-4 4 2 3-2 3 0 4 4-3 3-4 4-2-1-2 2-2-2-2 0-3-3z"/><path d="m9 11 3-2 4 4M7 14l2 2M9 12l3 3"/>',
+    institution: '<path d="M3 9 12 4l9 5M4 9h16M6 9v9M10 9v9M14 9v9M18 9v9M3 20h18"/>',
+    network: '<rect x="9" y="3" width="6" height="5"/><rect x="3" y="16" width="6" height="5"/><rect x="15" y="16" width="6" height="5"/><path d="M12 8v4M6 16v-4h12v4"/>',
+    globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',
+    chart: '<path d="M4 20V10M10 20V4M16 20v-7M2 20h20"/>',
+  } -%}
+  <svg class="icon icon--{{ name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true" focusable="false">{{ (paths[name] ?? '')|raw }}</svg>
+{%- endmacro %}
+
+{# Ist ein Link extern (andere Domain)? #}
+{% macro isExternal(url) %}{% set base = craft.app.sites.primarySite.getBaseUrl()|trim('/', 'right') %}{{ (url starts with 'http' and not (url starts with base)) ? '1' : '' }}{% endmacro %}
+
+{# Link aus einem Craft-Link-Feld (LinkData) oder einem Hash {url, label}
+   style: 'inline' (Text + Pfeil), 'button', 'button-light', 'nav' #}
+{% macro link(link, style = 'inline', label = null, attrs = {}) %}
+  {%- if link -%}
+    {%- set url = link.url ?? null -%}
+    {%- set text = label ?: (link.label ?? null) ?: url -%}
+    {%- if url -%}
+      {%- set ext = _self.isExternal(url)|trim == '1' -%}
+      {%- set isDownload = (link.type ?? '') == 'asset' -%}
+      {%- set cls = style == 'inline' ? 'action' : (style starts with 'button' ? 'btn ' ~ (style == 'button-light' ? 'btn--light' : 'btn--primary') : style) -%}
+      <a href="{{ url }}" class="{{ cls }} {{ attrs.class ?? '' }}"{% if ext %} target="_blank" rel="noopener"{% endif %}{% if attrs.id is defined %} id="{{ attrs.id }}"{% endif %}>
+        <span>{{ text }}</span>
+        {%- if ext %}<span class="visually-hidden"> ({{ 'opens in a new window'|t }})</span>{% endif -%}
+        {{- style != 'nav' ? _self.icon(isDownload ? 'download' : (ext ? 'external' : (attrs.icon ?? 'arrow'))) -}}
+      </a>
+    {%- endif -%}
+  {%- endif -%}
+{% endmacro %}
+
+{# Mehrzeilige Überschrift: Zeilenumbrüche aus dem CMS werden übernommen #}
+{% macro lines(text) %}{{ text|e|nl2br }}{% endmacro %}
+
+{% macro eyebrow(text, class = '') %}
+  {%- if text %}<p class="eyebrow {{ class }}">{{ text }}</p>{% endif -%}
+{% endmacro %}
+
+{# Responsives Bild mit WebP-Transforms und Fokuspunkt.
+   ratio: Seitenverhältnis (Breite/Höhe) oder null für Original. #}
+{% macro img(asset, opts = {}) %}
+  {%- if asset -%}
+    {%- set ratio = opts.ratio ?? null -%}
+    {%- set widths = opts.widths ?? [480, 768, 1024, 1440, 1920] -%}
+    {%- set srcset = [] -%}
+    {%- set usable = widths|filter(w => w <= asset.width) -%}
+    {%- for w in (usable ?: [asset.width]) -%}
+      {%- set t = { width: w, format: 'webp', quality: 78 } -%}
+      {%- if ratio %}{% set t = t|merge({ height: (w / ratio)|round, mode: 'crop' }) %}{% endif -%}
+      {%- set srcset = srcset|merge([asset.getUrl(t) ~ ' ' ~ w ~ 'w']) -%}
+    {%- endfor -%}
+    {%- set base = { width: widths|last, format: 'webp', quality: 78 } -%}
+    {%- if ratio %}{% set base = base|merge({ height: (widths|last / ratio)|round, mode: 'crop' }) %}{% endif -%}
+    {%- set w = ratio ? 1600 : asset.width -%}
+    {%- set h = ratio ? (1600 / ratio)|round : asset.height -%}
+    <img src="{{ asset.getUrl(base) }}" srcset="{{ srcset|join(', ') }}" sizes="{{ opts.sizes ?? '100vw' }}"
+         width="{{ w }}" height="{{ h }}" alt="{{ opts.alt ?? asset.alt ?? '' }}"
+         style="object-position: {{ asset.getFocalPoint(true) }}"
+         {% if opts.eager ?? false %}fetchpriority="high"{% else %}loading="lazy" decoding="async"{% endif %}
+         class="{{ opts.class ?? '' }}">
+  {%- endif -%}
+{% endmacro %}
+
+{% macro caption(asset, override = null) %}
+  {%- set text = override ?: (asset.caption ?? null) -%}
+  {%- if text %}<figcaption class="caption">{{ text }}</figcaption>{% endif -%}
+{% endmacro %}
+
+{# Sektionskopf: Dachzeile, Überschrift, optional Link rechts #}
+{% macro sectionHead(block, opts = {}) %}
+  {%- if block.eyebrow or block.headline -%}
+  <header class="section-head {{ opts.class ?? '' }}">
+    <div class="section-head__text">
+      {{ _self.eyebrow(block.eyebrow) }}
+      {% if block.headline %}<{{ opts.tag ?? 'h2' }} class="{{ opts.size ?? 'h-section' }}">{{ _self.lines(block.headline) }}</{{ opts.tag ?? 'h2' }}>{% endif %}
+    </div>
+    {% if opts.aside ?? null %}<p class="section-head__aside meta">{{ opts.aside }}</p>{% endif %}
+    {% if block.linkField ?? null and (opts.link ?? true) %}<div class="section-head__link">{{ _self.link(block.linkField) }}</div>{% endif %}
+  </header>
+  {%- endif -%}
+{% endmacro %}
+
+{% macro akzenteLogo(class = '') %}
+  <span class="akzente-logo {{ class }}" aria-label="akzente">akzente</span>
+{% endmacro %}

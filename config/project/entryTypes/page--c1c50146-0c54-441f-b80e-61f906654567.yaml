@@ -32,7 +32,7 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: 6eddf29e-57f1-4dc4-8863-d13f98410e44
+            uid: df40bf65-45aa-41bd-9e1b-a60208a001e7
             userCondition: null
             warning: null
             width: 100
@@ -49,12 +49,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: f35fec89-778e-4b77-a4f2-8fd907bf7103
+            uid: c41adb13-03dc-4a4c-a4a3-2d6439ba9a65
             userCondition: null
             warning: null
             width: 100
         name: Inhalt
-        uid: c0435202-eaed-46a6-b462-c0da82c01cf4
+        uid: 94f30236-2cc4-48c8-98e3-87a1efb2a6bc
         userCondition: null
       -
         elementCondition: null
@@ -72,7 +72,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 4135e848-6a6e-4e43-9977-b6b5f014fa06
+            uid: 1a9d8341-dce8-43d6-aaf9-39da177b7935
             userCondition: null
             warning: null
             width: 100
@@ -89,7 +89,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: a8a4b0f1-0aca-4692-8349-d0b9a342c249
+            uid: ef4c00ef-8716-4c32-b015-155ae00bcc4f
             userCondition: null
             warning: null
             width: 100
@@ -106,12 +106,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 6c1ae6f6-3b29-48b2-a132-7929745d47fc
+            uid: a40e2f5f-d6a1-48dd-8186-cea61f15f366
             userCondition: null
             warning: null
             width: 100
         name: 'Teaser & SEO'
-        uid: b23bec54-8f34-4a93-8be0-b44af9f20ccc
+        uid: 14ee318b-b83d-4ad5-80dd-7c3e14fc128e
         userCondition: null
     thumbFieldKey: null
 handle: page

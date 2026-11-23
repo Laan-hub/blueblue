@@ -1,0 +1,26 @@
+{% import '_macros/ui.twig' as ui %}
+<section class="block block-legal">
+  <div class="container block-legal__grid">
+    <aside class="article-aside">
+      <span class="rule-blue" aria-hidden="true"></span>
+      {{ ui.eyebrow(block.eyebrow) }}
+      {% if block.lead %}<p class="lead-sm">{{ block.lead }}</p>{% endif %}
+      {% set rel = block.teaserEntries.all() %}
+      {% if rel|length %}
+        <div class="block-legal__also">
+          <p class="block-legal__label">{{ 'Also on this site'|t }}</p>
+          <ul>{% for r in rel %}<li><a class="action" href="{{ r.url }}"><span>{{ r.title }}</span>{{ ui.icon('arrow') }}</a></li>{% endfor %}</ul>
+        </div>
+      {% endif %}
+    </aside>
+    <dl class="legal-list">
+      {% for row in block.legalItems %}
+        <div class="legal-list__row{{ row.value|length > 160 ? ' is-wide' : '' }}">
+          <dt>{{ row.label }}</dt>
+          <dd>{{ row.value|e|nl2br }}</dd>
+        </div>
+      {% endfor %}
+    </dl>
+  </div>
+  {% if block.note %}<p class="container small-note">{{ block.note }}</p>{% endif %}
+</section>

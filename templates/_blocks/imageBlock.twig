@@ -1,0 +1,17 @@
+{% import '_macros/ui.twig' as ui %}
+{% set imgs = block.images.all() %}
+{% set width = block.imageWidth.value ?? 'wide' %}
+{% if imgs|length %}
+<section class="block-image block-image--{{ width }}{{ imgs|length > 1 ? ' block-image--multi' : '' }}">
+  <div class="{{ width == 'full' ? '' : 'container' }}">
+    <div class="image-row image-row--{{ imgs|length }}">
+      {% for img in imgs %}
+        <figure>
+          {{ ui.img(img, { ratio: imgs|length > 1 ? 528/430 : 1296/540, sizes: imgs|length > 1 ? '(min-width: 1080px) 528px, 100vw' : '(min-width: 1440px) 1296px, 100vw' }) }}
+          {{ ui.caption(img) }}
+        </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

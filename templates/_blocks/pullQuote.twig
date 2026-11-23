@@ -1,0 +1,10 @@
+{% import '_macros/ui.twig' as ui %}
+<section class="block-pullquote">
+  <figure class="container pullquote">
+    <span class="pullquote__mark">{{ ui.icon('quote', 44) }}</span>
+    <div>
+      <blockquote><p>{{ block.quote }}</p></blockquote>
+      {% if block.note %}<figcaption class="eyebrow eyebrow--muted">{{ block.note }}</figcaption>{% endif %}
+    </div>
+  </figure>
+</section>

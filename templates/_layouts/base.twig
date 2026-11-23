@@ -1,0 +1,67 @@
+{% import '_macros/ui.twig' as ui %}
+{% set entry = entry ?? null %}
+{% set orgName = organization.orgName ?: 'GfT' %}
+{% set pageTitle = pageTitle ?? (entry and entry.section.handle != 'homepage' ? entry.title ~ ' | ' ~ orgName : orgName ~ ' – ' ~ siteSettings.topbarText) %}
+{% set pageDescription = pageDescription ?? (entry.summary ?? null) ?: organization.orgDescription %}
+{% set shareImage = (entry.image ?? null) ? entry.image.one() : null %}
+{% set crumbs = crumbs ?? [] %}
+{% set assetVersion = craft.app.config.general.devMode ? now|date('U') : '1.0.0' %}
+
+{# Übersetzungen dieser Seite (für hreflang und Sprachumschalter) #}
+{% set alternates = [] %}
+{% for site in craft.app.sites.allSites %}
+  {% set localized = entry ? craft.entries.id(entry.id).siteId(site.id).one() : null %}
+  {% if entry %}
+    {% set altUrl = localized ? localized.url : siteUrl('', null, null, site.id) %}
+  {% else %}
+    {% set altUrl = siteUrl(craft.app.request.pathInfo, craft.app.request.queryStringWithoutPath ?: null, null, site.id) %}
+  {% endif %}
+  {% set alternates = alternates|merge([{ site: site, url: altUrl, exists: localized is not null or entry is null }]) %}
+{% endfor %}
+<!DOCTYPE html>
+<html lang="{{ currentSite.language }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ pageTitle }}</title>
+  {% if pageDescription %}<meta name="description" content="{{ pageDescription|striptags|trim|slice(0, 300) }}">{% endif %}
+  {% set canonical = entry.url ?? craft.app.request.absoluteUrl|split('?')|first %}
+  <link rel="canonical" href="{{ canonical }}">
+  {% for alt in alternates|filter(a => a.exists) %}
+    <link rel="alternate" hreflang="{{ alt.site.language }}" href="{{ alt.url }}">
+    {% if alt.site.primary %}<link rel="alternate" hreflang="x-default" href="{{ alt.url }}">{% endif %}
+  {% endfor %}
+  {% if craft.app.config.general.devMode or getenv('CRAFT_DISALLOW_ROBOTS') == 'true' %}<meta name="robots" content="noindex, nofollow">{% endif %}
+
+  {# Open Graph #}
+  <meta property="og:type" content="{{ entry and entry.section.handle in ['akzente', 'news'] ? 'article' : 'website' }}">
+  <meta property="og:title" content="{{ entry.title ?? pageTitle }}">
+  {% if pageDescription %}<meta property="og:description" content="{{ pageDescription|striptags|trim|slice(0, 300) }}">{% endif %}
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:site_name" content="{{ orgName }}">
+  <meta property="og:locale" content="{{ currentSite.language|replace('-', '_') }}">
+  {% if shareImage %}<meta property="og:image" content="{{ shareImage.getUrl({ width: 1200, height: 630, mode: 'crop', format: 'jpg' }) }}">{% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="/assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/inter-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/lora-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css?v={{ assetVersion }}">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+
+  {% include '_partials/jsonld' %}
+</head>
+<body class="{{ bodyClass ?? '' }}">
+  <a class="skip-link" href="#main">{{ 'Skip to content'|t }}</a>
+
+  {% include '_partials/header' %}
+
+  <main id="main" tabindex="-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include '_partials/footer' %}
+
+  <script src="/assets/js/site.js?v={{ assetVersion }}" defer></script>
+</body>
+</html>

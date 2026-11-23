@@ -1,0 +1,14 @@
+{% extends '_layouts/base' %}
+{% import '_partials/crumbs' as c %}
+{% set crumbs = c.forEntry(entry)|json_decode %}
+{% set blocks = entry.builder.all() %}
+{% set firstType = (blocks|filter(b => b.type.handle != 'notice')|first).type.handle ?? null %}
+{% block content %}
+  {% if firstType != 'regionExplorer' %}
+    <div class="container page-top">{% include '_partials/breadcrumb' %}</div>
+  {% endif %}
+  {% if firstType not in ['pageIntro', 'regionExplorer', 'contactForm', 'heroStage'] %}
+    <h1 class="visually-hidden">{{ entry.title }}</h1>
+  {% endif %}
+  {% include '_blocks/_builder' with { blocks: blocks, hasPageH1: firstType not in ['pageIntro', 'regionExplorer', 'contactForm', 'heroStage'] } %}
+{% endblock %}

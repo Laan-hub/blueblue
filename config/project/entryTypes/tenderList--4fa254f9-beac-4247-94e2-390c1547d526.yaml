@@ -21,7 +21,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: ac5d1215-aa2b-4f02-8425-af4ff06d140b
+            uid: 905df797-931f-4e8f-b72d-6c84afa37559
             userCondition: null
             warning: null
             width: 100
@@ -38,7 +38,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 3a72250c-5f4c-4601-ab37-671e43abc66d
+            uid: 9a1766ad-01cc-4113-bd06-e52d28ecf07e
             userCondition: null
             warning: null
             width: 100
@@ -55,7 +55,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: f1fcdfbf-6d03-4954-9c1b-a555ce5f0b18
+            uid: 8ca06665-8425-47f2-a875-441785234f30
             userCondition: null
             warning: null
             width: 100
@@ -72,7 +72,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 48e69b0f-d662-4950-99a0-2cf38c726e68
+            uid: 3eae81b9-6377-4129-83a3-29102fb6aac5
             userCondition: null
             warning: null
             width: 100
@@ -89,7 +89,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 37754f3b-a835-435e-ae38-6e55b052cb57
+            uid: 6a9bbddf-43eb-45c0-b776-a908a260d6bb
             userCondition: null
             warning: null
             width: 100
@@ -106,12 +106,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 7b979464-7dba-4e96-bafe-dbcc2333c313
+            uid: e829cc33-5cb3-405a-8695-a06b70596863
             userCondition: null
             warning: null
             width: 100
         name: Inhalt
-        uid: a7755306-d921-4695-806b-306f0f57e833
+        uid: 859eae68-6698-42f5-b480-96e906211c6d
         userCondition: null
     thumbFieldKey: null
 handle: tenderList

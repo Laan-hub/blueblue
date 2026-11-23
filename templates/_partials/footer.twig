@@ -1,0 +1,44 @@
+{% import '_macros/ui.twig' as ui %}
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <a class="logo logo--footer" href="{{ siteUrl }}"><span class="logo__mark">GfT</span></a>
+      <p class="site-footer__name">{{ organization.orgLegalName }}</p>
+      {% if siteSettings.footerClaim %}<p class="site-footer__claim">{{ siteSettings.footerClaim }}</p>{% endif %}
+      <p class="site-footer__domain">gft.de</p>
+    </div>
+    {% for col in navigation.footerColumns.all() %}
+      <nav class="site-footer__col" aria-label="{{ col.headline }}">
+        <p class="site-footer__heading">{{ col.headline }}</p>
+        <ul>
+          {% for item in col.navLinks.all() %}
+            {% set l = item.linkField %}
+            {% if l %}
+              {% set ext = ui.isExternal(l.url)|trim == '1' %}
+              <li><a href="{{ l.url }}"{% if ext %} target="_blank" rel="noopener"{% endif %}>{{ l.label }}{% if ext %} {{ ui.icon('external', 12) }}{% endif %}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endfor %}
+    {% if siteSettings.socialLinks|length %}
+      <nav class="site-footer__col" aria-label="{{ 'Stay connected'|t }}">
+        <p class="site-footer__heading">{{ 'Stay connected'|t }}</p>
+        <ul>
+          {% for s in siteSettings.socialLinks %}
+            <li><a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.label }} {{ ui.icon('external', 12) }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
+  </div>
+  <div class="container site-footer__bottom">
+    <p>© {{ now|date('Y') }} {{ organization.orgName }} · {{ 'Fictional organisation · Concept draft'|t }}</p>
+    <ul>
+      {% for item in navigation.legalNav.all() %}
+        {% set l = item.linkField %}
+        {% if l %}<li><a href="{{ l.url }}"{% if entry and l.url == entry.url %} aria-current="page"{% endif %}>{{ l.label }}</a></li>{% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</footer>

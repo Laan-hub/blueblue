@@ -1,0 +1,12 @@
+{% extends '_layouts/base' %}
+{% set pageTitle = 'Page not found'|t ~ ' | GfT' %}
+{% block content %}
+  <section class="block">
+    <div class="container">
+      <p class="eyebrow">404</p>
+      <h1 class="h-page">{{ 'Page not found'|t }}</h1>
+      <p class="lead">{{ 'The page you are looking for does not exist or has moved.'|t }}</p>
+      <p class="actions"><a class="btn btn--primary" href="{{ siteUrl }}"><span>{{ 'Back to the homepage'|t }}</span></a> <a class="action" href="{{ url('search') }}"><span>{{ 'Search'|t }}</span></a></p>
+    </div>
+  </section>
+{% endblock %}

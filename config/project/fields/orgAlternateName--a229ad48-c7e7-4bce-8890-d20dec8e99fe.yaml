@@ -1,6 +1,6 @@
 columnSuffix: null
 handle: orgAlternateName
-instructions: null
+instructions: ''
 name: 'Alternativer Name'
 searchable: false
 settings:

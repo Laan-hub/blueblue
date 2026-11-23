@@ -1,0 +1,14 @@
+{% import '_macros/ui.twig' as ui %}
+<section class="block block-gallery"{% if block.anchorLabel %} id="{{ block.anchorLabel|kebab }}"{% endif %}>
+  <div class="container">
+    {{ ui.sectionHead(block, { tag: htag, size: 'h-section', aside: block.metaLabel }) }}
+    <div class="image-row image-row--{{ min(block.images.count(), 3) }}">
+      {% for img in block.images.all() %}
+        <figure>
+          {{ ui.img(img, { ratio: 636/320, sizes: '(min-width: 1024px) 636px, 100vw' }) }}
+          {{ ui.caption(img) }}
+        </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>

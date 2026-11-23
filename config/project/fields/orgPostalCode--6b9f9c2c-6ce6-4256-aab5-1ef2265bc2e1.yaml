@@ -1,6 +1,6 @@
 columnSuffix: null
 handle: orgPostalCode
-instructions: null
+instructions: ''
 name: PLZ
 searchable: false
 settings:

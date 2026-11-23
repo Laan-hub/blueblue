@@ -1,0 +1,22 @@
+{% import '_macros/ui.twig' as ui %}
+{% set services = block.teaserEntries.all() ?: craft.entries.section('services').level(1).all() %}
+<section class="block block-services">
+  <div class="container block-services__grid">
+    <div class="block-services__intro">
+      {{ ui.eyebrow(block.eyebrow) }}
+      <{{ htag }} class="h-display">{{ ui.lines(block.headline) }}</{{ htag }}>
+      {% if block.lead %}<p class="lead-md">{{ block.lead }}</p>{% endif %}
+      {{ ui.link(block.linkField) }}
+    </div>
+    <ul class="service-cards">
+      {% for s in services %}
+        <li class="service-card">
+          <span class="service-card__icon">{{ ui.icon(s.serviceIcon.value ?? 'globe', 28) }}</span>
+          <h3 class="h-card"><a href="{{ s.url }}">{{ s.title }}</a></h3>
+          {% if s.summary %}<p class="teaser__text">{{ s.summary }}</p>{% endif %}
+          <span class="service-card__arrow" aria-hidden="true">{{ ui.icon('external', 16) }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

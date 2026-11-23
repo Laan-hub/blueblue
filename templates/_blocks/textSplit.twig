@@ -1,0 +1,16 @@
+{% import '_macros/ui.twig' as ui %}
+<section class="block bg-{{ block.background.value ?? 'white' }} block-text"{% if block.anchorLabel %} id="{{ block.anchorLabel|kebab }}"{% endif %}>
+  <div class="container split">
+    <div class="split__aside">
+      {{ ui.eyebrow(block.eyebrow) }}
+      <{{ htag }} class="h-section">{{ ui.lines(block.headline) }}</{{ htag }}>
+    </div>
+    <div class="split__main">
+      {% if block.lead %}<p class="lead">{{ block.lead }}</p>{% endif %}
+      {% if block.text %}<div class="prose">{{ block.text }}</div>{% endif %}
+      {% if block.linkField or block.secondaryLink %}
+        <p class="actions">{{ ui.link(block.linkField) }}{{ ui.link(block.secondaryLink) }}</p>
+      {% endif %}
+    </div>
+  </div>
+</section>

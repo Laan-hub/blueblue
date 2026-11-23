@@ -1,0 +1,14 @@
+{% import '_macros/ui.twig' as ui %}
+<section class="block block-newsletter" id="newsletter">
+  <div class="container block-newsletter__grid">
+    <div>
+      {% if block.showAkzenteLogo %}<p class="block-newsletter__logo">{{ ui.akzenteLogo() }}</p>{% endif %}
+      <h2 class="h-sub">{{ ui.lines(block.headline) }}</h2>
+      {% if block.lead %}<p class="lead-sm">{{ block.lead }}</p>{% endif %}
+    </div>
+    <div>
+      {{ ui.link(block.linkField, 'button') }}
+      {% if block.note %}<p class="small-note">{{ block.note }}</p>{% endif %}
+    </div>
+  </div>
+</section>

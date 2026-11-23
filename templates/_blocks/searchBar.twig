@@ -1,0 +1,20 @@
+{% import '_macros/ui.twig' as ui %}
+<section class="block bg-subtle block-search">
+  <div class="container">
+    <div class="block-search__head">
+      <{{ htag }} class="h-small">{{ block.headline }}</{{ htag }}>
+      {% if block.lead %}<p class="lead-sm">{{ block.lead }}</p>{% endif %}
+    </div>
+    <form class="searchbar" action="{{ url('search') }}" method="get" role="search">
+      <label for="q-{{ block.id }}" class="visually-hidden">{{ 'Search'|t }}</label>
+      {{ ui.icon('search', 24) }}
+      <input id="q-{{ block.id }}" type="search" name="q" placeholder="{{ 'Search by topic, country or keyword'|t }}" autocomplete="off">
+      <button type="submit" class="btn btn--primary"><span>{{ 'Search GfT'|t }}</span>{{ ui.icon('arrow') }}</button>
+    </form>
+    {% if block.popularSearches|length %}
+      <p class="popular"><span class="popular__label">{{ 'Popular'|t }}</span>
+        {% for s in block.popularSearches %}<a href="{{ url('search', { q: s.query }) }}">{{ s.label }}</a>{% endfor %}
+      </p>
+    {% endif %}
+  </div>
+</section>

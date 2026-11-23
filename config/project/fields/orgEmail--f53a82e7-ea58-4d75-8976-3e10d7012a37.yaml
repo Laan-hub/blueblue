@@ -1,6 +1,6 @@
 columnSuffix: null
 handle: orgEmail
-instructions: null
+instructions: ''
 name: E-Mail
 searchable: false
 settings:

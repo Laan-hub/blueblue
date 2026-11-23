@@ -1,0 +1,26 @@
+{% extends '_layouts/base' %}
+{% import '_macros/ui.twig' as ui %}
+{% set q = craft.app.request.getQueryParam('q')|trim %}
+{% set pageTitle = 'Search'|t ~ (q ? ': ' ~ q : '') ~ ' | GfT' %}
+{% set crumbs = [{ title: craft.entries.section('homepage').one().title, url: siteUrl }, { title: 'Search'|t, url: url('search') }] %}
+{% set results = q ? craft.entries.section(['projects', 'akzente', 'news', 'services', 'worldwide', 'pages', 'tenders', 'grounding']).search(q).orderBy('score').limit(30).all() : [] %}
+{% block content %}
+  <section class="block block-search-page">
+    <div class="container">
+      {% include '_partials/breadcrumb' %}
+      <h1 class="h-page h-page--sm">{{ 'Search'|t }}</h1>
+      <form class="searchbar" action="{{ url('search') }}" method="get" role="search">
+        <label for="q" class="visually-hidden">{{ 'Search'|t }}</label>
+        {{ ui.icon('search', 24) }}
+        <input id="q" type="search" name="q" value="{{ q }}" placeholder="{{ 'Search by topic, country or keyword'|t }}">
+        <button type="submit" class="btn btn--primary"><span>{{ 'Search GfT'|t }}</span>{{ ui.icon('arrow') }}</button>
+      </form>
+      {% if q %}
+        <p class="meta search-count" role="status">{{ '{n} results for “{q}”'|t({ n: results|length, q: q }) }}</p>
+        <div class="teaser-grid teaser-grid--list">
+          {% for r in results %}{% include '_components/teaser' with { entry: r, variant: 'list', headingLevel: 'h2' } only %}{% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

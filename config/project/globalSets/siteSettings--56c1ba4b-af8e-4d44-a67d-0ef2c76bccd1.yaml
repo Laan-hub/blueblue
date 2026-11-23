@@ -18,7 +18,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 3ffa713b-8167-4c87-a8de-8392bc735a24
+            uid: 26d0f94e-69b4-4f98-bfa5-a593bb9cb3a8
             userCondition: null
             warning: null
             width: 100
@@ -35,7 +35,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: d75accd3-2d53-4132-a00d-c9ff12c15629
+            uid: cb0c9b37-d395-48e2-9291-121600310e8e
             userCondition: null
             warning: null
             width: 100
@@ -52,7 +52,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 93c51833-7f46-4b8e-b287-0589ad0c8951
+            uid: e548e207-ce1e-493e-81ab-8ff66f64df91
             userCondition: null
             warning: null
             width: 100
@@ -69,12 +69,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 0c779a8c-8bb7-4846-862c-471e90e264f5
+            uid: 2b4a561d-10d7-4bb1-8e8c-ae97d62418b1
             userCondition: null
             warning: null
             width: 100
         name: Allgemein
-        uid: 57ed4967-e6ec-4e6d-afc2-c2ef3cd0dc11
+        uid: a78c767e-4dae-4dd3-9195-745abccd7c20
         userCondition: null
     thumbFieldKey: null
 handle: siteSettings

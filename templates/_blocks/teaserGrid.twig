@@ -1,0 +1,46 @@
+{% import '_macros/ui.twig' as ui %}
+{% set source = block.teaserSource.value ?? 'manual' %}
+{% set limit = block.teaserLimit ?: null %}
+{% set exclude = entry ? ['not', entry.id] : null %}
+{% switch source %}
+  {% case 'manual' %}
+    {% set items = block.teaserEntries.all() %}
+  {% case 'projects' or 'news' or 'akzente' %}
+    {% set items = craft.entries.section(source).id(exclude).limit(limit).all() %}
+  {% case 'services' %}
+    {% set items = craft.entries.section('services').level(1).limit(limit).all() %}
+  {% case 'related' %}
+    {% if entry and entry.section.handle == 'services' %}
+      {% set items = craft.entries.section('projects').relatedTo({ targetElement: entry, field: 'services' }).limit(limit).all() %}
+    {% elseif entry and entry.section.handle == 'worldwide' %}
+      {% set items = craft.entries.section('projects').relatedTo({ targetElement: [entry.id]|merge(entry.children.ids()), field: 'countries' }).limit(limit).all() %}
+    {% elseif entry %}
+      {# gleiche Section, zuerst Einträge mit gemeinsamen Themen/Ländern #}
+      {% set rel = [] %}
+      {% if entry.services ?? null %}{% set rel = rel|merge(entry.services.ids()) %}{% endif %}
+      {% set items = rel ? craft.entries.section(entry.section.handle).id(exclude).relatedTo(rel).limit(limit).all() : [] %}
+      {% if items|length < (limit ?? 3) %}
+        {% set more = craft.entries.section(entry.section.handle).id(['not', entry.id]|merge(items|map(i => i.id))).limit((limit ?? 3) - items|length).all() %}
+        {% set items = items|merge(more) %}
+      {% endif %}
+    {% else %}
+      {% set items = [] %}
+    {% endif %}
+  {% default %}
+    {% set items = [] %}
+{% endswitch %}
+{% set layout = block.teaserLayout.value ?? 'cards' %}
+
+{% if items|length %}
+<section class="block bg-{{ block.background.value ?? 'white' }} block-teasers block-teasers--{{ layout }}"{% if block.anchorLabel %} id="{{ block.anchorLabel|kebab }}"{% endif %}>
+  <div class="container">
+    {{ ui.sectionHead(block, { tag: htag, size: 'h-display' }) }}
+    <div class="teaser-grid teaser-grid--{{ layout }}">
+      {% for item in items %}
+        {% include '_components/teaser' with { entry: item, variant: layout, headingLevel: htag == 'h1' ? 'h2' : 'h3' } only %}
+      {% endfor %}
+    </div>
+    {% if block.note %}<p class="small-note">{{ block.note }}</p>{% endif %}
+  </div>
+</section>
+{% endif %}

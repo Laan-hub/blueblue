@@ -1,0 +1,22 @@
+{% extends '_layouts/base' %}
+{% import '_macros/ui.twig' as ui %}
+{% import '_partials/crumbs' as c %}
+{% set crumbs = c.forEntry(entry)|json_decode %}
+{% block content %}
+  <header class="entry-head container">
+    <div class="entry-head__top">{% include '_partials/breadcrumb' %}</div>
+    <p class="eyebrow">{{ entry.tenderType.label|t }}{% for country in entry.countries.all() %} / {{ country.title }}{% endfor %}</p>
+    <h1 class="h-page h-page--sm">{{ entry.title }}</h1>
+  </header>
+  <section class="block">
+    <div class="container block-legal__grid">
+      <div></div>
+      <dl class="legal-list">
+        <div class="legal-list__row"><dt>{{ 'Status'|t }}</dt><dd><span class="status status--{{ entry.tenderStatus.value }}">{{ entry.tenderStatus.label|t }}</span></dd></div>
+        {% if entry.deadline %}<div class="legal-list__row"><dt>{{ 'Submission deadline'|t }}</dt><dd><time datetime="{{ entry.deadline|atom }}">{{ entry.deadline|date('d M Y · H:i') }} CET</time></dd></div>{% endif %}
+        {% if entry.summary %}<div class="legal-list__row"><dt>{{ 'Note'|t }}</dt><dd>{{ entry.summary }}</dd></div>{% endif %}
+      </dl>
+    </div>
+    <p class="container actions">{{ ui.link(entry.linkField, 'button') }}</p>
+  </section>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% header "Content-Type: text/plain; charset=utf-8" %}
+{%- set o = organization -%}
+{%- set g = craft.entries.section('grounding').one() -%}
+# {{ o.orgLegalName }} ({{ o.orgName }})
+
+> {{ o.orgDescription }}
+
+{{ g.lead ?? '' }}
+
+## {{ 'Key facts'|t }}
+{% for f in g.groundingFacts ?? [] %}
+- {{ f.label }}: {{ f.value|replace({"\n": ' '}) }}
+{% endfor %}
+
+## {{ 'Reference pages'|t }}
+- [{{ g.title }}]({{ g.url }}): {{ 'Verified facts, FAQ and contact details'|t }}
+{% for p in craft.entries.section('pages').level(1).all() %}
+- [{{ p.title }}]({{ p.url }}){% if p.summary %}: {{ p.summary }}{% endif %}
+
+{% endfor %}
+
+## {{ 'Projects'|t }}
+{% for p in craft.entries.section('projects').all() %}
+- [{{ p.title }}]({{ p.url }}): {{ p.summary }}
+{% endfor %}
+
+## {{ 'Services'|t }}
+{% for s in craft.entries.section('services').level(1).all() %}
+- [{{ s.title }}]({{ s.url }}): {{ s.summary }}
+{% endfor %}
+
+## Akzente
+{% for s in craft.entries.section('akzente').limit(10).all() %}
+- [{{ s.title }}]({{ s.url }}): {{ s.summary }}
+{% endfor %}
+
+## {{ 'Other languages'|t }}
+{% for site in craft.app.sites.allSites|filter(s => s.id != currentSite.id) %}
+- [{{ site.name }}]({{ siteUrl('llms.txt', null, null, site.id) }})
+{% endfor %}

@@ -1,0 +1,20 @@
+{% extends '_layouts/base' %}
+{% import '_macros/ui.twig' as ui %}
+{% import '_partials/crumbs' as c %}
+{% set crumbs = c.forEntry(entry)|json_decode %}
+{% set img = entry.image.one() %}
+{% block content %}
+  <header class="article-head container">
+    {% include '_partials/breadcrumb' %}
+    <p class="eyebrow">{{ entry.postDate|date('d M Y')|upper }}{% if entry.eyebrow %} / {{ entry.eyebrow|upper }}{% endif %}</p>
+    <h1 class="h-article h-article--sm">{{ entry.title }}</h1>
+    {% if entry.summary %}<p class="deck">{{ entry.summary }}</p>{% endif %}
+  </header>
+  {% if img %}
+    <figure class="container news-media">
+      {{ ui.img(img, { ratio: 1296/560, sizes: '(min-width: 1440px) 1296px, 100vw', eager: true }) }}
+      {{ ui.caption(img) }}
+    </figure>
+  {% endif %}
+  {% include '_blocks/_builder' with { blocks: entry.builder.all(), hasPageH1: true } %}
+{% endblock %}

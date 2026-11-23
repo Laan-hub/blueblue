@@ -1,0 +1,37 @@
+{% import '_macros/ui.twig' as ui %}
+{% set limit = block.teaserLimit ?: null %}
+{% set tenders = limit
+  ? craft.entries.section('tenders').tenderStatus('open').orderBy('deadline asc').limit(limit).all()
+  : craft.entries.section('tenders').orderBy('deadline desc').all() %}
+<section class="block block-tenders">
+  <div class="container split">
+    <div class="split__aside">
+      {{ ui.eyebrow(block.eyebrow) }}
+      <{{ htag }} class="h-section">{{ ui.lines(block.headline) }}</{{ htag }}>
+      {% if block.lead %}<p class="lead-md">{{ block.lead }}</p>{% endif %}
+      {{ ui.link(block.linkField) }}
+    </div>
+    <div class="split__main">
+      <div class="list-head">
+        <p class="list-head__title">{{ 'Current opportunities'|t }}</p>
+        {% if block.note %}<p class="meta">{{ block.note }}</p>{% endif %}
+      </div>
+      <ul class="tender-list">
+        {% for t in tenders %}
+          {% set href = t.linkField.url ?? t.url %}
+          <li class="tender">
+            <p class="tender__meta">
+              <span class="eyebrow">{{ t.tenderType.label|t }}{% for c in t.countries.all() %} / {{ c.title }}{% endfor %}</span>
+              <span class="status status--{{ t.tenderStatus.value }}">{{ t.tenderStatus.label|t }}{% if t.tenderStatus.value == 'open' %} · {{ 'Example'|t }}{% endif %}</span>
+            </p>
+            <h3 class="h-list"><a href="{{ href }}"{% if ui.isExternal(href)|trim == '1' %} target="_blank" rel="noopener"{% endif %}>{{ t.title }}</a></h3>
+            {% if t.deadline %}<p class="tender__deadline">{{ 'Submission deadline'|t }}: <time datetime="{{ t.deadline|atom }}">{{ t.deadline|date('d M Y · H:i') }} CET</time></p>{% endif %}
+            <span class="tender__icon" aria-hidden="true">{{ ui.icon('external', 16) }}</span>
+          </li>
+        {% else %}
+          <li class="tender"><p>{{ 'There are currently no open tenders.'|t }}</p></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

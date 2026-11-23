@@ -21,7 +21,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: e0a1f4c2-3b35-4089-bcc1-a2d0fdc6c557
+            uid: a5b508fa-a28d-442f-a318-9164cf5e0612
             userCondition: null
             warning: null
             width: 100
@@ -38,12 +38,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 0249391a-cafa-46f2-868a-07c35232a7b8
+            uid: 432d79a3-ff65-4f33-9b8d-7a6e99495d42
             userCondition: null
             warning: null
             width: 100
         name: Inhalt
-        uid: 285b2cf8-30f9-49f9-98bb-c095844ac29f
+        uid: d58dc732-9fd3-4ecd-89a1-90978cec0764
         userCondition: null
     thumbFieldKey: null
 handle: dataPanels

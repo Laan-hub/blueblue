@@ -110,27 +110,44 @@ function field(string $class, string $handle, string $name, array $config = []):
     return $f;
 }
 
-function layout(string $type, array $tabs, bool $title = true, ?string $titleLabel = null): FieldLayout
+function layout(string $type, array $tabs, bool $title = true, ?string $titleLabel = null, ?FieldLayout $existing = null): FieldLayout
 {
+    // UIDs bestehender Layout-Elemente wiederverwenden – Craft speichert Inhalte unter diesen UIDs.
+    $uids = [];
+    $tabUids = [];
+    if ($existing) {
+        foreach ($existing->getTabs() as $t) {
+            $tabUids[$t->name] = $t->uid;
+            foreach ($t->getElements() as $el) {
+                $key = $el instanceof CustomField ? 'field:' . $el->getField()->handle . ':' . ($el->handle ?? '') : get_class($el);
+                $uids[$key] = $el->uid;
+            }
+        }
+    }
     $layout = new FieldLayout(['type' => $type]);
+    if ($existing) {
+        $layout->id = $existing->id;
+        $layout->uid = $existing->uid;
+    }
     $tabModels = [];
     $first = true;
     foreach ($tabs as $tabName => $items) {
-        $tab = new FieldLayoutTab(['name' => $tabName, 'layout' => $layout]);
+        $tab = new FieldLayoutTab(['name' => $tabName, 'layout' => $layout, 'uid' => $tabUids[$tabName] ?? null]);
         $els = [];
         if ($first && $title) {
             if ($type === Asset::class) {
-                $els[] = new AssetTitleField();
-                $els[] = new AltField();
+                $els[] = new AssetTitleField(['uid' => $uids[AssetTitleField::class] ?? null]);
+                $els[] = new AltField(['uid' => $uids[AltField::class] ?? null]);
             } else {
-                $els[] = new EntryTitleField($titleLabel ? ['label' => $titleLabel] : []);
+                $els[] = new EntryTitleField(array_filter(['label' => $titleLabel, 'uid' => $uids[EntryTitleField::class] ?? null]));
             }
         }
         foreach ($items as $item) {
             [$f, $opts] = is_array($item) ? $item : [$item, []];
             $field = $f instanceof Field ? $f : Craft::$app->getFields()->getFieldByHandle($f);
             if (!$field) throw new Exception("Unbekanntes Feld $f");
-            $els[] = new CustomField($field, $opts);
+            $opts['uid'] = $uids['field:' . $field->handle . ':' . ($opts['handle'] ?? '')] ?? null;
+            $els[] = new CustomField($field, array_filter($opts, fn($v) => $v !== null));
         }
         $tab->setElements($els);
         $tabModels[] = $tab;
@@ -152,11 +169,7 @@ function entryType(string $handle, string $name, array $tabs, array $config = []
     foreach ($config as $k => $v) {
         $et->$k = $v;
     }
-    $layout = layout(Entry::class, $tabs, $hasTitle, $titleLabel);
-    if ($et->getFieldLayout()?->id) {
-        $layout->id = $et->getFieldLayout()->id;
-        $layout->uid = $et->getFieldLayout()->uid;
-    }
+    $layout = layout(Entry::class, $tabs, $hasTitle, $titleLabel, $et->id ? $et->getFieldLayout() : null);
     $et->setFieldLayout($layout);
     if (!$svc->saveEntryType($et)) fail("Entry-Type $handle", $et);
     return $et;
@@ -177,6 +190,10 @@ function volume(string $handle, string $name, string $path): Volume
     $v->handle = $handle;
     $v->name = $name;
     $v->setFsHandle($handle);
+    // Dateien in allen Sprachen verfügbar machen; Titel & Alt-Text pro Sprache übersetzbar
+    $v->propagationMethod = \craft\enums\PropagationMethod::All;
+    $v->titleTranslationMethod = Field::TRANSLATION_METHOD_SITE;
+    $v->altTranslationMethod = Field::TRANSLATION_METHOD_SITE;
     if (!$svc->saveVolume($v)) fail("Volume $handle", $v);
     return $svc->getVolumeByHandle($handle);
 }
@@ -263,7 +280,7 @@ field(Dropdown::class, 'projectStatus', 'Projektstatus', $N + ['options' => $opt
 field(Dropdown::class, 'tenderType', 'Art der Ausschreibung', $N + ['options' => $opts(['services' => 'Dienstleistungen', 'supplies' => 'Lieferungen', 'works' => 'Bauleistungen'])]);
 field(Dropdown::class, 'tenderStatus', 'Status', $N + ['options' => $opts(['open' => 'Offen', 'closed' => 'Geschlossen', 'awarded' => 'Vergeben'])]);
 field(Dropdown::class, 'serviceIcon', 'Icon', $N + ['options' => $opts(['leaf' => 'Pflanze / Klima', 'handshake' => 'Handschlag / Wirtschaft', 'institution' => 'Institution / Governance', 'network' => 'Netzwerk / Digital', 'globe' => 'Globus', 'chart' => 'Diagramm'])]);
-field(Dropdown::class, 'noticeStyle', 'Stil', $N + ['options' => $opts(['inline' => 'Kleine Zeile mit Markierung', 'box' => 'Hervorgehobener Kasten'])]);
+field(Dropdown::class, 'noticeStyle', 'Stil', $N + ['options' => $opts(['inline' => 'Kleine Zeile mit Markierung', 'box' => 'Hervorgehobener Kasten', 'end' => 'Abschluss-Hinweis (Artikelende)'])]);
 
 $col = fn(string $heading, string $handle, string $type = 'singleline') => ['heading' => $heading, 'handle' => $handle, 'type' => $type];
 $table = fn(string $h, string $n, array $cols, string $instr = '') => field(Table::class, $h, $n, $T + [
@@ -287,13 +304,13 @@ $table('orgKnowsAbout', 'Fachgebiete (knowsAbout)', [$col('Thema', 'topic')]);
 $table('orgAreaServed', 'Tätigkeitsgebiete (areaServed)', [$col('Gebiet', 'area')]);
 $table('contactPoints', 'Ansprechpunkte', [$col('Art', 'type'), $col('E-Mail', 'email'), $col('Telefon', 'phone'), $col('Sprachen', 'languages')]);
 
-$linkCfg = $T + ['showLabelField' => true, 'types' => ['entry', 'url', 'email', 'asset']];
+$linkCfg = $T + ['showLabelField' => true, 'types' => ['entry', 'url', 'email', 'asset'], 'typeSettings' => ['url' => ['allowRootRelativeUrls' => true, 'allowAnchors' => true]]];
 field(Link::class, 'linkField', 'Link', $linkCfg);
 field(Link::class, 'secondaryLink', 'Zweiter Link', $linkCfg);
 
 // Volumes
 $images = volume('images', 'Bilder', 'images');
-$images->setFieldLayout(layout(Asset::class, ['Inhalt' => ['caption']]));
+$images->setFieldLayout(layout(Asset::class, ['Inhalt' => ['caption']], true, null, $images->getFieldLayout()));
 $volSvc->saveVolume($images);
 $documents = volume('documents', 'Dokumente', 'documents');
 out('Volumes ok');
@@ -307,7 +324,9 @@ $tagsSvc = Craft::$app->getTags();
 $tg = $tagsSvc->getTagGroupByHandle('topics') ?? new TagGroup();
 $tg->name = 'Themen';
 $tg->handle = 'topics';
-$tg->setFieldLayout(new FieldLayout(['type' => \craft\elements\Tag::class]));
+if (!$tg->id) {
+    $tg->setFieldLayout(new FieldLayout(['type' => \craft\elements\Tag::class]));
+}
 $tagsSvc->saveTagGroup($tg);
 field(Tags::class, 'topics', 'Schlagworte', $N + ['sources' => 'taggroup:' . $tg->uid, 'source' => 'taggroup:' . $tg->uid]);
 out('Basisfelder ok');
@@ -343,7 +362,8 @@ function section(string $handle, string $name, string $type, array $uris, ?strin
     return $svc->getSectionByHandle($handle);
 }
 
-$placeholder = fn(string $h, string $n) => entryType($h, $n, ['Inhalt' => []]);
+// Platzhalter nur beim ersten Lauf anlegen, sonst bestehendes Layout unangetastet lassen
+$placeholder = fn(string $h, string $n) => Craft::$app->getEntries()->getEntryTypeByHandle($h) ?? entryType($h, $n, ['Inhalt' => []]);
 $sec = [];
 $sec['homepage'] = section('homepage', 'Startseite', Section::TYPE_SINGLE, ['de' => '__home__', 'en' => '__home__'], 'home/_entry', [$placeholder('home', 'Startseite')]);
 $sec['pages'] = section('pages', 'Seiten', Section::TYPE_STRUCTURE, ['de' => '{parent.uri ?? null}{parent ? "/" : ""}{slug}', 'en' => '{parent.uri ?? null}{parent ? "/" : ""}{slug}'], 'pages/_entry', [$placeholder('page', 'Seite')], ['maxLevels' => 3]);
@@ -393,13 +413,13 @@ $mod = fn(string $h, string $n, array $fields, string $icon, string $desc = '') 
     entryType($h, $n, ['Inhalt' => $fields], $noTitle + ['uiLabelFormat' => '{headline ?? eyebrow ?? ""}', 'icon' => $icon, 'description' => $desc]);
 
 $b['heroStage'] = $mod('heroStage', 'Bühne (Hero-Slider)', ['slides'], 'images', 'Große Bühne mit einem oder mehreren Slides.');
-$b['pageIntro'] = $mod('pageIntro', 'Seiteneinstieg', ['eyebrow', 'headline', 'lead', 'linkField', 'image'], 'heading', 'Große Überschrift mit Einleitung und optionalem Bild.');
+$b['pageIntro'] = $mod('pageIntro', 'Seiteneinstieg', ['showAkzenteLogo', 'eyebrow', 'headline', 'lead', 'linkField', 'image'], 'heading', 'Große Überschrift mit Einleitung und optionalem Bild.');
 $b['searchBar'] = $mod('searchBar', 'Suche', ['headline', 'lead', 'popularSearches'], 'magnifying-glass');
 $b['metrics'] = $mod('metrics', 'Kennzahlen', ['eyebrow', 'headline', 'lead', 'text', 'linkField', 'metricItems', 'note', 'background', 'anchorLabel'], 'chart-simple');
 $b['teaserGrid'] = $mod('teaserGrid', 'Teaser-Liste', ['eyebrow', 'headline', 'linkField', 'teaserSource', 'teaserEntries', 'teaserLimit', 'teaserLayout', 'note', 'background', 'anchorLabel'], 'grip', 'Zeigt Projekte, Geschichten, News oder eigene Teaser – manuell oder automatisch.');
 $b['regionExplorer'] = $mod('regionExplorer', 'Regionen-Übersicht', ['eyebrow', 'headline', 'lead', 'linkField', 'metaLabel', 'note'], 'earth-europe', 'Listet automatisch alle Regionen aus „Weltweit“.');
 $b['serviceGrid'] = $mod('serviceGrid', 'Leistungen', ['eyebrow', 'headline', 'lead', 'linkField', ['teaserEntries', ['label' => 'Leistungen (leer = alle)']]], 'briefcase');
-$b['featureSplit'] = $mod('featureSplit', 'Bild & Text (geteilt)', ['image', 'metaLabel', 'eyebrow', 'headline', 'quote', 'lead', 'linkField', 'secondaryLink', ['teaserEntries', ['label' => 'Zusätzlicher Hinweis-Link']], 'note', 'background', 'imagePosition', 'anchorLabel'], 'table-columns', 'Bild auf einer Seite, farbiges Textfeld auf der anderen. Mit Zitat wird es zum Zitat-Panel.');
+$b['featureSplit'] = $mod('featureSplit', 'Bild & Text (geteilt)', ['showAkzenteLogo', 'image', 'metaLabel', 'eyebrow', 'headline', 'quote', 'lead', 'linkField', 'secondaryLink', ['teaserEntries', ['label' => 'Zusätzlicher Hinweis-Link']], 'note', 'background', 'imagePosition', 'anchorLabel'], 'table-columns', 'Bild auf einer Seite, farbiges Textfeld auf der anderen. Mit Zitat wird es zum Zitat-Panel.');
 $b['tenderList'] = $mod('tenderList', 'Ausschreibungen', ['eyebrow', 'headline', 'lead', 'linkField', 'teaserLimit', 'note'], 'file-contract', 'Zeigt automatisch offene Ausschreibungen.');
 $b['ctaAudience'] = $mod('ctaAudience', 'Call to Action mit Zielgruppen', ['eyebrow', 'headline', 'lead', 'linkField', 'audienceItems', 'background'], 'bullhorn');
 $b['textSplit'] = $mod('textSplit', 'Text (zweispaltig)', ['eyebrow', 'headline', 'lead', 'text', 'linkField', 'secondaryLink', 'background', 'anchorLabel'], 'align-left', 'Überschrift links, Text rechts.');
@@ -456,11 +476,7 @@ function globalSet(string $handle, string $name, array $tabs): void
     $set = $svc->getSetByHandle($handle) ?? new GlobalSet();
     $set->handle = $handle;
     $set->name = $name;
-    $layout = layout(GlobalSet::class, $tabs, false);
-    if ($set->getFieldLayout()?->id) {
-        $layout->id = $set->getFieldLayout()->id;
-        $layout->uid = $set->getFieldLayout()->uid;
-    }
+    $layout = layout(GlobalSet::class, $tabs, false, null, $set->id ? $set->getFieldLayout() : null);
     $set->setFieldLayout($layout);
     if (!$svc->saveSet($set)) fail("Global $handle", $set);
 }

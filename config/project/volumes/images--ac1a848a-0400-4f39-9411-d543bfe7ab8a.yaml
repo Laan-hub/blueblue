@@ -1,7 +1,7 @@
 altTranslationKeyFormat: null
-altTranslationMethod: none
+altTranslationMethod: site
 fieldLayouts:
-  f407b1d6-c5c9-4beb-9875-7414c9afb56f:
+  5400e0d9-796d-45c4-a265-96b3c3be7d1e:
     cardThumbAlignment: end
     tabs:
       -
@@ -31,7 +31,7 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\assets\AssetTitleField
-            uid: a6ab303b-b77c-4b8c-a2f7-dfde892db040
+            uid: f6d67a46-62f2-40c7-b0e5-12e14ab46f24
             userCondition: null
             warning: null
             width: 100
@@ -55,7 +55,7 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\assets\AltField
-            uid: 86f0b81d-3240-4af1-b756-61898ad45ad4
+            uid: feca93ea-6275-4876-b357-fcbb2d2320ba
             userCondition: null
             warning: null
             width: 100
@@ -72,18 +72,18 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 7441a2ab-f32b-4a38-9b8e-6d66205212fa
+            uid: 791c88ac-6223-4d2d-9d49-62a992e8df81
             userCondition: null
             warning: null
             width: 100
         name: Inhalt
-        uid: 10103996-0a04-4018-95fb-ce8f455c43ea
+        uid: dd9b1dc8-6ca7-411f-ab8d-316f65ca60e8
         userCondition: null
     thumbFieldKey: null
 fs: images
 handle: images
 name: Bilder
-propagationMethod: custom
+propagationMethod: all
 sortOrder: 1
 subpath: ''
 titleTranslationKeyFormat: null

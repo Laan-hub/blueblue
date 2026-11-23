@@ -1,6 +1,6 @@
 columnSuffix: null
 handle: popularSearches
-instructions: null
+instructions: ''
 name: 'Beliebte Suchbegriffe'
 searchable: false
 settings:

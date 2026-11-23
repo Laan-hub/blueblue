@@ -1,0 +1,25 @@
+{% if block.noticeStyle.value == 'box' %}
+  <div class="container block-notice">
+    <aside class="notice-box">
+      {% if block.headline %}<p class="notice-box__label">{{ block.headline }}</p>{% endif %}
+      <p>{{ block.note }}</p>
+    </aside>
+  </div>
+{% elseif block.noticeStyle.value == 'end' %}
+  <div class="container block-end">
+    <div class="prose-col">
+      <span class="end-mark" aria-hidden="true"></span>
+      <p class="small-note">{{ block.note }}</p>
+      {% set tags = (entry.countries ?? null ? entry.countries.all() : [])|merge(entry.topics ?? null ? entry.topics.all() : []) %}
+      {% if tags|length %}
+        <p class="explore"><span class="explore__label">{{ 'Explore'|t }}</span>
+          {% for t in tags %}<a href="{{ t.url ?? url('search', { q: t.title }) }}">{{ t.title }}</a>{% if not loop.last %} <span aria-hidden="true">/</span> {% endif %}{% endfor %}
+        </p>
+      {% endif %}
+    </div>
+  </div>
+{% else %}
+  <div class="container block-notice">
+    <p class="concept-note">{{ block.note }}</p>
+  </div>
+{% endif %}

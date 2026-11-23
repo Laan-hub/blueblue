@@ -1,0 +1,23 @@
+{% import '_macros/ui.twig' as ui %}
+{% set img = block.image.one() %}
+<section class="block block-intro{{ block.showAkzenteLogo ? ' block-intro--akzente' : '' }}">
+  <div class="container">
+    {% if block.showAkzenteLogo %}<p class="block-intro__logo">{{ ui.akzenteLogo() }}</p>{% endif %}
+    {{ ui.eyebrow(block.eyebrow) }}
+    <div class="block-intro__grid{{ block.lead ? '' : ' is-single' }}">
+      <{{ htag }} class="h-page">{{ ui.lines(block.headline) }}</{{ htag }}>
+      {% if block.lead or block.linkField %}
+        <div class="block-intro__aside">
+          {% if block.lead %}<p class="lead">{{ block.lead }}</p>{% endif %}
+          {{ ui.link(block.linkField) }}
+        </div>
+      {% endif %}
+    </div>
+    {% if img %}
+      <figure class="block-intro__media">
+        {{ ui.img(img, { ratio: 1296/600, sizes: '(min-width: 1440px) 1296px, 100vw', eager: true }) }}
+        {{ ui.caption(img) }}
+      </figure>
+    {% endif %}
+  </div>
+</section>

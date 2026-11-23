@@ -1,0 +1,140 @@
+{#
+  Strukturierte Daten (schema.org, JSON-LD) für Suchmaschinen und KI-Systeme.
+  Quelle: Global „Organisation (JSON-LD)“ + Felder des aktuellen Eintrags.
+#}
+{% set home = siteUrl|trim('/', 'right') ~ '/' %}
+{% set orgId = craft.app.sites.primarySite.getBaseUrl()|trim('/', 'right') ~ '/#organization' %}
+{% set o = organization %}
+{% set logo = o.image.one() ?? null %}
+
+{% set org = {
+  '@type': ['Organization', 'NGO'],
+  '@id': orgId,
+  name: o.orgLegalName ?: o.orgName,
+  alternateName: [o.orgName, o.orgAlternateName]|filter,
+  description: o.orgDescription,
+  url: craft.app.sites.primarySite.getBaseUrl(),
+  logo: logo ? logo.url : craft.app.sites.primarySite.getBaseUrl()|trim('/', 'right') ~ '/assets/logo-gft.svg',
+  email: o.orgEmail,
+  telephone: o.orgPhone,
+  foundingDate: o.orgFoundingDate,
+  vatID: o.orgVatId starts with '[' ? null : o.orgVatId,
+  address: o.orgStreet ? {
+    '@type': 'PostalAddress',
+    streetAddress: o.orgStreet,
+    postalCode: o.orgPostalCode,
+    addressLocality: o.orgLocality,
+    addressCountry: o.orgCountry,
+  } : null,
+  contactPoint: o.contactPoints|map(c => {
+    '@type': 'ContactPoint',
+    contactType: c.type,
+    email: c.email ?: null,
+    telephone: c.phone ?: null,
+    availableLanguage: c.languages ? c.languages|split(',')|map(l => l|trim) : null,
+  }|filter),
+  sameAs: o.orgSameAs|map(r => r.url)|filter,
+  knowsAbout: o.orgKnowsAbout|map(r => r.topic)|filter,
+  areaServed: o.orgAreaServed|map(r => r.area)|filter,
+  publishingPrinciples: craft.entries.section('grounding').one().url ?? null,
+}|filter %}
+
+{% set website = {
+  '@type': 'WebSite',
+  '@id': home ~ '#website',
+  url: home,
+  name: o.orgName,
+  inLanguage: currentSite.language,
+  publisher: { '@id': orgId },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: { '@type': 'EntryPoint', urlTemplate: url('search') ~ '?q={search_term_string}' },
+    'query-input': 'required name=search_term_string',
+  },
+} %}
+
+{% set graph = [org, website] %}
+
+{% if entry %}
+  {% set img = entry.image.one() ?? null %}
+  {% set pageUrl = entry.url %}
+  {% set webpage = {
+    '@type': entry.section.handle == 'grounding' ? ['WebPage', 'AboutPage'] : (entry.section.handle == 'homepage' ? 'WebPage' : 'WebPage'),
+    '@id': pageUrl ~ '#webpage',
+    url: pageUrl,
+    name: entry.title,
+    description: entry.summary ?? entry.lead ?? null,
+    inLanguage: currentSite.language,
+    isPartOf: { '@id': home ~ '#website' },
+    about: entry.section.handle in ['homepage', 'grounding'] ? { '@id': orgId } : null,
+    primaryImageOfPage: img ? { '@type': 'ImageObject', url: img.getUrl({ width: 1200, format: 'jpg' }), caption: img.alt } : null,
+    dateModified: entry.dateUpdated|atom,
+    breadcrumb: crumbs|length ? { '@id': pageUrl ~ '#breadcrumb' } : null,
+  }|filter %}
+  {% set graph = graph|merge([webpage]) %}
+
+  {% if crumbs|length %}
+    {% set graph = graph|merge([{
+      '@type': 'BreadcrumbList',
+      '@id': pageUrl ~ '#breadcrumb',
+      itemListElement: crumbs|map((c, i) => { '@type': 'ListItem', position: i + 1, name: c.title, item: c.url }),
+    }]) %}
+  {% endif %}
+
+  {% if entry.section.handle in ['akzente', 'news'] %}
+    {% set graph = graph|merge([{
+      '@type': entry.section.handle == 'news' ? 'NewsArticle' : 'Article',
+      '@id': pageUrl ~ '#article',
+      headline: entry.title,
+      description: entry.summary,
+      image: img ? [img.getUrl({ width: 1200, format: 'jpg' })] : null,
+      datePublished: entry.postDate|atom,
+      dateModified: entry.dateUpdated|atom,
+      inLanguage: currentSite.language,
+      author: entry.authorName ?? null ? { '@type': 'Organization', name: entry.authorName } : { '@id': orgId },
+      publisher: { '@id': orgId },
+      mainEntityOfPage: { '@id': pageUrl ~ '#webpage' },
+      isPartOf: entry.section.handle == 'akzente' ? { '@type': 'Periodical', name: 'akzente' } : null,
+      about: (entry.topics ?? null) ? entry.topics.all()|map(t => t.title) : null,
+      contentLocation: (entry.countries ?? null) ? entry.countries.all()|map(c => { '@type': 'Place', name: c.title }) : null,
+    }|filter]) %}
+  {% endif %}
+
+  {% if entry.section.handle == 'projects' %}
+    {% set facts = {} %}
+    {% for f in entry.factItems %}{% set facts = facts|merge({ (f.label): f.value }) %}{% endfor %}
+    {% set graph = graph|merge([{
+      '@type': 'Project',
+      '@id': pageUrl ~ '#project',
+      name: entry.title,
+      description: entry.summary,
+      url: pageUrl,
+      image: img ? img.getUrl({ width: 1200, format: 'jpg' }) : null,
+      parentOrganization: { '@id': orgId },
+      areaServed: entry.countries.all()|map(c => { '@type': 'Country', name: c.title }),
+      knowsAbout: entry.services.all()|map(s => s.title)|merge(entry.topics.all()|map(t => t.title)),
+      additionalProperty: entry.factItems|map(f => { '@type': 'PropertyValue', name: f.label, value: f.value, description: f.note ?: null }|filter),
+    }|filter]) %}
+  {% endif %}
+
+  {% if entry.section.handle == 'services' %}
+    {% set graph = graph|merge([{
+      '@type': 'Service',
+      '@id': pageUrl ~ '#service',
+      name: entry.title,
+      description: entry.summary,
+      provider: { '@id': orgId },
+      areaServed: o.orgAreaServed|map(r => r.area)|filter,
+    }|filter]) %}
+  {% endif %}
+
+  {% if entry.section.handle == 'grounding' and entry.faqItems|length %}
+    {% set graph = graph|merge([{
+      '@type': 'FAQPage',
+      '@id': pageUrl ~ '#faq',
+      mainEntity: entry.faqItems|map(q => { '@type': 'Question', name: q.question, acceptedAnswer: { '@type': 'Answer', text: q.answer } }),
+    }]) %}
+  {% endif %}
+{% endif %}
+
+<script type="application/ld+json">{{ { '@context': 'https://schema.org', '@graph': graph }|json_encode(constant('JSON_UNESCAPED_SLASHES') b-or constant('JSON_UNESCAPED_UNICODE'))|raw }}</script>

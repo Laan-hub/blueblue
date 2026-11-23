@@ -1,6 +1,6 @@
 columnSuffix: null
 handle: topbarText
-instructions: null
+instructions: ''
 name: 'Text in der oberen Leiste'
 searchable: false
 settings:

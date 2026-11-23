@@ -133,6 +133,6 @@ settings:
   viewMode: blocks
 tip: null
 translationKeyFormat: null
-translationMethod: site
+translationMethod: none
 type: craft\fields\Matrix
 warning: null

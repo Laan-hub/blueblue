@@ -1,6 +1,6 @@
 columnSuffix: null
 handle: orgVatId
-instructions: null
+instructions: ''
 name: USt-IdNr.
 searchable: false
 settings:

@@ -1,6 +1,6 @@
 columnSuffix: null
 handle: orgKnowsAbout
-instructions: null
+instructions: ''
 name: 'Fachgebiete (knowsAbout)'
 searchable: false
 settings:

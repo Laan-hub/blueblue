@@ -1,0 +1,48 @@
+{% import '_macros/ui.twig' as ui %}
+{% set img = block.image.one() %}
+{% set bg = block.background.value ?? 'blue' %}
+{% set also = block.teaserEntries.one() %}
+{% set isQuote = block.quote is not empty %}
+<section class="feature feature--{{ bg }} feature--img-{{ block.imagePosition.value ?? 'left' }}{{ isQuote ? ' feature--quote' : '' }}"{% if block.anchorLabel %} id="{{ block.anchorLabel|kebab }}"{% endif %}>
+  {% if img %}
+    <figure class="feature__media">
+      {{ ui.img(img, { sizes: '(min-width: 1024px) 50vw, 100vw', alt: img.alt }) }}
+      {% if block.metaLabel and not isQuote %}<figcaption class="feature__caption">{{ block.metaLabel }}</figcaption>{% endif %}
+    </figure>
+  {% endif %}
+  <div class="feature__panel">
+    <div class="feature__inner">
+      {% if block.showAkzenteLogo %}
+        <div class="feature__masthead">{{ ui.akzenteLogo() }}<span class="feature__mag">{{ 'The GfT magazine'|t }}</span></div>
+      {% endif %}
+      {{ ui.eyebrow(block.eyebrow, bg in ['blue', 'dark'] ? 'eyebrow--light' : '') }}
+      {% if isQuote %}
+        <span class="feature__quote-mark">{{ ui.icon('quote', 32) }}</span>
+        <blockquote class="feature__quote"><p>{{ block.quote }}</p></blockquote>
+        <span class="rule-accent" aria-hidden="true"></span>
+        {% if block.note %}<p class="small-note">{{ block.note }}</p>{% endif %}
+      {% else %}
+        {% if block.headline %}<{{ htag }} class="{{ bg == 'white' ? 'h-section' : 'h-display' }}">{{ ui.lines(block.headline) }}</{{ htag }}>{% endif %}
+        {% if block.lead %}<p class="lead">{{ block.lead }}</p>{% endif %}
+        {% if block.linkField or block.secondaryLink %}
+          <div class="feature__actions">
+            {% if bg in ['blue', 'dark'] %}
+              {{ ui.link(block.linkField, 'button-light') }}
+              {{ ui.link(block.secondaryLink, 'inline', null, { class: 'action--light' }) }}
+            {% else %}
+              {{ ui.link(block.linkField) }}
+              {{ ui.link(block.secondaryLink) }}
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if also %}
+          <div class="feature__also">
+            <p class="eyebrow eyebrow--light">{{ 'Also in Akzente'|t }}{% if also.eyebrow %} / {{ also.eyebrow }}{% endif %}</p>
+            <a href="{{ also.url }}" class="action action--light"><span>{{ also.title }}</span>{{ ui.icon('arrow') }}</a>
+          </div>
+        {% endif %}
+        {% if block.note %}<p class="small-note">{{ block.note }}</p>{% endif %}
+      {% endif %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,20 @@
+{#
+  Rendert die Module eines Eintrags. Variablen:
+  blocks      – Liste der Module (Matrix-Einträge)
+  hasPageH1   – true, wenn das Seitentemplate die H1 schon selbst ausgibt
+  depth       – Schutz gegen Endlosschleifen bei wiederverwendbaren Modulen
+#}
+{% set depth = depth ?? 0 %}
+{% set firstIdx = null %}
+{% for b in blocks %}{% if firstIdx is null and b.type.handle != 'notice' %}{% set firstIdx = loop.index0 %}{% endif %}{% endfor %}
+{% for block in blocks %}
+  {% set isFirst = loop.index0 == firstIdx and not (hasPageH1 ?? false) %}
+  {% if block.type.handle == 'reusableModule' %}
+    {% set module = block.moduleEntry.one() %}
+    {% if module and depth < 2 %}
+      {% include '_blocks/_builder' with { blocks: module.builder.all(), hasPageH1: true, depth: depth + 1 } only %}
+    {% endif %}
+  {% else %}
+    {% include '_blocks/' ~ block.type.handle ignore missing with { block: block, isFirst: isFirst, htag: isFirst ? 'h1' : 'h2', entry: entry ?? null } only %}
+  {% endif %}
+{% endfor %}

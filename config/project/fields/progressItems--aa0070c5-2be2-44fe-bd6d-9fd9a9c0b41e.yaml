@@ -1,6 +1,6 @@
 columnSuffix: null
 handle: progressItems
-instructions: null
+instructions: ''
 name: Fortschrittsbalken
 searchable: false
 settings:
