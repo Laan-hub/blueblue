@@ -15,7 +15,7 @@
             {% set l = item.linkField %}
             {% if l %}
               {% set ext = ui.isExternal(l.url)|trim == '1' %}
-              <li><a href="{{ l.url }}"{% if ext %} target="_blank" rel="noopener"{% endif %}>{{ l.label }}{% if ext %} {{ ui.icon('external', 12) }}{% endif %}</a></li>
+              <li><a href="{{ l.url }}"{{ ui.extAttrs(l.url) }}>{{ l.label }}{{ ui.extHint(l.url) }}{% if ext %} {{ ui.icon('external', 12) }}{% endif %}</a></li>
             {% endif %}
           {% endfor %}
         </ul>
@@ -26,7 +26,7 @@
         <p class="site-footer__heading">{{ 'Stay connected'|t }}</p>
         <ul>
           {% for s in siteSettings.socialLinks %}
-            <li><a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.label }} {{ ui.icon('external', 12) }}</a></li>
+            <li><a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.label }}{{ ui.extHint(s.url) }} {{ ui.icon('external', 12) }}</a></li>
           {% endfor %}
         </ul>
       </nav>
@@ -37,8 +37,21 @@
     <ul>
       {% for item in navigation.legalNav.all() %}
         {% set l = item.linkField %}
-        {% if l %}<li><a href="{{ l.url }}"{% if entry and l.url == entry.url %} aria-current="page"{% endif %}>{{ l.label }}</a></li>{% endif %}
+        {% if l and l.url starts with '#cookie' %}
+          {# #5: Aktion statt Navigation – öffnet den Einstellungsdialog #}
+          <li><button type="button" class="link-button" data-cookie-settings aria-haspopup="dialog">{{ l.label }}</button></li>
+        {% elseif l %}<li><a href="{{ l.url }}"{% if entry and l.url == entry.url %} aria-current="page"{% endif %}{{ ui.extAttrs(l.url) }}>{{ l.label }}{{ ui.extHint(l.url) }}</a></li>{% endif %}
       {% endfor %}
     </ul>
   </div>
 </footer>
+
+{# Cookie-Einstellungen (#5). Solange kein Consent-Tool angebunden ist, erklärt der Dialog den Stand. #}
+<dialog class="dialog" id="cookie-dialog" aria-labelledby="cookie-dialog-title" data-cookie-dialog>
+  <form method="dialog">
+    <h2 class="h-small" id="cookie-dialog-title">{{ 'Cookie settings'|t }}</h2>
+    <p>{{ 'This website currently only uses technically necessary cookies (session and security token). No consent is required, and no tracking or marketing cookies are set.'|t }}</p>
+    <p class="meta">{{ 'Once a consent tool is connected, this button will open its settings.'|t }}</p>
+    <button class="btn btn--primary" value="close"><span>{{ 'Close'|t }}</span></button>
+  </form>
+</dialog>

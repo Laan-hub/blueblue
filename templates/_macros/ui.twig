@@ -29,6 +29,16 @@
 {# Ist ein Link extern (andere Domain)? #}
 {% macro isExternal(url) %}{% set base = craft.app.sites.primarySite.getBaseUrl()|trim('/', 'right') %}{{ (url starts with 'http' and not (url starts with base)) ? '1' : '' }}{% endmacro %}
 
+{# ---------------------------------------------------------------------
+   Link-Regeln (#12, #13) – zentral für alle Templates:
+   · externe Ziele: neuer Tab, Icon ↗, versteckter Hinweis „öffnet in neuem Tab“
+   · interne Ziele: Icon →
+   · Downloads (Assets): Icon ↓, download-Attribut, Format + Größe im Linktext
+   --------------------------------------------------------------------- #}
+{% macro extAttrs(url) %}{% if _self.isExternal(url ?? '')|trim == '1' %} target="_blank" rel="noopener"{% endif %}{% endmacro %}
+{% macro extHint(url) %}{% if _self.isExternal(url ?? '')|trim == '1' %}<span class="visually-hidden"> ({{ 'opens in a new tab'|t }})</span>{% endif %}{% endmacro %}
+{% macro fileInfo(asset) %}{% if asset %}{{ asset.extension|upper }}, {{ asset.size|filesize|replace({'.': currentSite.language starts with 'de' ? ',' : '.'}) }}{% endif %}{% endmacro %}
+
 {# Link aus einem Craft-Link-Feld (LinkData) oder einem Hash {url, label}
    style: 'inline' (Text + Pfeil), 'button', 'button-light', 'nav' #}
 {% macro link(link, style = 'inline', label = null, attrs = {}) %}
@@ -38,10 +48,11 @@
     {%- if url -%}
       {%- set ext = _self.isExternal(url)|trim == '1' -%}
       {%- set isDownload = (link.type ?? '') == 'asset' -%}
+      {%- set file = isDownload ? (link.element ?? null) : null -%}
       {%- set cls = style == 'inline' ? 'action' : (style starts with 'button' ? 'btn ' ~ (style == 'button-light' ? 'btn--light' : 'btn--primary') : style) -%}
-      <a href="{{ url }}" class="{{ cls }} {{ attrs.class ?? '' }}"{% if ext %} target="_blank" rel="noopener"{% endif %}{% if attrs.id is defined %} id="{{ attrs.id }}"{% endif %}>
-        <span>{{ text }}</span>
-        {%- if ext %}<span class="visually-hidden"> ({{ 'opens in a new window'|t }})</span>{% endif -%}
+      <a href="{{ url }}" class="{{ cls }} {{ attrs.class ?? '' }}"{{ _self.extAttrs(url) }}{% if isDownload %} download{% endif %}{% if attrs.id is defined %} id="{{ attrs.id }}"{% endif %}>
+        <span>{{ text }}{% if file %} <span class="file-info">({{ _self.fileInfo(file) }})</span>{% endif %}</span>
+        {{- _self.extHint(url) -}}
         {{- style != 'nav' ? _self.icon(isDownload ? 'download' : (ext ? 'external' : (attrs.icon ?? 'arrow'))) -}}
       </a>
     {%- endif -%}
@@ -49,6 +60,9 @@
 {% endmacro %}
 
 {# Mehrzeilige Überschrift: Zeilenumbrüche aus dem CMS werden übernommen #}
+{# Lokalisierte Such-URL (#14): /suche (DE) bzw. /en/search (EN) #}
+{% macro searchUrl(params = {}) %}{{ url(currentSite.language starts with 'de' ? 'suche' : 'search', params) }}{% endmacro %}
+
 {% macro lines(text) %}{{ text|e|nl2br }}{% endmacro %}
 
 {% macro eyebrow(text, class = '') %}

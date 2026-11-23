@@ -14,7 +14,7 @@
           <span class="service-card__icon">{{ ui.icon(s.serviceIcon.value ?? 'globe', 28) }}</span>
           <h3 class="h-card"><a href="{{ s.url }}">{{ s.title }}</a></h3>
           {% if s.summary %}<p class="teaser__text">{{ s.summary }}</p>{% endif %}
-          <span class="service-card__arrow" aria-hidden="true">{{ ui.icon('external', 16) }}</span>
+          <span class="service-card__arrow" aria-hidden="true">{{ ui.icon('arrow', 18) }}</span>
         </li>
       {% endfor %}
     </ul>

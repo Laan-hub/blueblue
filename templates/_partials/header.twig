@@ -1,5 +1,6 @@
 {% import '_macros/ui.twig' as ui %}
 {% set currentUrl = entry.url ?? craft.app.request.absoluteUrl %}
+{% set searchUrl = ui.searchUrl()|trim %}
 <header class="site-header" data-header>
   <div class="site-header__top container">
     <p class="site-header__claim">{{ siteSettings.topbarText }}</p>
@@ -9,7 +10,7 @@
           {% set l = item.linkField %}
           {% if l %}
             {% set ext = ui.isExternal(l.url)|trim == '1' %}
-            <li><a href="{{ l.url }}"{% if l.url == currentUrl or (currentUrl starts with l.url ~ '/') %} aria-current="page"{% endif %}{% if ext %} target="_blank" rel="noopener"{% endif %}>{{ l.label }}{% if ext %}{{ ui.icon('external', 12) }}{% endif %}</a></li>
+            <li><a href="{{ l.url }}"{% if l.url == currentUrl or (currentUrl starts with l.url ~ '/') %} aria-current="page"{% endif %}{{ ui.extAttrs(l.url) }}>{{ l.label }}{{ ui.extHint(l.url) }}{% if ext %}{{ ui.icon('external', 12) }}{% endif %}</a></li>
           {% endif %}
         {% endfor %}
       </ul>
@@ -62,7 +63,7 @@
                     {% set cl = c.linkField %}
                     {% if cl %}
                       {% set ext = ui.isExternal(cl.url)|trim == '1' %}
-                      <li><a href="{{ cl.url }}"{% if cl.url == currentUrl %} aria-current="page"{% endif %}{% if ext %} target="_blank" rel="noopener"{% endif %}>{{ cl.label }}{{ ui.icon(ext ? 'external' : 'arrow', 16) }}</a></li>
+                      <li><a href="{{ cl.url }}"{% if cl.url == currentUrl %} aria-current="page"{% endif %}{{ ui.extAttrs(cl.url) }}>{{ cl.label }}{{ ui.extHint(cl.url) }}{{ ui.icon(ext ? 'external' : 'arrow', 16) }}</a></li>
                     {% endif %}
                   {% endfor %}
                 </ul>
@@ -77,14 +78,40 @@
       {# Mobile: Servicenavigation & Sprache im Menü #}
       <ul class="main-nav__utility">
         {% for item in navigation.utilityNav.all() %}
-          {% if item.linkField %}<li><a href="{{ item.linkField.url }}">{{ item.linkField.label }}</a></li>{% endif %}
+          {% set l = item.linkField %}
+          {% if l %}
+            {% set ext = ui.isExternal(l.url)|trim == '1' %}
+            <li><a href="{{ l.url }}"{{ ui.extAttrs(l.url) }}>{{ l.label }}{{ ui.extHint(l.url) }}{{ ui.icon(ext ? 'external' : 'arrow', 16) }}</a></li>
+          {% endif %}
         {% endfor %}
-        {% for alt in alternates|filter(a => a.site.id != currentSite.id) %}
-          <li><a href="{{ alt.url }}" hreflang="{{ alt.site.language }}" lang="{{ alt.site.language }}">{{ alt.site.name }}</a></li>
+      </ul>
+      <ul class="main-nav__lang" aria-label="{{ 'Language'|t }}">
+        {% for alt in alternates %}
+          <li>
+            {% if alt.site.id == currentSite.id %}
+              <span aria-current="true" lang="{{ alt.site.language }}">{{ alt.site.name }}</span>
+            {% else %}
+              <a href="{{ alt.url }}" hreflang="{{ alt.site.language }}" lang="{{ alt.site.language }}">{{ alt.site.name }}</a>
+            {% endif %}
+          </li>
         {% endfor %}
       </ul>
     </nav>
 
-    <a class="search-toggle" href="{{ url('search') }}" aria-label="{{ 'Search'|t }}">{{ ui.icon('search', 24) }}</a>
+    {# Merkliste (#17): wird per JS befüllt und erst sichtbar, wenn etwas gemerkt wurde #}
+    <div class="saved" data-saved hidden
+         data-label-remove="{{ 'Remove'|t }}" data-label-saved="{{ 'Saved'|t }}" data-label-removed="{{ 'Removed from saved pages'|t }}" data-label-added="{{ 'Saved – find it under the bookmark icon at the top'|t }}">
+      <button type="button" class="saved__toggle" aria-expanded="false" aria-controls="saved-panel" data-saved-toggle>
+        {{ ui.icon('bookmark', 22) }}<span class="saved__count" data-saved-count>0</span>
+        <span class="visually-hidden">{{ 'Saved pages'|t }}</span>
+      </button>
+      <div class="saved__panel" id="saved-panel" hidden>
+        <p class="saved__title">{{ 'Saved pages'|t }}</p>
+        <ul class="saved__list" data-saved-list></ul>
+        <p class="saved__note">{{ 'Saved only in this browser.'|t }}</p>
+      </div>
+    </div>
+
+    <a class="search-toggle" href="{{ searchUrl }}" aria-label="{{ 'Search'|t }}">{{ ui.icon('search', 24) }}</a>
   </div>
 </header>

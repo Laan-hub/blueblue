@@ -1,4 +1,7 @@
 {% extends '_layouts/base' %}
+{# #11: Fallback ohne JavaScript für die Länderauswahl (?land=URL) – nur Ziele auf dieser Website #}
+{% set land = craft.app.request.getQueryParam('land') %}
+{% if land and land starts with craft.app.sites.primarySite.getBaseUrl()|trim('/', 'right') %}{% redirect land %}{% endif %}
 {% import '_partials/crumbs' as c %}
 {% set crumbs = c.forEntry(entry)|json_decode %}
 {% set blocks = entry.builder.all() %}

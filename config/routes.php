@@ -2,11 +2,14 @@
 /**
  * Site URL Rules
  *
- * You can define custom site URL rules here, which Craft will check in addition
- * to routes defined in Settings → Routes.
+ * Sprachspezifische Routen: Die Suche liegt auf Deutsch unter /suche,
+ * auf Englisch unter /en/search (Template: templates/search.twig).
  *
- * Read about Craft’s routing behavior (and this file’s structure), here:
- * @link https://craftcms.com/docs/5.x/system/routing.html
+ * @link https://craftcms.com/docs/5.x/system/routing.html#advanced-routing-with-url-rules
  */
 
-return [];
+return [
+    'de' => [
+        'suche' => ['template' => 'search'],
+    ],
+];

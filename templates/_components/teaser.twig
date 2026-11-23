@@ -29,6 +29,11 @@
 {% endif %}
 {% set status = section == 'projects' ? (entry.projectStatus.value ?? null) : null %}
 {% set ext = ui.isExternal(url ?? '')|trim == '1' %}
+{% set file = section == 'teasers' and entry.linkField and entry.linkField.type == 'asset' ? entry.linkField.element : null %}
+{% set linkAttrs = ui.extAttrs(url) ~ (file ? ' download' : '') %}
+{% set linkHint = ui.extHint(url) %}
+{% set actionIcon = file ? 'download' : (ext ? 'external' : 'arrow') %}
+{% if file %}{% set linkLabel = linkLabel ~ ' (' ~ ui.fileInfo(file)|trim ~ ')' %}{% endif %}
 
 {% if variant == 'cards' %}
   <article class="teaser teaser--card">
@@ -43,17 +48,17 @@
         {% if status %}<span class="status-dot status-dot--{{ status }}" title="{{ entry.projectStatus.label|t }}"></span>{% endif %}
       </p>
     {% endif %}
-    <{{ h }} class="teaser__title h-card"><a href="{{ url }}">{{ entry.title }}</a></{{ h }}>
+    <{{ h }} class="teaser__title h-card"><a href="{{ url }}"{{ linkAttrs|raw }}>{{ entry.title }}{{ linkHint }}</a></{{ h }}>
     {% if summary %}<p class="teaser__text">{{ summary }}</p>{% endif %}
-    <span class="action teaser__action" aria-hidden="true"><span>{{ linkLabel }}</span>{{ ui.icon(ext ? 'external' : 'arrow') }}</span>
+    <span class="action teaser__action" aria-hidden="true"><span>{{ linkLabel }}</span>{{ ui.icon(actionIcon) }}</span>
   </article>
 
 {% elseif variant == 'text' %}
   <article class="teaser teaser--text">
     {% if eyebrow %}<p class="teaser__meta eyebrow">{{ eyebrow }}</p>{% endif %}
-    <{{ h }} class="teaser__title h-card"><a href="{{ url }}">{{ entry.title }}</a></{{ h }}>
+    <{{ h }} class="teaser__title h-card"><a href="{{ url }}"{{ linkAttrs|raw }}>{{ entry.title }}{{ linkHint }}</a></{{ h }}>
     {% if summary %}<p class="teaser__text">{{ summary }}</p>{% endif %}
-    <span class="action teaser__action" aria-hidden="true"><span>{{ linkLabel }}</span>{{ ui.icon('arrow') }}</span>
+    <span class="action teaser__action" aria-hidden="true"><span>{{ linkLabel }}</span>{{ ui.icon(actionIcon) }}</span>
   </article>
 
 {% elseif variant == 'media' %}
@@ -65,19 +70,24 @@
     {% endif %}
     <div class="teaser__body">
       {% if eyebrow %}<p class="teaser__meta eyebrow">{{ eyebrow }}</p>{% endif %}
-      <{{ h }} class="teaser__title {{ section == 'akzente' ? 'h-editorial' : 'h-card' }}"><a href="{{ url }}">{{ entry.title }}</a></{{ h }}>
+      <{{ h }} class="teaser__title {{ section == 'akzente' ? 'h-editorial' : 'h-card' }}"><a href="{{ url }}"{{ linkAttrs|raw }}>{{ entry.title }}{{ linkHint }}</a></{{ h }}>
       {% if summary %}<p class="teaser__text">{{ summary }}</p>{% endif %}
-      <span class="action teaser__action" aria-hidden="true"><span>{{ linkLabel }}</span>{{ ui.icon(ext ? 'external' : 'arrow') }}</span>
+      <span class="action teaser__action" aria-hidden="true"><span>{{ linkLabel }}</span>{{ ui.icon(actionIcon) }}</span>
     </div>
   </article>
 
 {% else %}
+  {# Listen-Variante (Suche): Suchbegriffe hervorheben (#14) #}
+  {% set words = (highlight ?? '')|split(' ')|map(w => w|replace('/[^\\p{L}\\p{N}]/u', ''))|filter(w => w|length > 1) %}
+  {% set pattern = words ? '/(' ~ words|join('|') ~ ')/iu' : null %}
+  {% set titleHtml = pattern ? entry.title|e|replace(pattern, '<mark>$1</mark>') : entry.title|e %}
+  {% set summaryHtml = summary and pattern ? summary|e|replace(pattern, '<mark>$1</mark>') : summary|e %}
   <article class="teaser teaser--list">
     <div>
       {% if eyebrow %}<p class="teaser__meta eyebrow">{{ eyebrow }}</p>{% endif %}
-      <{{ h }} class="teaser__title h-list"><a href="{{ url }}">{{ entry.title }}</a></{{ h }}>
-      {% if summary %}<p class="teaser__text">{{ summary }}</p>{% endif %}
+      <{{ h }} class="teaser__title h-list"><a href="{{ url }}"{{ linkAttrs|raw }}>{{ titleHtml|raw }}{{ linkHint }}</a></{{ h }}>
+      {% if summary %}<p class="teaser__text">{{ summaryHtml|raw }}</p>{% endif %}
     </div>
-    {{ ui.icon(ext ? 'external' : 'arrow') }}
+    {{ ui.icon(actionIcon) }}
   </article>
 {% endif %}

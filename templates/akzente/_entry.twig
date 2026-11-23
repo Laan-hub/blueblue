@@ -24,8 +24,8 @@
         <p class="meta"><time datetime="{{ entry.postDate|atom }}">{{ entry.postDate|date('d F Y') }}</time>{% if entry.readTime %} · {{ '{n} min read'|t({ n: entry.readTime }) }}{% endif %}</p>
       </div>
       <div class="byline__actions">
-        <button type="button" class="action" data-share data-title="{{ entry.title }}" data-url="{{ entry.url }}"><span>{{ 'Share'|t }}</span>{{ ui.icon('share') }}</button>
-        <button type="button" class="action" data-save><span>{{ 'Save'|t }}</span>{{ ui.icon('bookmark') }}</button>
+        <button type="button" class="action" data-share data-title="{{ entry.title }}" data-url="{{ entry.url }}" data-copied="{{ 'Link copied'|t }}"><span>{{ 'Share'|t }}</span>{{ ui.icon('share') }}</button>
+        <button type="button" class="action" data-save data-title="{{ entry.title }}" aria-pressed="false"><span>{{ 'Save'|t }}</span>{{ ui.icon('bookmark') }}</button>
       </div>
     </div>
   </header>

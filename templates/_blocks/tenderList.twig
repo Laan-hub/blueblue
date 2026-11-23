@@ -24,9 +24,9 @@
               <span class="eyebrow">{{ t.tenderType.label|t }}{% for c in t.countries.all() %} / {{ c.title }}{% endfor %}</span>
               <span class="status status--{{ t.tenderStatus.value }}">{{ t.tenderStatus.label|t }}{% if t.tenderStatus.value == 'open' %} · {{ 'Example'|t }}{% endif %}</span>
             </p>
-            <h3 class="h-list"><a href="{{ href }}"{% if ui.isExternal(href)|trim == '1' %} target="_blank" rel="noopener"{% endif %}>{{ t.title }}</a></h3>
+            <h3 class="h-list"><a href="{{ href }}"{{ ui.extAttrs(href) }}>{{ t.title }}{{ ui.extHint(href) }}</a></h3>
             {% if t.deadline %}<p class="tender__deadline">{{ 'Submission deadline'|t }}: <time datetime="{{ t.deadline|atom }}">{{ t.deadline|date('d M Y · H:i') }} CET</time></p>{% endif %}
-            <span class="tender__icon" aria-hidden="true">{{ ui.icon('external', 16) }}</span>
+            <span class="tender__icon" aria-hidden="true">{{ ui.icon(ui.isExternal(href)|trim == '1' ? 'external' : 'arrow', 18) }}</span>
           </li>
         {% else %}
           <li class="tender"><p>{{ 'There are currently no open tenders.'|t }}</p></li>

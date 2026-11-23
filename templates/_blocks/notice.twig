@@ -1,3 +1,4 @@
+{% import '_macros/ui.twig' as ui %}
 {% if block.noticeStyle.value == 'box' %}
   <div class="container block-notice">
     <aside class="notice-box">
@@ -13,7 +14,7 @@
       {% set tags = (entry.countries ?? null ? entry.countries.all() : [])|merge(entry.topics ?? null ? entry.topics.all() : []) %}
       {% if tags|length %}
         <p class="explore"><span class="explore__label">{{ 'Explore'|t }}</span>
-          {% for t in tags %}<a href="{{ t.url ?? url('search', { q: t.title }) }}">{{ t.title }}</a>{% if not loop.last %} <span aria-hidden="true">/</span> {% endif %}{% endfor %}
+          {% for t in tags %}<a href="{{ t.url ?? ui.searchUrl({ q: t.title })|trim }}">{{ t.title }}</a>{% if not loop.last %} <span aria-hidden="true">/</span> {% endif %}{% endfor %}
         </p>
       {% endif %}
     </div>

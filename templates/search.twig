@@ -1,24 +1,62 @@
 {% extends '_layouts/base' %}
 {% import '_macros/ui.twig' as ui %}
+
+{# Deutsche Seite: /search → /suche (#14) #}
+{% if currentSite.language starts with 'de' and craft.app.request.pathInfo == 'search' %}
+  {% redirect ui.searchUrl(craft.app.request.queryParams)|trim 301 %}
+{% endif %}
+
 {% set q = craft.app.request.getQueryParam('q')|trim %}
 {% set pageTitle = 'Search'|t ~ (q ? ': ' ~ q : '') ~ ' | GfT' %}
-{% set crumbs = [{ title: craft.entries.section('homepage').one().title, url: siteUrl }, { title: 'Search'|t, url: url('search') }] %}
+{% set crumbs = [{ title: craft.entries.section('homepage').one().title, url: siteUrl }, { title: 'Search'|t, url: ui.searchUrl()|trim }] %}
 {% set results = q ? craft.entries.section(['projects', 'akzente', 'news', 'services', 'worldwide', 'pages', 'tenders', 'grounding']).search(q).orderBy('score').limit(30).all() : [] %}
+{% set popular = craft.entries.section('homepage').one().builder.type('searchBar').one().popularSearches ?? [] %}
+
 {% block content %}
   <section class="block block-search-page">
     <div class="container">
       {% include '_partials/breadcrumb' %}
       <h1 class="h-page h-page--sm">{{ 'Search'|t }}</h1>
-      <form class="searchbar" action="{{ url('search') }}" method="get" role="search">
+      <form class="searchbar" action="{{ ui.searchUrl()|trim }}" method="get" role="search">
         <label for="q" class="visually-hidden">{{ 'Search'|t }}</label>
         {{ ui.icon('search', 24) }}
-        <input id="q" type="search" name="q" value="{{ q }}" placeholder="{{ 'Search by topic, country or keyword'|t }}">
+        <input id="q" type="search" name="q" value="{{ q }}" placeholder="{{ 'Search by topic, country or keyword'|t }}" data-placeholder-short="{{ 'Topic, country, keyword'|t }}">
         <button type="submit" class="btn btn--primary"><span>{{ 'Search GfT'|t }}</span>{{ ui.icon('arrow') }}</button>
       </form>
+
       {% if q %}
-        <p class="meta search-count" role="status">{{ '{n} results for “{q}”'|t({ n: results|length, q: q }) }}</p>
+        <p class="search-count" role="status">{{ '{n} results for “{q}”'|t({ n: results|length, q: q }) }}</p>
+      {% endif %}
+
+      {% if results|length %}
         <div class="teaser-grid teaser-grid--list">
-          {% for r in results %}{% include '_components/teaser' with { entry: r, variant: 'list', headingLevel: 'h2' } only %}{% endfor %}
+          {% for r in results %}{% include '_components/teaser' with { entry: r, variant: 'list', headingLevel: 'h2', highlight: q } only %}{% endfor %}
+        </div>
+      {% else %}
+        {# Leerer Zustand bzw. Startzustand mit Hilfen (#14) #}
+        <div class="search-help">
+          {% if q %}
+            <h2 class="h-small">{{ 'No results – try this'|t }}</h2>
+            <ul class="search-help__tips">
+              <li>{{ 'Check the spelling.'|t }}</li>
+              <li>{{ 'Use more general or fewer terms, e.g. “climate” instead of “climate resilience Kenya”.'|t }}</li>
+              <li>{{ 'Search in the other language – most content exists in German and English.'|t }}</li>
+            </ul>
+          {% endif %}
+          {% if popular|length %}
+            <p class="popular popular--chips"><span class="popular__label">{{ 'Popular'|t }}</span>
+              {% for s in popular %}<a href="{{ ui.searchUrl({ q: s.query })|trim }}">{{ s.label }}</a>{% endfor %}
+            </p>
+          {% endif %}
+          {% set entryPoints = craft.entries.section('pages').slug(['projekte', 'projects', 'leistungen', 'services', 'weltweit', 'worldwide', 'akzente', 'kontakt', 'contact']).all() %}
+          {% if entryPoints|length %}
+            <h2 class="h-small search-help__head">{{ 'Or explore directly'|t }}</h2>
+            <ul class="region-list search-help__links">
+              {% for p in entryPoints %}
+                <li><a href="{{ p.url }}"><span class="region-list__name">{{ p.title }}</span>{% if p.summary %}<span class="region-list__countries">{{ p.summary }}</span>{% endif %}{{ ui.icon('arrow') }}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
         </div>
       {% endif %}
     </div>

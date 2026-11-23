@@ -27,17 +27,22 @@
           </li>
         {% endfor %}
       </ul>
-      <div class="select-wrap">
-        <label for="country-{{ block.id }}" class="visually-hidden">{{ 'Or choose a country'|t }}</label>
-        <select id="country-{{ block.id }}" data-nav-select>
-          <option value="">{{ 'Or choose a country'|t }}</option>
-          {% for region in regions %}
-            <optgroup label="{{ region.title }}">
-              {% for c in region.children %}<option value="{{ c.url }}">{{ c.title }}</option>{% endfor %}
-            </optgroup>
-          {% endfor %}
-        </select>
-        {{ ui.icon('chevron', 18) }}
+      {# #11: kein Sprung bei Auswahl – erst „Anzeigen“ (bzw. Enter) navigiert #}
+      <form class="country-picker" data-country-picker action="{{ craft.entries.section('pages').slug(['weltweit', 'worldwide']).one().url ?? siteUrl }}">
+        <div class="select-wrap">
+          <label for="country-{{ block.id }}" class="visually-hidden">{{ 'Or choose a country'|t }}</label>
+          <select id="country-{{ block.id }}" name="land" required>
+            <option value="">{{ 'Or choose a country'|t }}</option>
+            {% for region in regions %}
+              <optgroup label="{{ region.title }}">
+                {% for c in region.children %}<option value="{{ c.url }}">{{ c.title }}</option>{% endfor %}
+              </optgroup>
+            {% endfor %}
+          </select>
+          {{ ui.icon('chevron', 18) }}
+        </div>
+        <button type="submit" class="btn btn--primary"><span>{{ 'Show'|t }}</span>{{ ui.icon('arrow') }}</button>
+      </form>
       </div>
     </div>
   </div>
